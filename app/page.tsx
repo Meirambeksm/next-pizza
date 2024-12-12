@@ -9,6 +9,10 @@ export default function Home() {
   );
 }
 
+// 0. Go to layout.tsx
+
+// Usefull links:
+
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s
 
 // figma: https://www.figma.com/design/cYz4fOSK74EJoqHxoNr1hT/Next-Pizza?node-id=0-1&node-type=canvas&t=OhzwEM0YW7g8Z8dL-0

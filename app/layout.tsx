@@ -19,7 +19,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={nunito.className}>{children}</body>
+      <body className={nunito.className}>
+        <main className="min-h-screen" /*1*/>{children}</main>
+      </body>
     </html>
   );
 }
+
+// 2. npx shadcn@latest add dialog checkbox drawer input popover select skeleton slider
+// link: https://ui.shadcn.com/docs/installation/next
+// 3. npm install lucide-react
+// link: https://lucide.dev/guide/installation
+// 4. Finish
