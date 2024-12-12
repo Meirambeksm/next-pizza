@@ -22,12 +22,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={nunito.className}>
         <main className="min-h-screen">
-          <Header /*15*/ />
+          <Header />
           {children}
         </main>
       </body>
     </html>
   );
 }
-
-// 16. Go to header.tsx

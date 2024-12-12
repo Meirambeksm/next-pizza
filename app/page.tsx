@@ -1,10 +1,33 @@
+import {
+  //   Categories, (not used after step 32)
+  Container,
+  //   SortPopup, (not used after step 32)
+  Title,
+  TopBar,
+} from "@/components/shared";
+
 export default function Home() {
-  return <h1>Главная</h1> /*1*/;
+  return (
+    <>
+      <Container className="mt-5" /*6*/>
+        <Title text="Все пиццы" size="lg" className="font-extrabold" /*7*/ />
+        {/* 
+        <Categories 17 (not used after step 32) />
+        <SortPopup 26 (not used after step 32) />
+        */}
+      </Container>
+      <TopBar /*32*/ />
+      <div style={{ height: "3000px" }} /*33 for check purposes*/></div>
+    </>
+  );
 }
 
 // 0. Start here
-// 2. Create folder shared in components folder
-// 3. Create header.tsx component in shared folder and go to header.tsx
+// 1. Create title.tsx in shared folder and go to title.tsx
+// 8. Create categories.tsx in shared folder and go to categories.tsx
+// 18. Create sort-popup.tsx in shared folder and go to sort-popup.tsx
+// 27. Create top-bar.tsx in shared folder and go to top-bar.tsx
+// 34. Finish
 
 // Usefull links:
 
