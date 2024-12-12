@@ -34,6 +34,3 @@ export const Title: React.FC<Props> = ({ text, size = "sm", className }) => {
     text
   );
 };
-
-// 2. Copy from finished project or create the same title component
-// 3. Go to index.ts in shared folder

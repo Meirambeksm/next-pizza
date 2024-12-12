@@ -1,33 +1,34 @@
-import {
-  //   Categories, (not used after step 32)
-  Container,
-  //   SortPopup, (not used after step 32)
-  Title,
-  TopBar,
-} from "@/components/shared";
+import { Container, Filters, Title, TopBar } from "@/components/shared";
 
 export default function Home() {
   return (
     <>
-      <Container className="mt-5" /*6*/>
-        <Title text="Все пиццы" size="lg" className="font-extrabold" /*7*/ />
-        {/* 
-        <Categories 17 (not used after step 32) />
-        <SortPopup 26 (not used after step 32) />
-        */}
+      <Container className="mt-5">
+        <Title text="Все пиццы" size="lg" className="font-extrabold" />
       </Container>
-      <TopBar /*32*/ />
-      <div style={{ height: "3000px" }} /*33 for check purposes*/></div>
+
+      <TopBar />
+
+      <Container className="mt-10 pb-14">
+        <div className="flex gap-[60px]" /*1*/>
+          {/*Filters*/}
+          <div className="w-[250px]" /*2*/>
+            <Filters /*18*/ />
+          </div>
+
+          {/*Goods list*/}
+          <div className="flex-1" /*3*/>
+            <div className="flex flex-col gap-16" /*4*/>Список товаров</div>
+          </div>
+        </div>
+      </Container>
     </>
   );
 }
 
 // 0. Start here
-// 1. Create title.tsx in shared folder and go to title.tsx
-// 8. Create categories.tsx in shared folder and go to categories.tsx
-// 18. Create sort-popup.tsx in shared folder and go to sort-popup.tsx
-// 27. Create top-bar.tsx in shared folder and go to top-bar.tsx
-// 34. Finish
+// 5. Create filters.tsx in shared folder and go to filters.tsx
+// 19. Go to checkbox.tsx in ui folder
 
 // Usefull links:
 

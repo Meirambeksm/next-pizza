@@ -22,6 +22,4 @@ export const TopBar: React.FC<Props> = ({ className }) => {
       </Container>
     </div>
   );
-}; /*28*/
-
-// 29. Go to index.ts in shared folder
+};

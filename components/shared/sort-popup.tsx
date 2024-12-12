@@ -12,13 +12,11 @@ export const SortPopup: React.FC<Props> = ({ className }) => {
       className={cn(
         "inline-flex items-center gap-1 bg-gray-50 px-5 h-[52px] rounded-2xl cursor-pointer",
         className
-      )} /*19*/
+      )}
     >
-      <ArrowUpDown size={16} /*20*/ />
-      <b /*21*/>Сортировка:</b>
-      <b className="text-primary" /*22*/>популярное</b>
+      <ArrowUpDown size={16} />
+      <b>Сортировка:</b>
+      <b className="text-primary">популярное</b>
     </div>
   );
 };
-
-// 23. Go to index.ts in shared folder
