@@ -1,15 +1,10 @@
-import { Button } from "@/components/ui/button";
-
 export default function Home() {
-  return (
-    <h1>
-      Home
-      <Button variant="outline">Корзина</Button>
-    </h1>
-  );
+  return <h1>Главная</h1> /*1*/;
 }
 
-// 0. Go to layout.tsx
+// 0. Start here
+// 2. Create folder shared in components folder
+// 3. Create header.tsx component in shared folder and go to header.tsx
 
 // Usefull links:
 
