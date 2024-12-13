@@ -28,6 +28,3 @@ const Checkbox = React.forwardRef<
 Checkbox.displayName = CheckboxPrimitive.Root.displayName;
 
 export { Checkbox };
-
-// 20. Copy from finished project or make slight change
-// 21. Go to filters.tsx

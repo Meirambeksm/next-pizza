@@ -35,6 +35,3 @@ export const FilterCheckbox: React.FC<FilterChecboxProps> = ({
     </div>
   );
 };
-
-// 10. Copy from finished project or create the same component
-// 11. Go to filters.tsx

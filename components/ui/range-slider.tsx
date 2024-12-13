@@ -85,6 +85,3 @@ const RangeSlider = React.forwardRef(
 RangeSlider.displayName = SliderPrimitive.Root.displayName;
 
 export { RangeSlider };
-
-// 28. Copy from finished project or create the same component
-// 29. Go to filters.tsx

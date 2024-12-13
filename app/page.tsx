@@ -1,4 +1,6 @@
 import { Container, Filters, Title, TopBar } from "@/components/shared";
+import { ProductCard } from "@/components/shared/product-card";
+import { ProductsGroupList } from "@/components/shared/products-group-list";
 
 export default function Home() {
   return (
@@ -10,15 +12,71 @@ export default function Home() {
       <TopBar />
 
       <Container className="mt-10 pb-14">
-        <div className="flex gap-[60px]" /*1*/>
+        <div className="flex gap-[80px]">
           {/*Filters*/}
-          <div className="w-[250px]" /*2*/>
-            <Filters /*18*/ />
+          <div className="w-[250px]">
+            <Filters />
           </div>
 
           {/*Goods list*/}
-          <div className="flex-1" /*3*/>
-            <div className="flex flex-col gap-16" /*4*/>Список товаров</div>
+          <div className="flex-1">
+            <div className="flex flex-col gap-16">
+              <ProductsGroupList
+                title="Пиццы"
+                items={[
+                  {
+                    id: 1,
+                    name: "Чизбургер-пицца",
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    id: 1,
+                    name: "Чизбургер-пицца",
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    id: 1,
+                    name: "Чизбургер-пицца",
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    id: 1,
+                    name: "Чизбургер-пицца",
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    id: 1,
+                    name: "Чизбургер-пицца",
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    id: 1,
+                    name: "Чизбургер-пицца",
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                ]}
+                categoryId={1}
+                /*22*/
+              />
+            </div>
           </div>
         </div>
       </Container>
@@ -26,9 +84,10 @@ export default function Home() {
   );
 }
 
+/**/
 // 0. Start here
-// 5. Create filters.tsx in shared folder and go to filters.tsx
-// 19. Go to checkbox.tsx in ui folder
+// 1. Create product-card.tsx in shared folder and go to product-card.tsx
+// 23. Finish
 
 // Usefull links:
 
