@@ -128,7 +128,6 @@ export default function Home() {
                   },
                 ]}
                 categoryId={2}
-                /*10 add more group and adjust ids*/
               />
             </div>
           </div>
@@ -139,10 +138,8 @@ export default function Home() {
 }
 
 // 0. Start here
-// 1. Install library: npm install react-use
-// 2. Go to products-group-list.tsx
-// 11. Install library: npm install zustand
-// 12. Create store folder and category.ts in this folder
+// 1. Install library: npm install prisma @prisma/client
+// 2. Create prisma folder and prisma-client.ts in prisma folder and go to prisma-client.ts
 
 // Usefull links:
 

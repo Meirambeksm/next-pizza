@@ -1,0 +1,39 @@
+generator client {
+    provider = "prisma-client-js"
+} // 8
+
+datasource db {
+    provider = "postgresql"
+    url = env("POSTGRES_URL") // 16 adjust
+    directUrl = env("POSTGRES_URL_NON_POOLING") // 17 
+} // 9
+
+model User {
+    id Int @id @default(autoincrement())
+
+    fullName String
+    email    String
+    password String
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+} // 10
+
+model Product {
+    id Int @id @default(autoincrement())
+
+    name String
+    imageUrl String
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+} // 11
+
+// 12. Visit: vercel.com => login => storage => Create Database (Neon) => Prisma (tab)
+// 13. Create .env and go to .env
+// 18. Run: npx prisma db push
+// 19. Visit: vercel.com => login => storage => Neon Console => Tables
+// or 20. npx prisma studio
+// 21. Go to package.json and the line: "prisma:push": "prisma db push" and "prisma:studio": "prisma studio" in scripts
+// 22. Create new user in db in studio
+// 23. Finish

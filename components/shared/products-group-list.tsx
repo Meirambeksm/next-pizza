@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useRef } from "react";
-import { useIntersection } from "react-use"; /*3*/
+import { useIntersection } from "react-use";
 import { Title } from "./title";
 import { cn } from "@/lib/utils";
 import { ProductCard } from "./product-card";
@@ -22,23 +22,21 @@ export const ProductsGroupList: React.FC<Props> = ({
   categoryId,
   className,
 }) => {
-  const setActiveCategoryId = useCategoryStore(
-    (state) => state.setActiveId
-  ); /*16*/
-  const intersectionRef = useRef(null); /*4*/
+  const setActiveCategoryId = useCategoryStore((state) => state.setActiveId);
+  const intersectionRef = useRef(null);
   const intersection = useIntersection(intersectionRef, {
     threshold: 0.4,
-  }); /*5*/
+  });
 
   useEffect(() => {
     if (intersection?.isIntersecting) {
-      console.log(title, categoryId); /*6*/
-      setActiveCategoryId(categoryId); /*17*/
+      console.log(title, categoryId);
+      setActiveCategoryId(categoryId);
     }
-  }, [categoryId, intersection?.isIntersecting, title]); /*7*/
+  }, [categoryId, intersection?.isIntersecting, title]);
 
   return (
-    <div className={className} id={title} ref={intersectionRef} /*8*/>
+    <div className={className} id={title} ref={intersectionRef}>
       <Title text={title} size="lg" className="font-extrabold mb-5" />
 
       <div className={cn("grid grid-cols-3 gap-[50px]", listClassName)}>
@@ -55,6 +53,3 @@ export const ProductsGroupList: React.FC<Props> = ({
     </div>
   );
 };
-
-// 9. Go to page.tsx
-// 18. Go to categories.tsx
