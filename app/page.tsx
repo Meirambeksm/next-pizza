@@ -1,5 +1,4 @@
 import { Container, Filters, Title, TopBar } from "@/components/shared";
-import { ProductCard } from "@/components/shared/product-card";
 import { ProductsGroupList } from "@/components/shared/products-group-list";
 
 export default function Home() {
@@ -18,7 +17,7 @@ export default function Home() {
             <Filters />
           </div>
 
-          {/*Goods list*/}
+          {/*Products list*/}
           <div className="flex-1">
             <div className="flex flex-col gap-16">
               <ProductsGroupList
@@ -33,7 +32,7 @@ export default function Home() {
                     items: [{ price: 550 }],
                   },
                   {
-                    id: 1,
+                    id: 2,
                     name: "Чизбургер-пицца",
                     imageUrl:
                       "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
@@ -41,7 +40,7 @@ export default function Home() {
                     items: [{ price: 550 }],
                   },
                   {
-                    id: 1,
+                    id: 3,
                     name: "Чизбургер-пицца",
                     imageUrl:
                       "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
@@ -49,7 +48,7 @@ export default function Home() {
                     items: [{ price: 550 }],
                   },
                   {
-                    id: 1,
+                    id: 4,
                     name: "Чизбургер-пицца",
                     imageUrl:
                       "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
@@ -57,7 +56,7 @@ export default function Home() {
                     items: [{ price: 550 }],
                   },
                   {
-                    id: 1,
+                    id: 5,
                     name: "Чизбургер-пицца",
                     imageUrl:
                       "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
@@ -65,7 +64,7 @@ export default function Home() {
                     items: [{ price: 550 }],
                   },
                   {
-                    id: 1,
+                    id: 6,
                     name: "Чизбургер-пицца",
                     imageUrl:
                       "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
@@ -74,7 +73,62 @@ export default function Home() {
                   },
                 ]}
                 categoryId={1}
-                /*22*/
+              />
+
+              <ProductsGroupList
+                title="Комбо"
+                items={[
+                  {
+                    id: 1,
+                    name: "Чизбургер-пицца",
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    id: 2,
+                    name: "Чизбургер-пицца",
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    id: 3,
+                    name: "Чизбургер-пицца",
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    id: 4,
+                    name: "Чизбургер-пицца",
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    id: 5,
+                    name: "Чизбургер-пицца",
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                  {
+                    id: 6,
+                    name: "Чизбургер-пицца",
+                    imageUrl:
+                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
+                    price: 550,
+                    items: [{ price: 550 }],
+                  },
+                ]}
+                categoryId={2}
+                /*10 add more group and adjust ids*/
               />
             </div>
           </div>
@@ -84,10 +138,11 @@ export default function Home() {
   );
 }
 
-/**/
 // 0. Start here
-// 1. Create product-card.tsx in shared folder and go to product-card.tsx
-// 23. Finish
+// 1. Install library: npm install react-use
+// 2. Go to products-group-list.tsx
+// 11. Install library: npm install zustand
+// 12. Create store folder and category.ts in this folder
 
 // Usefull links:
 
