@@ -2,5 +2,5 @@
   "extends": ["next/core-web-vitals", "next/typescript"],
   "rules": {
     "@next/next/no-img-element": "off"
-  } // add this line and go back
+  }
 }
