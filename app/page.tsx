@@ -138,7 +138,11 @@ export default function Home() {
 }
 
 // 0. Start here
-// 1. Go to schema.prisma
+// 1. Create seed.ts in prisma folder
+// 2. Go to package.json and add "prisma:seed": "prisma db seed" in "scripts"
+// 3. Go to package.json and add "prisma": {"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"}
+// 4. Run in terminal: npm install ts-node
+// 5. Go to seed.ts
 
 // Usefull links:
 
