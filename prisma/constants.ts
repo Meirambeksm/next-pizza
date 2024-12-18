@@ -14,7 +14,7 @@ export const categories = [
   {
     name: "Напитки",
   },
-]; /*18 and go to seed.ts*/
+];
 
 export const ingredients = [
   {
@@ -125,7 +125,7 @@ export const ingredients = [
     imageUrl:
       "https://cdn.dodostatic.net/static/Img/Ingredients/b2f3a5d5afe44516a93cfc0d2ee60088.png",
   },
-].map((obj, index) => ({ id: index + 1, ...obj })); /*21 and go to seed.ts*/
+].map((obj, index) => ({ id: index + 1, ...obj }));
 
 export const products = [
   {
@@ -404,4 +404,4 @@ export const products = [
       "https://media.dodostatic.net/image/r:292x292/11ee7d5fec6640c5a109f430eb09fd02.avif",
     categoryId: 5,
   },
-]; // 23 and go to seed.ts
+];

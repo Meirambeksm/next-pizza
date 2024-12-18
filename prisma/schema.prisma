@@ -15,7 +15,7 @@ model User {
     email    String @unique 
     password String @unique
     role UserRole @default(USER)
-    verified DateTime // 9 go to seed.ts
+    verified DateTime
 
     provider String?
     providerId String?

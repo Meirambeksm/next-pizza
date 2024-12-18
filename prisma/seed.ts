@@ -2,11 +2,10 @@ import { categories, ingredients, products } from "./constants";
 import { prisma } from "./prisma-client";
 import { hashSync } from "bcrypt";
 import { Prisma } from "@prisma/client";
-import { connect } from "http2";
 
 const randomNumber = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min) * 10 + min * 10) / 10;
-}; /*28*/
+};
 
 const generateProductItem = ({
   productId,
@@ -23,7 +22,7 @@ const generateProductItem = ({
     pizzaType,
     size,
   } as Prisma.ProductItemUncheckedCreateInput;
-}; /*29*/
+};
 
 async function up() {
   await prisma.user.createMany({
@@ -47,15 +46,15 @@ async function up() {
 
   await prisma.category.createMany({
     data: categories,
-  }); /*19*/
+  });
 
   await prisma.ingredient.createMany({
     data: ingredients,
-  }); /*22*/
+  });
 
   await prisma.product.createMany({
     data: products,
-  }); /*24*/
+  });
 
   const pizza1 = await prisma.product.create({
     data: {
@@ -67,7 +66,7 @@ async function up() {
         connect: ingredients.slice(0, 5),
       },
     },
-  }); /*25*/
+  });
 
   const pizza2 = await prisma.product.create({
     data: {
@@ -79,7 +78,7 @@ async function up() {
         connect: ingredients.slice(5, 10),
       },
     },
-  }); /*26*/
+  });
 
   const pizza3 = await prisma.product.create({
     data: {
@@ -91,7 +90,7 @@ async function up() {
         connect: ingredients.slice(10, 40),
       },
     },
-  }); /*27*/
+  });
 
   await prisma.productItem.createMany({
     data: [
@@ -100,85 +99,85 @@ async function up() {
         productId: pizza1.id,
         pizzaType: 1,
         size: 20,
-      }) /*30*/,
+      }),
       generateProductItem({
         productId: pizza1.id,
         pizzaType: 2,
         size: 30,
-      }) /*30*/,
+      }),
       generateProductItem({
         productId: pizza1.id,
         pizzaType: 2,
         size: 40,
-      }) /*30*/,
+      }),
 
       // Сырная
       generateProductItem({
         productId: pizza2.id,
         pizzaType: 1,
         size: 20,
-      }) /*30*/,
+      }),
       generateProductItem({
         productId: pizza2.id,
         pizzaType: 1,
         size: 30,
-      }) /*30*/,
+      }),
       generateProductItem({
         productId: pizza2.id,
         pizzaType: 1,
         size: 40,
-      }) /*30*/,
+      }),
       generateProductItem({
         productId: pizza2.id,
         pizzaType: 2,
         size: 20,
-      }) /*30*/,
+      }),
       generateProductItem({
         productId: pizza2.id,
         pizzaType: 2,
         size: 30,
-      }) /*30*/,
+      }),
       generateProductItem({
         productId: pizza2.id,
         pizzaType: 2,
         size: 40,
-      }) /*30*/,
+      }),
 
       // Чаризо Фреш
       generateProductItem({
         productId: pizza3.id,
         pizzaType: 1,
         size: 20,
-      }) /*30*/,
+      }),
       generateProductItem({
         productId: pizza3.id,
         pizzaType: 2,
         size: 30,
-      }) /*30*/,
+      }),
       generateProductItem({
         productId: pizza3.id,
         pizzaType: 2,
         size: 40,
-      }) /*30*/,
+      }),
 
       //   Остальные продукты
-      generateProductItem({ productId: 1 }), // 34
-      generateProductItem({ productId: 2 }), // 34
-      generateProductItem({ productId: 3 }), // 34
-      generateProductItem({ productId: 4 }), // 34
-      generateProductItem({ productId: 5 }), // 34
-      generateProductItem({ productId: 6 }), // 34
-      generateProductItem({ productId: 7 }), // 34
-      generateProductItem({ productId: 8 }), // 34
-      generateProductItem({ productId: 9 }), // 34
-      generateProductItem({ productId: 10 }), // 34
-      generateProductItem({ productId: 11 }), // 34
-      generateProductItem({ productId: 12 }), // 34
-      generateProductItem({ productId: 13 }), // 34
-      generateProductItem({ productId: 14 }), // 34
-      generateProductItem({ productId: 15 }), // 34
-      generateProductItem({ productId: 16 }), // 34
-      generateProductItem({ productId: 17 }), // 34
+      generateProductItem({ productId: 1 }),
+      generateProductItem({ productId: 2 }),
+      generateProductItem({ productId: 3 }),
+      generateProductItem({ productId: 4 }),
+      generateProductItem({ productId: 5 }),
+      generateProductItem({ productId: 6 }),
+      generateProductItem({ productId: 7 }),
+      generateProductItem({ productId: 8 }),
+      generateProductItem({ productId: 9 }),
+      generateProductItem({ productId: 10 }),
+      generateProductItem({ productId: 11 }),
+      generateProductItem({ productId: 12 }),
+      generateProductItem({ productId: 13 }),
+      generateProductItem({ productId: 14 }),
+      generateProductItem({ productId: 15 }),
+      generateProductItem({ productId: 16 }),
+      generateProductItem({ productId: 17 }),
     ],
   });
 
@@ -195,7 +194,7 @@ async function up() {
         token: "22222",
       },
     ],
-  }); /*36*/
+  });
 
   await prisma.cartItem.create({
     data: {
@@ -206,17 +205,17 @@ async function up() {
         connect: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }],
       },
     },
-  }); /*37*/
-} /*7*/
+  });
+}
 
 async function down() {
-  await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`; /*14*/
-  await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`; /*32*/
-  await prisma.$executeRaw`TRUNCATE TABLE "Category" RESTART IDENTITY CASCADE`; /*31*/
-  await prisma.$executeRaw`TRUNCATE TABLE "Cart" RESTART IDENTITY CASCADE`; /*38*/
-  await prisma.$executeRaw`TRUNCATE TABLE "CartItem" RESTART IDENTITY CASCADE`; /*39*/
-  await prisma.$executeRaw`TRUNCATE TABLE "Ingredient" RESTART IDENTITY CASCADE`; /*34*/
-  await prisma.$executeRaw`TRUNCATE TABLE "ProductItem" RESTART IDENTITY CASCADE`; /*33*/
+  await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Category" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Cart" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "CartItem" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Ingredient" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "ProductItem" RESTART IDENTITY CASCADE`;
 }
 
 async function main() {
@@ -226,7 +225,7 @@ async function main() {
   } catch (e) {
     console.error(e);
   }
-} /*6*/
+}
 
 main()
   .then(async () => {
@@ -236,16 +235,4 @@ main()
     console.error(e);
     await prisma.$disconnect();
     process.exit(1);
-  }); /*15*/
-
-/**/
-// 8. Go to schema.prisma
-// 10. Run in terminal:change npm run prisma:push (due to change in prisma.schema)
-// 11. Install bcrypt library: npm install @types/bcrypt bcrypt
-// 16. Run in terminal: npm run prisma:seed
-// 17. Create constants.ts in prisma folder and go to constants.ts
-// 20. Go to constants.ts
-// 22. Go to constants.ts
-// 35. Run in terminal: npm run prisma:seed
-// 40. Run in terminal: npm run prisma:seed
-// 41. Finish
+  });
