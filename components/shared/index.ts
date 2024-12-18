@@ -1,3 +1,4 @@
+export { SearchInput } from "./search-input"; // 7 Go to header.tsx
 export { Container } from "./container";
 export { Header } from "./header";
 export { Title } from "./title";

@@ -13,6 +13,4 @@ export async function GET(req: NextRequest) {
     take: 5,
   });
   return NextResponse.json(products);
-} /*5*/
-
-// 6. Finish
+}

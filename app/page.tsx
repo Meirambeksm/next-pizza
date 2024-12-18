@@ -138,8 +138,7 @@ export default function Home() {
 }
 
 // 0. Start here
-// 1. Create ingredients folder in api folder
-// 2. Create route.ts in ingredients folder
+// 1. Go to header.tsx
 
 // Usefull links:
 
