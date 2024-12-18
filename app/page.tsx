@@ -138,7 +138,7 @@ export default function Home() {
 }
 
 // 0. Start here
-// 1. Create api and users folders in app and route.ts in users folder and go to route.ts
+// 1. Go to schema.prisma
 
 // Usefull links:
 

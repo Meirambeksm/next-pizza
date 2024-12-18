@@ -12,12 +12,30 @@ model User {
     id Int @id @default(autoincrement())
 
     fullName String
-    email    String @unique // 10
-    password String 
+    email    String @unique 
+    password String @unique
+    role UserRole @default(USER) // 28
+
+    provider String? // 29
+    providerId String? // 29
+
+    cart Cart? // 11 (one to one)
+    orders Order[] // 23
+    verificationCode VerificationCode? // 25
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+
 } 
+
+model Category {
+    id Int @id @default(autoincrement())
+    name String @unique
+    products Product[] // one to many
+
+    creadtedAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+} // 2 
 
 model Product {
     id Int @id @default(autoincrement())
@@ -25,8 +43,125 @@ model Product {
     name String
     imageUrl String
 
+    ingredients Ingredient[] // 7 (many to many)
+    items ProductItem[] // 9
+
+    category Category @relation(fields: [categoryId], references: [id]) // 3 (one to many)
+    categoryId Int // 4
+
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 } 
 
-// 11. Finish
+model ProductItem {
+    id Int @id @default(autoincrement())
+
+    price Int
+    size Int?
+    pizzaType Int?
+
+    cartItems CartItem[] // 14
+ 
+    product Product @relation(fields: [productId], references: [id])
+    productId Int
+} // 8
+
+model Ingredient {
+    id Int @id @default(autoincrement())
+
+    name String
+    price Int
+    imageUrl String
+
+    products Product[] // 6 (many to many)
+    cartItems CartItem[] // 15
+
+    creadtedAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+} // 5
+
+model Cart {
+    id Int @id @default(autoincrement())
+
+    user User? @relation(fields: [userId], references: [id])
+    userId Int? @unique
+
+    items CartItem[] // 13
+
+    token String
+
+    totalAmount Int @default(0)
+
+    creadtedAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+} // 10 (one to one)
+
+model CartItem {
+    id Int @id @default(autoincrement())
+
+    cart Cart @relation(fields: [cartId], references: [id])
+    cartId Int
+
+    productItem ProductItem @relation(fields: [productItemId], references: [id])
+    productItemId Int
+
+
+    quantity Int 
+
+    ingredients Ingredient[]
+
+    creadtedAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+} // 12
+
+model Order {
+    id Int @id @default(autoincrement())
+
+    user User? @relation(fields: [userId], references: [id])
+    userId Int?
+
+    token String
+
+    totalAmount Int
+    status OrderStatus // 18
+    paymentId String? // 19
+
+    items Json // 20
+
+    fullName String // 21
+    email String // 21
+    phone String // 21
+    address String // 21
+    comment String? // 21
+
+    creadtedAt DateTime @default(now()) // 22
+    updatedAt DateTime @updatedAt // 22
+} // 16
+
+model VerificationCode {
+    id Int @id @default(autoincrement())
+
+    user User @relation(fields: [userId], references: [id])
+    userId Int @unique // 26
+
+    code String @unique // 26
+
+    creadtedAt DateTime @default(now())
+
+    @@unique([userId, code]) 
+} // 24
+
+enum OrderStatus {
+    PENDING
+    SUCCEEDED
+    CANCELLED
+} // 17
+
+enum UserRole {
+    USER
+    ADMIN
+} // 27
+
+// 30. npm run prisma:push
+// 31. Finish
