@@ -137,13 +137,11 @@ export default function Home() {
   );
 }
 
-// 0. Start here
-// 1. Go to header.tsx
+// 0. Start here 5:56:33
+// 1. Go to constants.ts in services folder
 
 // Usefull links:
-
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s
-
 // figma: https://www.figma.com/design/cYz4fOSK74EJoqHxoNr1hT/Next-Pizza?node-id=0-1&node-type=canvas&t=OhzwEM0YW7g8Z8dL-0
 
 /*

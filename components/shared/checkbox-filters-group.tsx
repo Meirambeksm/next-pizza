@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { FilterChecboxProps, FilterCheckbox } from "./filter-checkbox";
-import { Input } from "../ui";
+import { Input, Skeleton } from "../ui";
 
 type Item = FilterChecboxProps;
 
@@ -10,10 +10,13 @@ interface Props {
   items: Item[];
   defaultItems: Item[];
   limit?: number;
+  loading?: boolean /*17*/;
   searchInputPlaceholder?: string;
-  onChange?: (values: string[]) => void;
+  onClickChecbox?: (id: string) => void /*31*/;
+  selectedIds: Set<string> /*46*/;
   defaultValue?: string[];
   className?: string;
+  name?: string /*54*/;
 }
 
 export const CheckboxFiltersGroup: React.FC<Props> = ({
@@ -21,23 +24,41 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
   items,
   defaultItems,
   limit = 5,
+  loading,
   searchInputPlaceholder = "Поиск",
   className,
-  onChange,
+  onClickChecbox /*32*/,
+  selectedIds /*47*/,
+  name /*55*/,
   defaultValue,
 }) => {
   const [showAll, setShowAll] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState("");
+
+  const onChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+
+  if (loading) {
+    return (
+      <div className={className}>
+        <p className="font-bold mb-3">{title}</p>
+        {...Array(limit)
+          .fill(0)
+          .map((_, index) => (
+            <Skeleton key={index} className="h-6 mb-4 rounded-[8px]" />
+          ))}
+
+        <Skeleton className="w-28 h-6 mb-4 rounded-[8px]" />
+      </div>
+    );
+  } /*18*/
 
   const list = showAll
     ? items.filter((item) =>
         item.text.toLowerCase().includes(searchValue.toLowerCase())
       )
     : defaultItems.slice(0, limit);
-
-  const onChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
-  };
 
   return (
     <div className={className}>
@@ -60,8 +81,9 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
             text={item.text}
             value={item.value}
             endAdornment={item.endAdornment}
-            checked={false}
-            onCheckedChange={(ids) => console.log(ids)}
+            checked={selectedIds?.has(item.value)} /*48*/
+            onCheckedChange={() => onClickChecbox?.(item.value) /*33*/}
+            name={name} /*56*/
           />
         ))}
       </div>
@@ -79,3 +101,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
     </div>
   );
 };
+
+// 19. Go to useFilterIngredients.ts
+// 34. Go to filter.tsx
+// 49. Go to filter-checkbox.tsx

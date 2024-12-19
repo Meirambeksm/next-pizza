@@ -15,7 +15,7 @@ export const Header: React.FC<Props> = ({ className }) => {
   return (
     <header className={cn("border border-b", className)}>
       <Container className="flex items-center justify-between py-8">
-        <Link href="/" /*2*/>
+        <Link href="/">
           <div className="flex items-center gap-4">
             <Image src="/logo.png" alt="Logo" width={35} height={35} />
             <div>
@@ -27,8 +27,8 @@ export const Header: React.FC<Props> = ({ className }) => {
           </div>
         </Link>
 
-        <div className="mx-10 flex-1" /*3*/>
-          <SearchInput /*8*/ />
+        <div className="mx-10 flex-1">
+          <SearchInput />
         </div>
 
         <div className="flex items-center gap-3">
@@ -56,7 +56,3 @@ export const Header: React.FC<Props> = ({ className }) => {
     </header>
   );
 };
-
-/**/
-// 4. Create search-input.tsx in shared folder and go to search-input.tsx
-// 9. Go to search-input.tsx

@@ -1,5 +1,6 @@
 export enum ApiRoutes {
   SEARCH_PRODUCTS = "products/search",
-} /*36*/
+  INGREDIENTS = "ingredients" /*2*/,
+}
 
-// 37. Go to products.ts in services folder
+// 3. Create ingredients.ts in services folder and go to ingredients.ts

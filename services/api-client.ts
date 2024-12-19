@@ -1,7 +1,9 @@
 import * as products from "./products";
+import * as ingredients from "./ingredients";
 
 export const Api = {
   products,
-}; /*29*/
+  ingredients /*6*/,
+};
 
-// 30. Go to search-input.tsx
+// 7. Go to search-input.tsx
