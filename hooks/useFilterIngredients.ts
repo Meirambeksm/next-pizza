@@ -6,14 +6,16 @@ import { useSet } from "react-use";
 interface ReturnProps {
   ingredients: Ingredient[];
   loading: boolean;
-  selectedIngredients: Set<string> /*5*/;
+  selectedIngredients: Set<string>;
   onAddId: (id: string) => void;
 }
 
-export const useFilterIngredients = (): ReturnProps => {
+export const useFilterIngredients = (
+  values: string[] = [] /*21*/
+): ReturnProps => {
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedIds, { toggle }] = useSet(new Set<string>([]));
+  const [selectedIds, { toggle }] = useSet(new Set<string>(values) /*22*/);
 
   useEffect(() => {
     async function fetchIngredients() {
@@ -35,8 +37,8 @@ export const useFilterIngredients = (): ReturnProps => {
     ingredients,
     loading,
     onAddId: toggle,
-    selectedIngredients: selectedIds /*6*/,
+    selectedIngredients: selectedIds,
   };
 };
 
-// 7. Go to filters.tsx
+// 23. Finish
