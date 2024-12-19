@@ -138,7 +138,8 @@ export default function Home() {
 }
 
 // 0. Start here 6:24:06
-// 1. Go to filters.tsx
+// 1. Rename useFilterIngredients.ts to use-filter-ingredients.ts
+// 2. Create use-ingredients.ts in hooks folder and go to use-ingredients.ts
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s
