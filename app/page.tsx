@@ -137,8 +137,8 @@ export default function Home() {
   );
 }
 
-// 0. Start here 5:56:33
-// 1. Go to constants.ts in services folder
+// 0. Start here 6:24:06
+// 1. Go to filters.tsx
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Title } from "./title";
 import { FilterCheckbox } from "./filter-checkbox";
 import { Input } from "../ui";
@@ -11,14 +11,29 @@ interface Props {
   className?: string;
 }
 
+interface PriceProps {
+  priceFrom: number;
+  priceTo: number;
+} /*2*/
+
 export const Filters: React.FC<Props> = ({ className }) => {
-  const { ingredients /*12*/, loading /*26*/, onAddId, selectedIds /*42*/ } =
-    useFilterIngredients(); /*12*/
+  const { ingredients, loading, onAddId, selectedIds } = useFilterIngredients();
+  const [prices, setPrice] = useState<PriceProps>({
+    priceFrom: 0,
+    priceTo: 1000,
+  }); /*3*/
 
   const items = ingredients.map((item) => ({
     value: String(item.id),
     text: item.name,
-  })); /*13*/
+  }));
+
+  const updatePrice = (name: keyof PriceProps, value: number) => {
+    setPrice({
+      ...prices,
+      [name]: value,
+    });
+  }; /*6*/
 
   return (
     <div className={className}>
@@ -26,8 +41,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
 
       {/*Top checkboxes*/}
       <div className="flex flex-col gap-4">
-        <FilterCheckbox name="abc" /*59*/ text="Можно собирать" value="1" />
-        <FilterCheckbox name="cde" /*60*/ text="Новинки" value="2" />
+        <FilterCheckbox name="abc" text="Можно собирать" value="1" />
+        <FilterCheckbox name="cde" text="Новинки" value="2" />
       </div>
 
       {/*Price filters*/}
@@ -38,35 +53,50 @@ export const Filters: React.FC<Props> = ({ className }) => {
             type="number"
             placeholder="0"
             min={0}
-            max={1000}
-            defaultValue={0}
+            max={1000} /*11a*/
+            value={String(prices.priceFrom)} /*4*/
+            onChange={
+              (e) => updatePrice("priceFrom", Number(e.target.value)) /*7*/
+            }
           />
 
-          <Input type="number" placeholder="1000" min={100} max={1000} />
+          <Input
+            type="number"
+            placeholder="1000"
+            min={100}
+            max={1000} /*11b*/
+            value={String(prices.priceTo)} /*5*/
+            onChange={
+              (e) => updatePrice("priceTo", Number(e.target.value)) /*8*/
+            }
+          />
         </div>
 
-        <RangeSlider min={0} max={5000} step={10} value={[0, 5000]} />
+        <RangeSlider
+          min={0}
+          max={1000}
+          step={10}
+          value={[prices.priceFrom, prices.priceTo]} /*9*/
+          onValueChange={([priceFrom, priceTo]) =>
+            setPrice({ priceFrom, priceTo })
+          } /*10*/
+        />
       </div>
 
       {/*Ingredients*/}
       <CheckboxFiltersGroup
         title="Ингридиенты"
-        name="ingridients" /*58*/
+        name="ingridients"
         className="mt-5"
         limit={6}
-        defaultItems={items.slice(0, 6)} /*14*/
-        items={items} /*15*/
-        loading={loading /*27*/}
-        // onClickChecbox={(id) => console.log(id) /*35*/}
-        onClickChecbox={onAddId} /*43 replace step 35*/
-        selectedIds={selectedIds} /*44*/
+        defaultItems={items.slice(0, 6)}
+        items={items}
+        loading={loading}
+        onClickChecbox={onAddId}
+        selectedIds={selectedIds}
       />
     </div>
   );
 };
 
-// 16. Go to checkbox-filters-group.tsx
-// 28. Go to useFilterIngredients.ts
-// 36. Go to useFilterIngredients.ts
-// 45. Go to checkbox-filters-group.tsx
-// 61. Finish
+// 12. Finish

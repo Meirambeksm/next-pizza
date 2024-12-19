@@ -28,7 +28,7 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
         setProducts(response);
       } catch (error) {
         console.log(error);
-      } /*8*/
+      }
     },
     250,
     [searchQuery]
@@ -90,5 +90,3 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
     </>
   );
 };
-
-// 9. Create hooks folder and useFilterIngredients.ts in hooks folder and go to useFilterIngredients.ts

@@ -5,29 +5,26 @@ import { useSet } from "react-use";
 
 interface ReturnProps {
   ingredients: Ingredient[];
-  loading: boolean /*23*/;
-  selectedIds: Set<string> /*38*/;
-  onAddId: (id: string) => void /*39*/;
+  loading: boolean;
+  selectedIds: Set<string>;
+  onAddId: (id: string) => void;
 }
 
 export const useFilterIngredients = (): ReturnProps => {
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
-  const [loading, setLoading] = useState(true); /*20*/
-  // const [set, { toggle }] = useSet(new Set<string>([])); /*29*/
-  const [selectedIds, { toggle }] = useSet(
-    new Set<string>([])
-  ); /*37 replace step 29*/
+  const [loading, setLoading] = useState(true);
+  const [selectedIds, { toggle }] = useSet(new Set<string>([]));
 
   useEffect(() => {
     async function fetchIngredients() {
       try {
-        setLoading(true); /*21*/
+        setLoading(true);
         const ingredients = await Api.ingredients.getAll();
         setIngredients(ingredients);
       } catch (error) {
         console.log(error);
       } finally {
-        setLoading(false); /*22*/
+        setLoading(false);
       }
     }
 
@@ -35,14 +32,9 @@ export const useFilterIngredients = (): ReturnProps => {
   }, []);
 
   return {
-    ingredients /*10*/,
-    loading /*24*/,
+    ingredients,
+    loading,
     onAddId: toggle,
-    selectedIds /*40*/,
+    selectedIds,
   };
-}; /*10*/
-
-// 11. Go to filters.tsx
-// 25. Go to filters.tsx
-// 30. Go to checkbox-filters-group.tsx
-// 41. Go to filter.tsx
+};

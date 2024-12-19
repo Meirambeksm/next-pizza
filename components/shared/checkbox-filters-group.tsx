@@ -10,13 +10,13 @@ interface Props {
   items: Item[];
   defaultItems: Item[];
   limit?: number;
-  loading?: boolean /*17*/;
+  loading?: boolean;
   searchInputPlaceholder?: string;
-  onClickChecbox?: (id: string) => void /*31*/;
-  selectedIds: Set<string> /*46*/;
+  onClickChecbox?: (id: string) => void;
+  selectedIds: Set<string>;
   defaultValue?: string[];
   className?: string;
-  name?: string /*54*/;
+  name?: string;
 }
 
 export const CheckboxFiltersGroup: React.FC<Props> = ({
@@ -27,9 +27,9 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
   loading,
   searchInputPlaceholder = "Поиск",
   className,
-  onClickChecbox /*32*/,
-  selectedIds /*47*/,
-  name /*55*/,
+  onClickChecbox,
+  selectedIds,
+  name,
   defaultValue,
 }) => {
   const [showAll, setShowAll] = React.useState(false);
@@ -52,7 +52,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
         <Skeleton className="w-28 h-6 mb-4 rounded-[8px]" />
       </div>
     );
-  } /*18*/
+  }
 
   const list = showAll
     ? items.filter((item) =>
@@ -81,9 +81,9 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
             text={item.text}
             value={item.value}
             endAdornment={item.endAdornment}
-            checked={selectedIds?.has(item.value)} /*48*/
-            onCheckedChange={() => onClickChecbox?.(item.value) /*33*/}
-            name={name} /*56*/
+            checked={selectedIds?.has(item.value)}
+            onCheckedChange={() => onClickChecbox?.(item.value)}
+            name={name}
           />
         ))}
       </div>
@@ -101,7 +101,3 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
     </div>
   );
 };
-
-// 19. Go to useFilterIngredients.ts
-// 34. Go to filter.tsx
-// 49. Go to filter-checkbox.tsx
