@@ -6,7 +6,7 @@ import { useSet } from "react-use";
 interface ReturnProps {
   ingredients: Ingredient[];
   loading: boolean;
-  selectedIds: Set<string>;
+  selectedIngredients: Set<string> /*5*/;
   onAddId: (id: string) => void;
 }
 
@@ -35,6 +35,8 @@ export const useFilterIngredients = (): ReturnProps => {
     ingredients,
     loading,
     onAddId: toggle,
-    selectedIds,
+    selectedIngredients: selectedIds /*6*/,
   };
 };
+
+// 7. Go to filters.tsx
