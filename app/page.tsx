@@ -1,14 +1,30 @@
 import { Container, Filters, Title, TopBar } from "@/components/shared";
 import { ProductsGroupList } from "@/components/shared/products-group-list";
+import { prisma } from "@/prisma/prisma-client";
 
-export default function Home() {
+export default async function /*1*/ Home() {
+  const categories = await prisma.category.findMany({
+    include: {
+      products: {
+        include: {
+          ingredients: true,
+          items: true,
+        },
+      },
+    },
+  }); /*2 check with console.log categories with current and just findMany({}) and console.log(categories[0].products)*/
+
   return (
     <>
       <Container className="mt-5">
         <Title text="Все пиццы" size="lg" className="font-extrabold" />
       </Container>
 
-      <TopBar />
+      <TopBar
+        categories={categories.filter(
+          (category) => category.products.length > 0
+        )} /*14*/
+      />
 
       <Container className="mt-10 pb-14">
         <div className="flex gap-[80px]">
@@ -20,115 +36,19 @@ export default function Home() {
           {/*Products list*/}
           <div className="flex-1">
             <div className="flex flex-col gap-16">
-              <ProductsGroupList
-                title="Пиццы"
-                items={[
-                  {
-                    id: 1,
-                    name: "Чизбургер-пицца",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
-                    price: 550,
-                    items: [{ price: 550 }],
-                  },
-                  {
-                    id: 2,
-                    name: "Чизбургер-пицца",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
-                    price: 550,
-                    items: [{ price: 550 }],
-                  },
-                  {
-                    id: 3,
-                    name: "Чизбургер-пицца",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
-                    price: 550,
-                    items: [{ price: 550 }],
-                  },
-                  {
-                    id: 4,
-                    name: "Чизбургер-пицца",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
-                    price: 550,
-                    items: [{ price: 550 }],
-                  },
-                  {
-                    id: 5,
-                    name: "Чизбургер-пицца",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
-                    price: 550,
-                    items: [{ price: 550 }],
-                  },
-                  {
-                    id: 6,
-                    name: "Чизбургер-пицца",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
-                    price: 550,
-                    items: [{ price: 550 }],
-                  },
-                ]}
-                categoryId={1}
-              />
-
-              <ProductsGroupList
-                title="Комбо"
-                items={[
-                  {
-                    id: 1,
-                    name: "Чизбургер-пицца",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
-                    price: 550,
-                    items: [{ price: 550 }],
-                  },
-                  {
-                    id: 2,
-                    name: "Чизбургер-пицца",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
-                    price: 550,
-                    items: [{ price: 550 }],
-                  },
-                  {
-                    id: 3,
-                    name: "Чизбургер-пицца",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
-                    price: 550,
-                    items: [{ price: 550 }],
-                  },
-                  {
-                    id: 4,
-                    name: "Чизбургер-пицца",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
-                    price: 550,
-                    items: [{ price: 550 }],
-                  },
-                  {
-                    id: 5,
-                    name: "Чизбургер-пицца",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
-                    price: 550,
-                    items: [{ price: 550 }],
-                  },
-                  {
-                    id: 6,
-                    name: "Чизбургер-пицца",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp",
-                    price: 550,
-                    items: [{ price: 550 }],
-                  },
-                ]}
-                categoryId={2}
-              />
+              {
+                categories.map(
+                  (category) =>
+                    category.products.length > 0 && (
+                      <ProductsGroupList
+                        key={category.id}
+                        title={category.name}
+                        categoryId={category.id}
+                        items={category.products}
+                      />
+                    )
+                ) /*3*/
+              }
             </div>
           </div>
         </div>
@@ -137,9 +57,9 @@ export default function Home() {
   );
 }
 
-// 0. Start here 6:24:06
-// 1. Rename useFilterIngredients.ts to use-filter-ingredients.ts
-// 2. Create use-ingredients.ts in hooks folder and go to use-ingredients.ts
+// 0. Start here 7:24:37
+// 4. Go to categories.tsx
+// 15. Finish
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

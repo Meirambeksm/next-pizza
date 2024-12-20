@@ -26,6 +26,4 @@ export const useIngredients = () => {
     ingredients,
     loading,
   };
-}; /*3 cut from use-filter-ingredients.ts*/
-
-// 4. Create use-filters.ts in hooks folder and go to use-filters.ts
+};

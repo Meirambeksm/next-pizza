@@ -4,17 +4,17 @@ import { Title } from "./title";
 import { Input } from "../ui";
 import { RangeSlider } from "../ui/range-slider";
 import { CheckboxFiltersGroup } from "./checkbox-filters-group";
-import { useIngredients, useFilters, useQueryFilters } from "@/hooks"; /*19*/
+import { useIngredients, useFilters, useQueryFilters } from "@/hooks";
 
 interface Props {
   className?: string;
 }
 
 export const Filters: React.FC<Props> = ({ className }) => {
-  const { ingredients, loading } = useIngredients(); /*11a*/
-  const filters = useFilters(); /*11b*/
+  const { ingredients, loading } = useIngredients();
+  const filters = useFilters();
 
-  useQueryFilters(filters); /*15*/
+  useQueryFilters(filters);
 
   const items = ingredients.map((item) => ({
     value: String(item.id),
@@ -24,7 +24,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
   const updatePrices = (prices: number[]) => {
     filters.setPrices("priceFrom", prices[0]);
     filters.setPrices("priceTo", prices[1]);
-  }; /*20j*/
+  };
 
   return (
     <div className={className}>
@@ -35,8 +35,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
         title="Тип теста"
         name="pizzaTypes"
         className="mb-5"
-        onClickChecbox={filters.setPizzaTypes /*20*/}
-        selected={filters.pizzaTypes /*20b*/}
+        onClickChecbox={filters.setPizzaTypes}
+        selected={filters.pizzaTypes}
         items={[
           { text: "Тонкое", value: "1" },
           { text: "Традиционное", value: "2" },
@@ -47,8 +47,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
         title="Размеры"
         name="sizes"
         className="mb-5"
-        onClickChecbox={filters.setSizes /*20c*/}
-        selected={filters.sizes /*20d*/}
+        onClickChecbox={filters.setSizes}
+        selected={filters.sizes}
         items={[
           { text: "20 см", value: "20" },
           { text: "30 см", value: "30" },
@@ -64,10 +64,9 @@ export const Filters: React.FC<Props> = ({ className }) => {
             placeholder="0"
             min={0}
             max={1000}
-            value={String(filters.prices.priceFrom) /*20e*/}
-            onChange={
-              (e) =>
-                filters.setPrices("priceFrom", Number(e.target.value)) /*20f*/
+            value={String(filters.prices.priceFrom)}
+            onChange={(e) =>
+              filters.setPrices("priceFrom", Number(e.target.value))
             }
           />
 
@@ -76,10 +75,9 @@ export const Filters: React.FC<Props> = ({ className }) => {
             placeholder="1000"
             min={100}
             max={1000}
-            value={String(filters.prices.priceTo) /*20g*/}
-            onChange={
-              (e) =>
-                filters.setPrices("priceTo", Number(e.target.value)) /*20h*/
+            value={String(filters.prices.priceTo)}
+            onChange={(e) =>
+              filters.setPrices("priceTo", Number(e.target.value))
             }
           />
         </div>
@@ -88,13 +86,11 @@ export const Filters: React.FC<Props> = ({ className }) => {
           min={0}
           max={1000}
           step={10}
-          value={
-            [
-              filters.prices.priceFrom || 0,
-              filters.prices.priceTo || 1000,
-            ] /*20i*/
-          }
-          onValueChange={updatePrices /*20k*/}
+          value={[
+            filters.prices.priceFrom || 0,
+            filters.prices.priceTo || 1000,
+          ]}
+          onValueChange={updatePrices}
         />
       </div>
 
@@ -107,13 +103,9 @@ export const Filters: React.FC<Props> = ({ className }) => {
         defaultItems={items.slice(0, 6)}
         items={items}
         loading={loading}
-        onClickChecbox={filters.setSelectedIngredients /*20l*/}
-        selected={filters.selectedIngredients /*20m*/}
+        onClickChecbox={filters.setSelectedIngredients}
+        selected={filters.selectedIngredients}
       />
     </div>
   );
 };
-
-// 12. Create use-query-filters.ts in hooks folder and go to use-query-filters.ts
-// 16. Create index.ts in hooks folder and go to index.ts
-// 21. Finish
