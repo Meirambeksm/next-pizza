@@ -2,7 +2,7 @@ import { Container, Filters, Title, TopBar } from "@/components/shared";
 import { ProductsGroupList } from "@/components/shared/products-group-list";
 import { prisma } from "@/prisma/prisma-client";
 
-export default async function /*1*/ Home() {
+export default async function Home() {
   const categories = await prisma.category.findMany({
     include: {
       products: {
@@ -12,7 +12,7 @@ export default async function /*1*/ Home() {
         },
       },
     },
-  }); /*2 check with console.log categories with current and just findMany({}) and console.log(categories[0].products)*/
+  });
 
   return (
     <>
@@ -23,7 +23,7 @@ export default async function /*1*/ Home() {
       <TopBar
         categories={categories.filter(
           (category) => category.products.length > 0
-        )} /*14*/
+        )}
       />
 
       <Container className="mt-10 pb-14">
@@ -36,19 +36,17 @@ export default async function /*1*/ Home() {
           {/*Products list*/}
           <div className="flex-1">
             <div className="flex flex-col gap-16">
-              {
-                categories.map(
-                  (category) =>
-                    category.products.length > 0 && (
-                      <ProductsGroupList
-                        key={category.id}
-                        title={category.name}
-                        categoryId={category.id}
-                        items={category.products}
-                      />
-                    )
-                ) /*3*/
-              }
+              {categories.map(
+                (category) =>
+                  category.products.length > 0 && (
+                    <ProductsGroupList
+                      key={category.id}
+                      title={category.name}
+                      categoryId={category.id}
+                      items={category.products}
+                    />
+                  )
+              )}
             </div>
           </div>
         </div>
@@ -58,8 +56,7 @@ export default async function /*1*/ Home() {
 }
 
 // 0. Start here 7:24:37
-// 4. Go to categories.tsx
-// 15. Finish
+// 1. Go to page.tsx in [id] folder in product folder
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

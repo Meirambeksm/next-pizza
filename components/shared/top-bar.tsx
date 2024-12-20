@@ -6,11 +6,11 @@ import { SortPopup } from "./sort-popup";
 import { Category } from "@prisma/client";
 
 interface Props {
-  categories: Category[] /*10*/;
+  categories: Category[];
   className?: string;
 }
 
-export const TopBar: React.FC<Props> = ({ categories /*11*/, className }) => {
+export const TopBar: React.FC<Props> = ({ categories, className }) => {
   return (
     <div
       className={cn(
@@ -19,11 +19,9 @@ export const TopBar: React.FC<Props> = ({ categories /*11*/, className }) => {
       )}
     >
       <Container className="flex items-center justify-between">
-        <Categories items={categories /*12*/} />
+        <Categories items={categories} />
         <SortPopup />
       </Container>
     </div>
   );
 };
-
-// 13. Go to page.tsx
