@@ -7,6 +7,4 @@ export { SortPopup } from "./sort-popup";
 export { TopBar } from "./top-bar";
 export { Filters } from "./filters";
 export { FilterCheckbox } from "./filter-checkbox";
-export { ProductImage } from "./product-image"; /*9*/
-
-// 10. Go to page.tsx in [id] folder in product folder
+export { ProductImage } from "./product-image";

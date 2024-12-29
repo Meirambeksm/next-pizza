@@ -5,7 +5,7 @@ type Variant = {
   name: string;
   value: string;
   disabled?: boolean;
-}; /*17*/
+};
 
 interface Props {
   items: readonly Variant[];
@@ -13,7 +13,7 @@ interface Props {
   onClick?: (value: Variant["value"]) => void;
   selectedValue?: Variant["value"];
   className?: string;
-} /*18*/
+}
 
 export const GroupVariants: React.FC<Props> = ({
   items,
@@ -45,6 +45,4 @@ export const GroupVariants: React.FC<Props> = ({
       ))}
     </div>
   );
-}; /*19*/
-
-// 20. Go to page.tsx in [id] folder in product folder
+};

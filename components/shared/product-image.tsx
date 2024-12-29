@@ -4,7 +4,7 @@ interface Props {
   className?: string;
   imageUrl: string;
   size: number;
-} /*6*/
+}
 
 export const ProductImage: React.FC<Props> = ({
   imageUrl,
@@ -32,6 +32,4 @@ export const ProductImage: React.FC<Props> = ({
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-dotted border-2 rounded-full border-gray-100 w-[370px] h-[370px]" />
     </div>
   );
-}; /*7*/
-
-// 8. Go to index.ts in shared folder
+};

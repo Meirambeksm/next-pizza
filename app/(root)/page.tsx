@@ -55,8 +55,10 @@ export default async function Home() {
   );
 }
 
-// 0. Start here 7:24:37
-// 1. Go to page.tsx in [id] folder in product folder
+// 0. Start here 7:56:00
+// 1. Create (root) and (dashboard) folders in app folder
+// 2. Transfer product folder and layout.tsx and page.tsx from app folder to (root) folder
+// 3. Create dashboard folder in (dashboard) folder and create page.tsx in dashboard folder and go to page.tsx in dashboard folder
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s
