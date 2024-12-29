@@ -1,33 +1,24 @@
 import type { Metadata } from "next";
-// import { Nunito } from "next/font/google";
-// import "../globals.css" 10. Delete;
 import { Header } from "@/components/shared/header";
-
-// const nunito = Nunito({
-//   subsets: ["cyrillic"],
-//   variable: "--font-nunito",
-//   weight: ["400", "500", "600", "700", "800", "900"],
-// }) 11. Delete;
 
 export const metadata: Metadata = {
   title: "Next Pizza | Главная",
 };
 
-export default function RootLayout({
+export default function HomeLayout({
   children,
+  modal /*2a*/,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode /*2b*/;
 }>) {
   return (
-    <html lang="en">
-      {/* <body className={nunito.className}> 12. Delete */}
-      <main className="min-h-screen">
-        <Header />
-        {children}
-      </main>
-      {/* </body> */}
-    </html>
+    <main className="min-h-screen">
+      <Header />
+      {children}
+      {modal /*2c*/}
+    </main>
   );
 }
 
-// 13. Finish
+// 3. Finish
