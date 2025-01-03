@@ -55,8 +55,8 @@ export default async function Home() {
   );
 }
 
-// 0. Start here
-// 1. Create @modal folder and everything in this folder and go to layout.tsx in (root) folder
+// 0. Start here 8:34:30 (be careful with pizza-image and product-image names)
+// 1. Create modals folder in shared folder and choose-product-modal.tsx in modals folder and go to choose-product-modal.tsx
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

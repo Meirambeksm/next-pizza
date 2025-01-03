@@ -7,4 +7,9 @@ export { SortPopup } from "./sort-popup";
 export { TopBar } from "./top-bar";
 export { Filters } from "./filters";
 export { FilterCheckbox } from "./filter-checkbox";
-export { ProductImage } from "./product-image";
+export { ProductImage } from "./pizza-image";
+export { ChoosePizzaForm } from "./choose-product-form"; /*16a*/
+export * from "./modals"; /*4*/
+
+// 5. Create index.ts in modals folder and go to index.ts
+// 16b go to choose-product-modal.tsx

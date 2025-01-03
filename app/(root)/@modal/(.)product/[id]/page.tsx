@@ -1,3 +1,27 @@
-export default async function ProductModalPage() {
-  return <h1>This is product modal page</h1>;
-}
+import { ChooseProductModal } from "@/components/shared";
+import { prisma } from "@/prisma/prisma-client";
+import { notFound } from "next/navigation";
+
+export default async function ProductModalPage({
+  params: { id },
+}: {
+  params: { id: string };
+}) {
+  const product = await prisma.product.findFirst({
+    where: {
+      id: Number(id),
+    },
+    include: {
+      ingredients: true,
+      items: true,
+    },
+  });
+
+  if (!product) {
+    return notFound();
+  }
+
+  return <ChooseProductModal product={product} />;
+} /*8*/
+
+// 9. Go to choose-product-modal.tsx

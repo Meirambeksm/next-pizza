@@ -3,14 +3,10 @@ import { cn } from "@/lib/utils";
 interface Props {
   className?: string;
   imageUrl: string;
-  size: number;
+  size: 20 | 30 | 40 /*13*/;
 }
 
-export const ProductImage: React.FC<Props> = ({
-  imageUrl,
-  size,
-  className,
-}) => {
+export const PizzaImage: React.FC<Props> = ({ imageUrl, size, className }) => {
   return (
     <div
       className={cn(
@@ -33,3 +29,5 @@ export const ProductImage: React.FC<Props> = ({
     </div>
   );
 };
+
+// 14. Create choose-product-form.tsx in shared folder
