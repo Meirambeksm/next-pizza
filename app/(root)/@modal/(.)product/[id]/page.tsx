@@ -1,4 +1,4 @@
-import { ChooseProductModal } from "@/components/shared";
+import { ChooseProductModal } from "@/shared/components/shared";
 import { prisma } from "@/prisma/prisma-client";
 import { notFound } from "next/navigation";
 
@@ -22,6 +22,4 @@ export default async function ProductModalPage({
   }
 
   return <ChooseProductModal product={product} />;
-} /*8*/
-
-// 9. Go to choose-product-modal.tsx
+}

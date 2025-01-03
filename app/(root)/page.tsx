@@ -1,6 +1,6 @@
-import { Container, Filters, Title, TopBar } from "@/components/shared";
-import { ProductsGroupList } from "@/components/shared/products-group-list";
+import { Container, Filters, Title, TopBar } from "@/shared/components/shared";
 import { prisma } from "@/prisma/prisma-client";
+import { ProductsGroupList } from "@/shared/components/shared/products-group-list";
 
 export default async function Home() {
   const categories = await prisma.category.findMany({
@@ -55,8 +55,9 @@ export default async function Home() {
   );
 }
 
-// 0. Start here 8:34:30 (be careful with pizza-image and product-image names)
-// 1. Create modals folder in shared folder and choose-product-modal.tsx in modals folder and go to choose-product-modal.tsx
+// 0. Start here 09:01:42
+// 1. Create shared folder in root folder and move components, hooks, lib, services, store to shared folder
+// 2. Create constants folder in shared folder and pizza.ts in constants and go to pizza.ts
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s
