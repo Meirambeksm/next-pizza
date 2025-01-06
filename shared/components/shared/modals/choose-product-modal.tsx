@@ -27,8 +27,8 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
           <ChoosePizzaForm
             imageUrl={product.imageUrl}
             name={product.name}
-            ingredients={product.ingredients /*16*/}
-            items={product.items} /*27*/
+            ingredients={product.ingredients}
+            items={product.items}
           />
         ) : (
           <ChooseProductForm name={product.name} imageUrl={product.imageUrl} />
@@ -37,6 +37,3 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
     </Dialog>
   );
 };
-
-// 17. Go to choose-pizza-form.tsx
-// 28. Go to choose-pizza-form.tsx

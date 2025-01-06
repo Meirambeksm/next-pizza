@@ -12,7 +12,7 @@ import {
   PizzaType,
   pizzaTypes,
 } from "@/shared/constants/pizza";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Ingredient, ProductItem } from "@prisma/client";
 import { IngredientItem } from "./ingredient-item";
 import { useSet } from "react-use";
@@ -20,10 +20,9 @@ import { useSet } from "react-use";
 interface Props {
   name: string;
   imageUrl: string;
-  ingredients: Ingredient[] /*18*/;
-  items: ProductItem[] /*31*/;
-  /*onClickAdd?: VoidFunction ;*/
-  onClickAddCart?: VoidFunction /*29 rename*/;
+  ingredients: Ingredient[];
+  items: ProductItem[];
+  onClickAddCart?: VoidFunction;
   className?: string;
 }
 
@@ -32,31 +31,25 @@ export const ChoosePizzaForm: React.FC<Props> = ({
   imageUrl,
   ingredients,
   items,
-  onClickAddCart /*30 rename*/,
+  onClickAddCart,
   className,
 }) => {
-  const [size, setSize] = useState<PizzaSize>(20); /*9a*/
-  const [type, setType] = useState<PizzaType>(1); /*9b*/
+  const [size, setSize] = useState<PizzaSize>(20);
+  const [type, setType] = useState<PizzaType>(1);
 
   const [selectedIngredients, { toggle: addIngredient }] = useSet(
     new Set<number>([])
-  ); /*23*/
+  );
 
-  console.log(items);
-
-  // const textDetails = "30 sm, testo traditional 30"; to be removed before step 37
-  // const totalPrice = 350; // 33 to be removed
-  // const size = 30 to be removed after step 9a;
-
-  const pizzaPrice = items.find(
-    (item) => item.pizzaType === type && item.size === size
-  )!.price; /*32*/
+  const pizzaPrice =
+    items.find((item) => item.pizzaType === type && item.size === size)
+      ?.price || 0; /*3 adjust*/
   const totalIngredientsPrice = ingredients
     .filter((ingredient) => selectedIngredients.has(ingredient.id))
-    .reduce((acc, ingredient) => acc + ingredient.price, 0); /*35*/
-  const totalPrice = pizzaPrice /*34*/ + totalIngredientsPrice; /*36*/
+    .reduce((acc, ingredient) => acc + ingredient.price, 0);
+  const totalPrice = pizzaPrice + totalIngredientsPrice;
 
-  const textDetails = `${size} см, ${mapPizzaType[type]} пицца`; /*37*/
+  const textDetails = `${size} см, ${mapPizzaType[type]} пицца`;
 
   const handleClickAdd = () => {
     onClickAddCart?.();
@@ -65,7 +58,31 @@ export const ChoosePizzaForm: React.FC<Props> = ({
       type,
       ingredients: selectedIngredients,
     });
-  }; /*38*/
+  };
+
+  const availablePizzas = items.filter((item) => item.pizzaType === type); /*2*/
+  const availablePizzaSizes = pizzaSizes.map((item) => ({
+    name: item.name,
+    value: item.value,
+    disabled: !availablePizzas.some(
+      (pizza) => Number(pizza.size) === Number(item.value)
+    ),
+  })); /*3a*/
+
+  useEffect(() => {
+    const isAvailableSize = availablePizzaSizes?.find(
+      (item) => Number(item.value) === size && !item.disabled
+    ); /*5b*/
+
+    const availableSize = availablePizzaSizes?.find(
+      (item) => !item.disabled
+    ); /*5a*/
+    if (!isAvailableSize && availableSize) {
+      setSize(Number(availableSize.value) as PizzaSize);
+    } /*5c*/
+  }, [type]);
+
+  console.log({ items, availablePizzas, availablePizzaSizes }); /*3b*/
 
   return (
     <div className={cn(className, "flex flex-1")}>
@@ -74,39 +91,37 @@ export const ChoosePizzaForm: React.FC<Props> = ({
         <Title text={name} size="md" className="font-extrabold mb-1" />
         <p className="text-gray-400">{textDetails}</p>
 
-        <div className="flex flex-col gap-4 mt-5" /*14*/>
+        <div className="flex flex-col gap-4 mt-5">
           <GroupVariants
-            items={pizzaSizes}
-            /*4*/ value={String(size) /*12a*/}
-            onClick={(value) => setSize(Number(value) as PizzaSize) /*12b*/}
+            items={availablePizzaSizes} /*4*/
+            value={String(size)}
+            onClick={(value) => setSize(Number(value) as PizzaSize)}
           />
 
           <GroupVariants
             items={pizzaTypes}
             value={String(type)}
-            onClick={(value) => setType(Number(value) as PizzaType) /*13*/}
+            onClick={(value) => setType(Number(value) as PizzaType)}
           />
         </div>
 
-        <div
-          className="bg-gray-50 p-5 rounded-md h-[420px] overflow-auto scrollbar mt-5" /*22b*/
-        >
-          <div className="grid grid-cols-3 gap-3" /*22a*/>
+        <div className="bg-gray-50 p-5 rounded-md h-[420px] overflow-auto scrollbar mt-5">
+          <div className="grid grid-cols-3 gap-3">
             {ingredients.map((ingredient) => (
               <IngredientItem
                 key={ingredient.id}
                 name={ingredient.name}
                 price={ingredient.price}
                 imageUrl={ingredient.imageUrl}
-                onClick={() => addIngredient(ingredient.id)} /*24*/
-                active={selectedIngredients.has(ingredient.id)} /*25*/
+                onClick={() => addIngredient(ingredient.id)}
+                active={selectedIngredients.has(ingredient.id)}
               />
             ))}
           </div>
         </div>
 
         <Button
-          onClick={handleClickAdd /*39*/}
+          onClick={handleClickAdd}
           className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10"
         >
           Добавить в корзину за {totalPrice}
@@ -116,11 +131,4 @@ export const ChoosePizzaForm: React.FC<Props> = ({
   );
 };
 
-// 5. Adjustment in components.json in aliases
-// 6. Adjustment in tailwind.config.ts in content
-// 7. Go to pizza.ts in constants folder
-// 10. Go to group-variants.tsx
-// 15. Go to choose-product-modal.tsx
-// 19. Create ingredient-item.tsx in shared folder and go to ingredient-item.tsx
-// 26. Go to choose-product-modal.tsx
-// 40. Finish
+// 6. Finish

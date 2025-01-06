@@ -55,9 +55,8 @@ export default async function Home() {
   );
 }
 
-// 0. Start here 09:01:42
-// 1. Create shared folder in root folder and move components, hooks, lib, services, store to shared folder
-// 2. Create constants folder in shared folder and pizza.ts in constants and go to pizza.ts
+// 0. Start here 09:40:00
+// 1. Go to choose-pizza-form.tsx
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

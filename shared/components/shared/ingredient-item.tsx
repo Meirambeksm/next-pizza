@@ -8,7 +8,7 @@ interface Props {
   active?: boolean;
   onClick?: () => void;
   className?: string;
-} /*20a*/
+}
 
 export const IngredientItem: React.FC<Props> = ({
   className,
@@ -25,7 +25,7 @@ export const IngredientItem: React.FC<Props> = ({
         { "border border-primary": active },
         className
       )}
-      onClick={onClick} /*20b*/
+      onClick={onClick}
     >
       {active && (
         <CircleCheck className="absolute top-2 right-2 text-primary" />
@@ -35,6 +35,4 @@ export const IngredientItem: React.FC<Props> = ({
       <span className="font-bold">{price} ₽</span>
     </div>
   );
-}; /**/
-
-// 20c. Go to index.ts in shared folder
+};
