@@ -55,10 +55,9 @@ export default async function Home() {
   );
 }
 
-// 0. Start here 10:44:00
-// 1. Create cart-button.tsx in shared folder of components folder and go to cart-button.tsx
-
-// YOU ARE IN cart-button.tsx
+// 0. Start here 11:13:00
+// 1. Create cart folder in api folder of app
+// 2. Create and go to route.ts in Cart folder of api
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

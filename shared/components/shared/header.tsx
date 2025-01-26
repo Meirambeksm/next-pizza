@@ -38,11 +38,9 @@ export const Header: React.FC<Props> = ({ className }) => {
             Войти
           </Button>
 
-          <CartButton /*7*/ />
+          <CartButton />
         </div>
       </Container>
     </header>
   );
 };
-
-// 8. Create cart-drawer.tsx in shared folder of components and go to cart-drawer.tsx

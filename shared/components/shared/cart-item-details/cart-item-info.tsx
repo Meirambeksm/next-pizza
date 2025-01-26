@@ -1,7 +1,7 @@
 interface Props {
   name: string;
   details: string;
-} /*14a*/
+}
 
 export const CartItemInfo: React.FC<Props> = ({ name, details }) => {
   return (
@@ -12,6 +12,4 @@ export const CartItemInfo: React.FC<Props> = ({ name, details }) => {
       {details && <p className="text-xs text-gray-400 w-[90%]">{details}</p>}
     </div>
   );
-}; /*14b*/
-
-// 14c. Create and go to cart-item-details-price in cart-item-details folder
+};

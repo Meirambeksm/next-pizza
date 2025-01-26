@@ -1,10 +1,10 @@
-import { Ingredient } from "@prisma/client";
 import { mapPizzaType, PizzaSize, PizzaType } from "../constants/pizza";
+import { CartStateItem } from "./get-cart-details";
 
 export const getCartItemDetails = (
+  ingredients: CartStateItem["ingredients"] /*16e change*/,
   pizzaType: PizzaType,
-  pizzaSize: PizzaSize,
-  ingredients: Ingredient[]
+  pizzaSize: PizzaSize
 ) => {
   const details = [];
 
@@ -18,6 +18,6 @@ export const getCartItemDetails = (
   }
 
   return details.join(", ");
-}; // 19d
+};
 
-// 19e. Go to index.ts of lib folder
+// 16f. Go to cart-drawer.tsx

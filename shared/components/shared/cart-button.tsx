@@ -10,8 +10,8 @@ interface Props {
 
 export const CartButton: React.FC<Props> = ({ className }) => {
   return (
-    <CartDrawer /*11 wrap up the button*/>
-      <Button className={cn("group relative", className) /*3 adjust*/}>
+    <CartDrawer>
+      <Button className={cn("group relative", className)}>
         <b>520 ₽</b>
         <span className="h-full w-[1px] bg-white/30 mx-3" />
         <div className="flex items-center gap-1 transition duration-300 group-hover:opacity-0">
@@ -25,8 +25,4 @@ export const CartButton: React.FC<Props> = ({ className }) => {
       </Button>
     </CartDrawer>
   );
-}; /*2 Cut and paste from header.tsx*/
-
-// 4. Go to index.ts in shared folder of components
-// 12. Copy and paste from finished next-pizza project cart-item-details folder in shared folder of components
-// 13. Create and go to cart-item-info.tsx in cart-item-details folder
+};

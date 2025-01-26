@@ -7,7 +7,7 @@ import { Trash2Icon } from "lucide-react";
 
 interface Props extends CartItemProps {
   className?: string;
-} /*19a*/
+}
 
 export const CartDrawerItem: React.FC<Props> = ({
   id,
@@ -19,10 +19,10 @@ export const CartDrawerItem: React.FC<Props> = ({
   className,
 }) => {
   return (
-    <div className={cn("flex bg-white p-5 gap-6", className) /*19b*/}>
+    <div className={cn("flex bg-white p-5 gap-6", className)}>
       <CartItem.Image src={imageUrl} />
 
-      <div className="flex-1" /*19h*/>
+      <div className="flex-1">
         <CartItem.Info name={name} details={details} />
 
         <hr className="my-3" />
@@ -42,6 +42,3 @@ export const CartDrawerItem: React.FC<Props> = ({
     </div>
   );
 };
-
-// 19c. Create and go to get-cart-item-details.ts in lib folder
-// 19i(end). Go to cart-drawer.tsx in shared folder of components
