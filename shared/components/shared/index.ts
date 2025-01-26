@@ -13,4 +13,9 @@ export { ChoosePizzaForm } from "./choose-pizza-form";
 export { ProductsGroupList } from "./products-group-list";
 export { GroupVariants } from "./group-variants";
 export { IngredientItem } from "./ingredient-item";
+export { CartButton } from "./cart-button"; /*5*/
+export { CartDrawer } from "./cart-drawer"; /*10a*/
 export * from "./modals";
+
+// 6. Go to header.tsx
+// 10b. Go to cart-button.tsx

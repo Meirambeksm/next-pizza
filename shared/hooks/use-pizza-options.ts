@@ -43,6 +43,4 @@ export const usePizzaOptions = (items: ProductItem[]): ReturnProps => {
     setType,
     addIngredient,
   };
-}; /*18 Cut and paste from choose-pizza-form.tsx and adjust*/
-
-// 19. Go to index.ts in hooks folder
+};

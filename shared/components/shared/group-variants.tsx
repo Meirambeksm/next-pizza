@@ -5,7 +5,7 @@ export type Variant = {
   name: string;
   value: string;
   disabled?: boolean;
-}; /*10 add export and go to get-available-pizza-sizes.ts*/
+};
 
 interface Props {
   items: readonly Variant[];
@@ -46,5 +46,3 @@ export const GroupVariants: React.FC<Props> = ({
     </div>
   );
 };
-
-// 11. Create get-available-pizza-sizes.ts in lib folder and go to get-available-pizza-sizes.ts

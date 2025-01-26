@@ -13,7 +13,5 @@ export const getAvailablePizzaSizes = (
     disabled: !filteredPizzasByType.some(
       (pizza) => Number(pizza.size) === Number(item.value)
     ),
-  })); /*12 cut and paste from choose-pizza-form.tsx*/
+  }));
 };
-
-// 13. Go to index.ts in lib folder

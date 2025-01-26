@@ -29,6 +29,4 @@ export const calcTotalPizzaPrice = (
     .reduce((acc, ingredient) => acc + ingredient.price, 0);
 
   return pizzaPrice + totalIngredientsPrice;
-}; /*4 cut and paste from choose-pizza-form.tsx */
-
-// 5. Create index.ts in lib folder and go to index.ts
+};

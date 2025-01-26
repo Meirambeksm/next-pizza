@@ -20,6 +20,4 @@ export const getPizzaDetails = (
   const textDetails = `${size} см, ${mapPizzaType[type]} пицца`;
 
   return { totalPrice, textDetails };
-}; /*25*/
-
-// 26. Go to index.ts in lib folder
+};

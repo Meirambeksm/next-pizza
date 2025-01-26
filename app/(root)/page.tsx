@@ -55,8 +55,10 @@ export default async function Home() {
   );
 }
 
-// 0. Start here 10:02:00
-// 1. Go to choose-pizza-form.tsx
+// 0. Start here 10:44:00
+// 1. Create cart-button.tsx in shared folder of components folder and go to cart-button.tsx
+
+// YOU ARE IN cart-button.tsx
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s
