@@ -28,8 +28,8 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
   const {
     items,
     fetchCartItems,
-    updateItemQuantity /*5c*/,
-    removeCartItem /*10a*/,
+    updateItemQuantity,
+    removeCartItem,
     totalAmount,
   } = useCartStore();
 
@@ -42,9 +42,8 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
     quantity: number,
     type: "plus" | "minus"
   ) => {
-    console.log(id, quantity, type); /*5a*/
-    const newQuantity = type === "plus" ? quantity + 1 : quantity - 1; /*5d*/
-    updateItemQuantity(id, newQuantity) /*5e*/;
+    const newQuantity = type === "plus" ? quantity + 1 : quantity - 1;
+    updateItemQuantity(id, newQuantity);
   };
 
   return (
@@ -79,8 +78,8 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
                   quantity={item.quantity}
                   onClickCountButton={(type) =>
                     onClickCountButton(item.id, item.quantity, type)
-                  } /*5b*/
-                  onClickRemove={() => removeCartItem(item.id) /*10b*/}
+                  }
+                  onClickRemove={() => removeCartItem(item.id)}
                 />
               );
             })}
@@ -110,7 +109,3 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
     </Sheet>
   );
 };
-
-// 5f(end). Go to route.ts of [id] folder of cart of api of app
-// 10c. Check with delete button
-// 10d(end). Finish

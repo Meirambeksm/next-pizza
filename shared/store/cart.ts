@@ -48,7 +48,7 @@ export const useCartStore = create<CartState>((set, get) => ({
     } finally {
       set({ loading: false });
     }
-  } /*3a*/,
+  },
 
   removeCartItem: async (id: number) => {
     try {
@@ -61,10 +61,7 @@ export const useCartStore = create<CartState>((set, get) => ({
     } finally {
       set({ loading: false });
     }
-  } /*8a*/,
+  },
 
   addCartItem: async (values: any) => {},
 }));
-
-// 3b(end). Go to cart-drawer-item.tsx
-// 8b(end). Go to cart-drawer-item.tsx

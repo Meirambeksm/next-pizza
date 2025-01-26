@@ -50,39 +50,37 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const id = Number(params.id); /*6a*/
-    const token = req.cookies.get("cartToken")?.value; /*6b*/
+    const id = Number(params.id);
+    const token = req.cookies.get("cartToken")?.value;
 
     if (!token) {
       return NextResponse.json({ error: "Cart token not found" });
-    } /*6d*/
+    }
 
     const cartItem = await prisma.cartItem.findFirst({
       where: {
         id: Number(params.id),
       },
-    }); /*6e*/
+    });
 
     if (!cartItem) {
       return NextResponse.json({ error: "Cart item not found" });
-    } /*6f*/
+    }
 
     await prisma.cartItem.delete({
       where: {
         id: Number(params.id),
       },
-    }); /*6g*/
+    });
 
-    const updatedUserCart = await updateCartTotalAmount(token); /*6h*/
+    const updatedUserCart = await updateCartTotalAmount(token);
 
-    return NextResponse.json(updatedUserCart); /*6i*/
+    return NextResponse.json(updatedUserCart);
   } catch (error) {
     console.log("[CART_DELETE] Server error", error);
     return NextResponse.json(
       { message: "Не удалось удалить корзину" },
       { status: 500 }
     );
-  } /*6c*/
+  }
 }
-
-// 6j(end). Go to cart.ts in services folder
