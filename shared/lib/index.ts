@@ -2,8 +2,5 @@ export { calcTotalPizzaPrice } from "./calc-total-pizza-price";
 export { getAvailablePizzaSizes } from "./get-available-pizza-sizes";
 export { getPizzaDetails } from "./get-pizza-details";
 export { getCartItemDetails } from "./get-cart-item-details";
-export { getCartDetails } from "./get-cart-details"; /*4f*/
-export { calcCartItemTotalPrice } from "./calc-cart-item-total-price"; /*8*/
-
-// 4g. Go to cart.ts of store folder
-// 9. Go to get-cart-details.ts of lib folder
+export { getCartDetails } from "./get-cart-details";
+export { calcCartItemTotalPrice } from "./calc-cart-item-total-price";

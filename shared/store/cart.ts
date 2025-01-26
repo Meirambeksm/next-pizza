@@ -7,8 +7,7 @@ export interface CartState {
   loading: boolean;
   error: boolean;
   totalAmount: number;
-  //   items: ICartItem[];
-  items: CartStateItem[] /*13*/;
+  items: CartStateItem[];
   /* Получение товаров из корзины*/
   fetchCartItems: () => Promise<void>;
   /* Запрос на обновление количества товаров*/
@@ -17,7 +16,7 @@ export interface CartState {
   addCartItem: (values: any) => Promise<void>;
   /* Запрос на удаление товара из корзины*/
   removeCartItem: (id: number) => Promise<void>;
-} /*4a*/
+}
 
 export const useCartStore = create<CartState>((set, get) => ({
   items: [],
@@ -40,8 +39,4 @@ export const useCartStore = create<CartState>((set, get) => ({
   updateItemQuantity: async (id: number) => {},
   addCartItem: async (values: any) => {},
   removeCartItem: async (id: number) => {},
-})); /*4h*/
-
-// 4c. Create and go to get-cart-details.ts in lib folder of shared
-// 4i. Create and go to car.ts in services folder of shared
-// 14. Create and go to index.ts in store folder of shared
+}));

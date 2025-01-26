@@ -2,7 +2,7 @@ import { mapPizzaType, PizzaSize, PizzaType } from "../constants/pizza";
 import { CartStateItem } from "./get-cart-details";
 
 export const getCartItemDetails = (
-  ingredients: CartStateItem["ingredients"] /*16e change*/,
+  ingredients: CartStateItem["ingredients"],
   pizzaType: PizzaType,
   pizzaSize: PizzaSize
 ) => {
@@ -19,5 +19,3 @@ export const getCartItemDetails = (
 
   return details.join(", ");
 };
-
-// 16f. Go to cart-drawer.tsx

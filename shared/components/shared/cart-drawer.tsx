@@ -25,11 +25,11 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
   children,
   className,
 }) => {
-  const { items, fetchCartItems, totalAmount } = useCartStore(); /*16a*/
+  const { items, fetchCartItems, totalAmount } = useCartStore();
 
   useEffect(() => {
     fetchCartItems();
-  }, []); /*16b*/
+  }, []);
 
   return (
     <Sheet>
@@ -37,36 +37,33 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
       <SheetContent className="flex flex-col justify-between pb-0 bg-[#f4f1ee]">
         <SheetHeader>
           <SheetTitle>
-            В корзине{" "}
-            <span className="font-bold">{items.length /*16h*/} товара</span>
+            В корзине <span className="font-bold">{items.length} товара</span>
           </SheetTitle>
         </SheetHeader>
 
         <div className="-mx-6 mt-5 overflow-auto flex-1">
           <div className="mb-2">
-            {
-              items.map((item) => {
-                return (
-                  <CartDrawerItem
-                    key={item.id}
-                    id={item.id}
-                    imageUrl={item.imageUrl}
-                    details={
-                      item.pizzaSize && item.pizzaType
-                        ? getCartItemDetails(
-                            item.ingredients,
-                            item.pizzaType as PizzaType,
-                            item.pizzaSize as PizzaSize
-                          )
-                        : ""
-                    }
-                    name={item.name}
-                    price={item.price}
-                    quantity={item.quantity}
-                  />
-                );
-              }) /*16g*/
-            }
+            {items.map((item) => {
+              return (
+                <CartDrawerItem
+                  key={item.id}
+                  id={item.id}
+                  imageUrl={item.imageUrl}
+                  details={
+                    item.pizzaSize && item.pizzaType
+                      ? getCartItemDetails(
+                          item.ingredients,
+                          item.pizzaType as PizzaType,
+                          item.pizzaSize as PizzaSize
+                        )
+                      : ""
+                  }
+                  name={item.name}
+                  price={item.price}
+                  quantity={item.quantity}
+                />
+              );
+            })}
           </div>
         </div>
 
@@ -78,9 +75,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
                 <div className="flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2" />
               </span>
 
-              <span className="font-bold text-lg">
-                {totalAmount /*16c*/} KZT
-              </span>
+              <span className="font-bold text-lg">{totalAmount} KZT</span>
             </div>
 
             <Link href="/cart">
@@ -95,7 +90,3 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
     </Sheet>
   );
 };
-
-// 16d. Go to get-cart-item-details.ts
-// 16i(end). Check with network (browser) => name => cart => preview
-// 17. Finish
