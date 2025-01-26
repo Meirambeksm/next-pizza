@@ -20,7 +20,4 @@ export interface CartDTO extends Cart {
 export interface CreateCartItemValues {
   productItemId: number;
   ingredients?: number[];
-} /*4a*/
-
-// 4b. Adjust in prisma in model CartItem => quanity Int @default(1)
-// 4c(end). Go to route.ts in cart folder of api of app
+}

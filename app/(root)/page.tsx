@@ -55,8 +55,8 @@ export default async function Home() {
   );
 }
 
-// 0. Start here 12:27:00
-// 1. Go to route.ts in cart folder of api of app
+// 0. Start here 12:56:00
+// 1. Go to cart.ts in store folder of shared
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

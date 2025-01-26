@@ -5,7 +5,7 @@ export const findOrCreateCart = async (token: string) => {
     where: {
       token,
     },
-  }); /*3a*/
+  });
 
   if (!userCart) {
     userCart = await prisma.cart.create({
@@ -13,9 +13,7 @@ export const findOrCreateCart = async (token: string) => {
         token,
       },
     });
-  } /*3b*/
+  }
 
-  return userCart; /*3c*/
+  return userCart;
 };
-
-// 3d. Go to index.ts in lib folder of shared

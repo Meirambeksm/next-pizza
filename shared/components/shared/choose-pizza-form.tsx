@@ -15,7 +15,7 @@ interface Props {
   imageUrl: string;
   ingredients: Ingredient[];
   items: ProductItem[];
-  onClickAddCart?: VoidFunction;
+  onSubmit: (itemId: number, ingredients: number[]) => void /*4b*/;
   className?: string;
 }
 
@@ -24,7 +24,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
   imageUrl,
   ingredients,
   items,
-  onClickAddCart,
+  onSubmit /*4c*/,
   className,
 }) => {
   const {
@@ -32,6 +32,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
     type,
     selectedIngredients,
     availableSizes,
+    currentItemId /*4a*/,
     setSize,
     setType,
     addIngredient,
@@ -46,13 +47,10 @@ export const ChoosePizzaForm: React.FC<Props> = ({
   );
 
   const handleClickAdd = () => {
-    onClickAddCart?.();
-    console.log({
-      size,
-      type,
-      ingredients: selectedIngredients,
-    });
-  };
+    if (currentItemId) {
+      onSubmit(currentItemId, Array.from(selectedIngredients));
+    }
+  }; /*4d*/
 
   return (
     <div className={cn(className, "flex flex-1")}>
@@ -100,3 +98,5 @@ export const ChoosePizzaForm: React.FC<Props> = ({
     </div>
   );
 };
+
+// 4e(end). Go to choose-product-form.tsx
