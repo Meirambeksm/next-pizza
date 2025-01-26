@@ -55,9 +55,8 @@ export default async function Home() {
   );
 }
 
-// 0. Start here 11:56:00
-// 1. Create [id] folder in cart folder of api folder of app
-// 2. Create and go to route.ts in [id] folder
+// 0. Start here 12:10:00
+// 1. Go to cart.ts in services folder
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

@@ -25,11 +25,27 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
   children,
   className,
 }) => {
-  const { items, fetchCartItems, totalAmount } = useCartStore();
+  const {
+    items,
+    fetchCartItems,
+    updateItemQuantity /*5c*/,
+    removeCartItem /*10a*/,
+    totalAmount,
+  } = useCartStore();
 
   useEffect(() => {
     fetchCartItems();
   }, []);
+
+  const onClickCountButton = (
+    id: number,
+    quantity: number,
+    type: "plus" | "minus"
+  ) => {
+    console.log(id, quantity, type); /*5a*/
+    const newQuantity = type === "plus" ? quantity + 1 : quantity - 1; /*5d*/
+    updateItemQuantity(id, newQuantity) /*5e*/;
+  };
 
   return (
     <Sheet>
@@ -61,6 +77,10 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
                   name={item.name}
                   price={item.price}
                   quantity={item.quantity}
+                  onClickCountButton={(type) =>
+                    onClickCountButton(item.id, item.quantity, type)
+                  } /*5b*/
+                  onClickRemove={() => removeCartItem(item.id) /*10b*/}
                 />
               );
             })}
@@ -90,3 +110,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
     </Sheet>
   );
 };
+
+// 5f(end). Go to route.ts of [id] folder of cart of api of app
+// 10c. Check with delete button
+// 10d(end). Finish

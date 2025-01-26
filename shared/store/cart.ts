@@ -36,7 +36,35 @@ export const useCartStore = create<CartState>((set, get) => ({
       set({ loading: false });
     }
   },
-  updateItemQuantity: async (id: number) => {},
+
+  updateItemQuantity: async (id: number, quantity: number) => {
+    try {
+      set({ loading: true, error: false });
+      const data = await Api.cart.updateItemQuantity(id, quantity);
+      set(getCartDetails(data));
+    } catch (error) {
+      console.error(error);
+      set({ error: true });
+    } finally {
+      set({ loading: false });
+    }
+  } /*3a*/,
+
+  removeCartItem: async (id: number) => {
+    try {
+      set({ loading: true, error: false });
+      const data = await Api.cart.removeCartItem(id);
+      set(getCartDetails(data));
+    } catch (error) {
+      console.error(error);
+      set({ error: true });
+    } finally {
+      set({ loading: false });
+    }
+  } /*8a*/,
+
   addCartItem: async (values: any) => {},
-  removeCartItem: async (id: number) => {},
 }));
+
+// 3b(end). Go to cart-drawer-item.tsx
+// 8b(end). Go to cart-drawer-item.tsx

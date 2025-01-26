@@ -21,15 +21,15 @@ export const updateCartTotalAmount = async (token: string) => {
         },
       },
     },
-  }); /*4a*/
+  });
 
   if (!userCart) {
     return;
-  } /*4b*/
+  }
 
   const totalAmount = userCart.items.reduce((acc, item) => {
     return acc + calcCartItemTotalPrice(item);
-  }, 0); /*4c*/
+  }, 0);
 
   return await prisma.cart.update({
     where: {
@@ -53,7 +53,5 @@ export const updateCartTotalAmount = async (token: string) => {
         },
       },
     },
-  }); /*4d*/
+  });
 };
-
-// 4e(end). Go to route.ts of [id] folder
