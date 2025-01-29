@@ -64,7 +64,7 @@ export const useCartStore = create<CartState>((set, get) => ({
     }
   },
 
-  addCartItem: async (values: CreateCartItemValues /*2a*/) => {
+  addCartItem: async (values: CreateCartItemValues) => {
     try {
       set({ loading: true, error: false });
       const data = await Api.cart.addCartItem(values);
@@ -75,7 +75,5 @@ export const useCartStore = create<CartState>((set, get) => ({
     } finally {
       set({ loading: false });
     }
-  } /*2b*/,
+  },
 }));
-
-// 2c. Go to cart.ts in services folder of shared

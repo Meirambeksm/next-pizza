@@ -24,6 +24,4 @@ export const addCartItem = async (
   values: CreateCartItemValues
 ): Promise<CartDTO> => {
   return (await axiosInstance.post<CartDTO>("/cart", values)).data;
-}; /*2d*/
-
-// 2e(end). Go to choose-product-modal.tsx
+};

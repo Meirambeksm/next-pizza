@@ -6,6 +6,7 @@ import { ChooseProductForm } from "../choose-product-form";
 import { ChoosePizzaForm } from "../choose-pizza-form";
 import { ProductWithRelations } from "@/@types/prisma";
 import { useCartStore } from "@/shared/store";
+import toast from "react-hot-toast";
 
 interface Props {
   product: ProductWithRelations;
@@ -14,22 +15,26 @@ interface Props {
 
 export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
   const router = useRouter();
-  const firstItem = product.items[0]; /*3b*/
-  const isPizzaForm = Boolean(firstItem?.pizzaType); /*3c change*/
-  const addCartItem = useCartStore((state) => state.addCartItem); /*3a*/
+  const firstItem = product.items[0];
+  const isPizzaForm = Boolean(firstItem?.pizzaType);
+  const { addCartItem, loading } = useCartStore(); /*4b*/
 
-  const onAddProduct = () => {
-    addCartItem({
-      productItemId: firstItem.id,
-    });
-  }; /*3d*/
+  const onSubmit = async (productItemId?: number, ingredients?: number[]) => {
+    try {
+      const itemId = productItemId ?? firstItem.id;
 
-  const onAddPizza = (productItemId: number, ingredients: number[]) => {
-    addCartItem({
-      productItemId,
-      ingredients,
-    });
-  }; /*6a*/
+      await addCartItem({
+        productItemId: itemId,
+        ingredients,
+      });
+
+      toast.success(product.name + " добавлена в корзину");
+      router.back(); /*4q*/
+    } catch (error) {
+      toast.error("Не удалось добавить товар в корзину");
+      console.log(error);
+    }
+  }; /*4a*/
 
   return (
     <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
@@ -45,14 +50,16 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
             name={product.name}
             ingredients={product.ingredients}
             items={product.items}
-            onSubmit={onAddPizza /*6b*/}
+            onSubmit={onSubmit} /*4c*/
+            loading={loading} /*4c*/
           />
         ) : (
           <ChooseProductForm
             name={product.name}
             imageUrl={product.imageUrl}
-            onSubmit={onAddProduct /*6c*/}
-            price={firstItem?.price /*6d*/}
+            price={firstItem?.price} /*4d*/
+            onSubmit={() => onSubmit?.()}
+            loading={loading} /*4d*/
           />
         )}
       </DialogContent>
@@ -60,5 +67,5 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
   );
 };
 
-// 3e. Go to use-pizza-options.ts
-// 6e(end). Go to cart-drawer.tsx
+// 4e. Go to choose-pizza-form.tsx
+// 4r(end). Go to cart-button.tsx in shared folder of components

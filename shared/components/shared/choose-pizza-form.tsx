@@ -15,7 +15,8 @@ interface Props {
   imageUrl: string;
   ingredients: Ingredient[];
   items: ProductItem[];
-  onSubmit: (itemId: number, ingredients: number[]) => void /*4b*/;
+  loading?: boolean /*4f*/;
+  onSubmit: (itemId: number, ingredients: number[]) => void;
   className?: string;
 }
 
@@ -24,7 +25,8 @@ export const ChoosePizzaForm: React.FC<Props> = ({
   imageUrl,
   ingredients,
   items,
-  onSubmit /*4c*/,
+  loading /*4g*/,
+  onSubmit,
   className,
 }) => {
   const {
@@ -32,7 +34,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
     type,
     selectedIngredients,
     availableSizes,
-    currentItemId /*4a*/,
+    currentItemId,
     setSize,
     setType,
     addIngredient,
@@ -50,7 +52,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
     if (currentItemId) {
       onSubmit(currentItemId, Array.from(selectedIngredients));
     }
-  }; /*4d*/
+  };
 
   return (
     <div className={cn(className, "flex flex-1")}>
@@ -89,6 +91,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
         </div>
 
         <Button
+          loading={loading} /*4k*/
           onClick={handleClickAdd}
           className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10"
         >
@@ -99,4 +102,5 @@ export const ChoosePizzaForm: React.FC<Props> = ({
   );
 };
 
-// 4e(end). Go to choose-product-form.tsx
+// 4h. Go to Button.tsx in ui folder of components of shared
+// 4l. Go to choose-product-form.tsx

@@ -1,6 +1,7 @@
 import { Container, Filters, Title, TopBar } from "@/shared/components/shared";
 import { prisma } from "@/prisma/prisma-client";
 import { ProductsGroupList } from "@/shared/components/shared/products-group-list";
+import { Suspense } from "react";
 
 export default async function Home() {
   const categories = await prisma.category.findMany({
@@ -30,7 +31,9 @@ export default async function Home() {
         <div className="flex gap-[80px]">
           {/*Filters*/}
           <div className="w-[250px]">
-            <Filters />
+            <Suspense /*6a*/>
+              <Filters />
+            </Suspense>
           </div>
 
           {/*Products list*/}
@@ -55,8 +58,10 @@ export default async function Home() {
   );
 }
 
-// 0. Start here 12:56:00
-// 1. Go to cart.ts in store folder of shared
+// 0. Start here 13:13:15
+// 1. Run in the terminal: npm install react-hot-toast (react-hot-toast.com)
+// 2. Go to layout.tsx of app folder (not (root) folder)
+// 6b. Finish
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

@@ -9,7 +9,7 @@ interface ReturnProps {
   size: PizzaSize;
   type: PizzaType;
   selectedIngredients: Set<number>;
-  currentItemId?: number /*3g*/;
+  currentItemId?: number;
   availableSizes: Variant[];
   setSize: (size: PizzaSize) => void;
   setType: (type: PizzaType) => void;
@@ -26,7 +26,7 @@ export const usePizzaOptions = (items: ProductItem[]): ReturnProps => {
 
   const currentItemId = items.find(
     (item) => item.pizzaType === type && item.size === size
-  )?.id; /*3f*/
+  )?.id;
 
   useEffect(() => {
     const isAvailableSize = availableSizes?.find(
@@ -44,11 +44,9 @@ export const usePizzaOptions = (items: ProductItem[]): ReturnProps => {
     type,
     selectedIngredients,
     availableSizes,
-    currentItemId /*3h*/,
+    currentItemId,
     setSize,
     setType,
     addIngredient,
   };
 };
-
-// 3i(end). Go to choose-pizza-form.tsx

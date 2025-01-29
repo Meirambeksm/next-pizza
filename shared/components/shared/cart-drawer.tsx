@@ -59,7 +59,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
         <div className="-mx-6 mt-5 overflow-auto flex-1">
           {items.map((item) => {
             return (
-              <div key={item.id} className="mb-2" /*7a wrap up*/>
+              <div key={item.id} className="mb-2">
                 <CartDrawerItem
                   id={item.id}
                   imageUrl={item.imageUrl}
@@ -108,5 +108,3 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
     </Sheet>
   );
 };
-
-// 7b. Finish
