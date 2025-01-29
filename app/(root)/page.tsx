@@ -2,18 +2,16 @@ import { Container, Filters, Title, TopBar } from "@/shared/components/shared";
 import { prisma } from "@/prisma/prisma-client";
 import { ProductsGroupList } from "@/shared/components/shared/products-group-list";
 import { Suspense } from "react";
+import { findPizzas, GetSearchParams } from "@/shared/lib/find-pizzas";
 
-export default async function Home() {
-  const categories = await prisma.category.findMany({
-    include: {
-      products: {
-        include: {
-          ingredients: true,
-          items: true,
-        },
-      },
-    },
-  });
+export default async function Home({
+  searchParams /*3a*/,
+}: {
+  searchParams: GetSearchParams /*3b*/;
+}) {
+  const categories = await findPizzas(
+    searchParams
+  ); /*3c replace old code with this hook*/
 
   return (
     <>
@@ -31,7 +29,7 @@ export default async function Home() {
         <div className="flex gap-[80px]">
           {/*Filters*/}
           <div className="w-[250px]">
-            <Suspense /*6a*/>
+            <Suspense>
               <Filters />
             </Suspense>
           </div>
@@ -58,10 +56,9 @@ export default async function Home() {
   );
 }
 
-// 0. Start here 13:13:15
-// 1. Run in the terminal: npm install react-hot-toast (react-hot-toast.com)
-// 2. Go to layout.tsx of app folder (not (root) folder)
-// 6b. Finish
+// 0. Start here 14:00:00
+// 1. Create and go to find-pizzas.ts in lib folder of shared
+// 3c(end). Go to find-pizzas.ts in lib folder
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

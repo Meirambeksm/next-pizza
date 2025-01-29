@@ -17,5 +17,7 @@ export const useQueryFilters = (filters: Filters) => {
     const query = qs.stringify(params, { arrayFormat: "comma" });
 
     router.push(`?${query}`, { scroll: false });
-  }, [filters, router]);
+  }, [filters /*router 3d delete this*/]);
 };
+
+// 3e. Go to use-filters.ts

@@ -72,6 +72,3 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button";
 
 export { Button, buttonVariants };
-
-// 4i. Copy and paste from final project and update Button.tsx component
-// 4j. Go to choose-pizza-form.tsx

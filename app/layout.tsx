@@ -1,6 +1,6 @@
 import { Nunito } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "react-hot-toast"; /*3a*/
+import { Toaster } from "react-hot-toast";
 
 const nunito = Nunito({
   subsets: ["cyrillic"],
@@ -20,13 +20,11 @@ export default function RootLayout({
       </head>
       <body className={nunito.className}>
         {children}
-        <Toaster /*3b*/ />
+        <Toaster />
       </body>
     </html>
   );
 }
-
-// 3c(end). Go to choose-product-modal.tsx
 
 // 8:33:27 Поржал с этого момента, т.к. сам не допустил эту ошибку,
 // что меня обрадовало, а потом Бог кода меня решил проучить.

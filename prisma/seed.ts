@@ -33,14 +33,14 @@ async function up() {
         password: hashSync("111111", 10),
         verified: new Date(),
         role: "USER",
-      } /*12*/,
+      },
       {
         fullName: "Admin",
         email: "admin@test.kz",
         password: hashSync("111111", 10),
         verified: new Date(),
         role: "ADMIN",
-      } /*13*/,
+      },
     ],
   });
 

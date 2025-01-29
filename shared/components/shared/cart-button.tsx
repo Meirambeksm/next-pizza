@@ -1,4 +1,4 @@
-"use client"; /*5f*/
+"use client";
 import { cn } from "@/shared/lib/utils";
 import React from "react";
 import { Button } from "../ui";
@@ -11,22 +11,18 @@ interface Props {
 }
 
 export const CartButton: React.FC<Props> = ({ className }) => {
-  const { totalAmount, items, loading } = useCartStore(); /*5a*/
+  const { totalAmount, items, loading } = useCartStore();
   return (
     <CartDrawer>
       <Button
-        loading={loading /*5c*/}
-        className={cn(
-          "group relative",
-          { "w-[105px]": loading /*5e*/ },
-          className
-        )}
+        loading={loading}
+        className={cn("group relative", { "w-[105px]": loading }, className)}
       >
-        <b>{totalAmount /*5b*/} ₽</b>
+        <b>{totalAmount} ₽</b>
         <span className="h-full w-[1px] bg-white/30 mx-3" />
         <div className="flex items-center gap-1 transition duration-300 group-hover:opacity-0">
           <ShoppingCart size={16} className="relative" strokeWidth={2} />
-          <b>{items.length /*5d*/}</b>
+          <b>{items.length}</b>
         </div>
         <ArrowRight
           size={20}
@@ -36,6 +32,3 @@ export const CartButton: React.FC<Props> = ({ className }) => {
     </CartDrawer>
   );
 };
-
-// 5g. In page.tsx of [id] folder of [product] folder of (root) of app adjust the following: selectedValue="2" to value="2"
-// 5h(end). Go to page.tsx of (root) folder of app

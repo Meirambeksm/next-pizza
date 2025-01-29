@@ -17,7 +17,7 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
   const router = useRouter();
   const firstItem = product.items[0];
   const isPizzaForm = Boolean(firstItem?.pizzaType);
-  const { addCartItem, loading } = useCartStore(); /*4b*/
+  const { addCartItem, loading } = useCartStore();
 
   const onSubmit = async (productItemId?: number, ingredients?: number[]) => {
     try {
@@ -29,12 +29,12 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
       });
 
       toast.success(product.name + " добавлена в корзину");
-      router.back(); /*4q*/
+      router.back();
     } catch (error) {
       toast.error("Не удалось добавить товар в корзину");
       console.log(error);
     }
-  }; /*4a*/
+  };
 
   return (
     <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
@@ -50,22 +50,19 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
             name={product.name}
             ingredients={product.ingredients}
             items={product.items}
-            onSubmit={onSubmit} /*4c*/
-            loading={loading} /*4c*/
+            onSubmit={onSubmit}
+            loading={loading}
           />
         ) : (
           <ChooseProductForm
             name={product.name}
             imageUrl={product.imageUrl}
-            price={firstItem?.price} /*4d*/
+            price={firstItem?.price}
             onSubmit={() => onSubmit?.()}
-            loading={loading} /*4d*/
+            loading={loading}
           />
         )}
       </DialogContent>
     </Dialog>
   );
 };
-
-// 4e. Go to choose-pizza-form.tsx
-// 4r(end). Go to cart-button.tsx in shared folder of components
