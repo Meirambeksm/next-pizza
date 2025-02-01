@@ -4,6 +4,7 @@ import crypto from "crypto";
 import { findOrCreateCart } from "@/shared/lib";
 import { CreateCartItemValues } from "@/shared/services/dto/cart.dto";
 import { updateCartTotalAmount } from "@/shared/lib/update-cart-total-amount";
+import { ingredients } from "@/prisma/constants";
 
 export async function GET(req: NextRequest) {
   try {
@@ -57,7 +58,9 @@ export async function POST(req: NextRequest) {
       where: {
         cartId: userCart.id,
         productItemId: data.productItemId,
-        ingredients: { every: { id: { in: data.ingredients } } },
+        ingredients: {
+          every: { id: { in: data.ingredients } },
+        } /*7a 15:21 explanation of kostyl*/,
       },
     });
 
@@ -72,17 +75,18 @@ export async function POST(req: NextRequest) {
           quantity: findCartItem.quantity + 1,
         },
       });
+    } else {
+      /*7b wrap up with else statement*/
+      // Если товар не был найдет, создаем
+      await prisma.cartItem.create({
+        data: {
+          cartId: userCart.id,
+          productItemId: data.productItemId,
+          quantity: 1,
+          ingredients: { connect: data.ingredients?.map((id) => ({ id })) },
+        },
+      });
     }
-
-    // Если товар не был найдет, создаем
-    await prisma.cartItem.create({
-      data: {
-        cartId: userCart.id,
-        productItemId: data.productItemId,
-        quantity: 1,
-        ingredients: { connect: data.ingredients?.map((id) => ({ id })) },
-      },
-    });
 
     const updatedUserCart = await updateCartTotalAmount(token);
     const resp = NextResponse.json(updatedUserCart);
@@ -96,3 +100,5 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+
+// 7c(end). Go to cart-drawer.tsx

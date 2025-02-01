@@ -15,7 +15,5 @@ export { GroupVariants } from "./group-variants";
 export { IngredientItem } from "./ingredient-item";
 export { CartButton } from "./cart-button";
 export { CartDrawer } from "./cart-drawer";
-export { ProductForm } from "./product-form"; /*3a*/
+export { ProductForm } from "./product-form";
 export * from "./modals";
-
-// 3b(end). Go to page.tsx of [id] folder of product folder of (root) folder of app

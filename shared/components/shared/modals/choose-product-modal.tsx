@@ -21,14 +21,8 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
           "p-0 w-[1060px] max-w-[1060px] min-h-[500px] bg-white overflow-hidden"
         )}
       >
-        <ProductForm
-          product={product}
-          onSubmit={() => router.back()}
-          /*5a replace with a new component*/
-        />
+        <ProductForm product={product} onSubmit={() => router.back()} />
       </DialogContent>
     </Dialog>
   );
 };
-
-// 5b. Finish

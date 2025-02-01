@@ -9,6 +9,7 @@ export type CartStateItem = {
   price: number;
   pizzaSize?: number | null;
   pizzaType?: number | null;
+  disabled: boolean /*2a*/;
   ingredients: Array<{ name: string; price: number }>;
 };
 
@@ -26,14 +27,17 @@ export const getCartDetails = (data: CartDTO): ReturnProps => {
     price: calcCartItemTotalPrice(item),
     pizzaSize: item.productItem.size,
     pizzaType: item.productItem.pizzaType,
+    disabled: false /*2c*/,
     ingredients: item.ingredients.map((ingredient) => ({
       name: ingredient.name,
       price: ingredient.price,
     })),
-  }));
+  })) as CartStateItem[]; /*2b*/
 
   return {
     items,
     totalAmount: data.totalAmount,
   };
 };
+
+// 2d(end). Go to cart.ts in store folder of shared

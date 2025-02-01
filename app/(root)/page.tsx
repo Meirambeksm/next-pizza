@@ -53,8 +53,8 @@ export default async function Home({
   );
 }
 
-// 0. Start here 14:36:00
-// 1. Create and go to product-form.tsx in shared folder of components
+// 0. Start here 14:55:00
+// 1. Go to get-cart-details.ts in lib folder of shared
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

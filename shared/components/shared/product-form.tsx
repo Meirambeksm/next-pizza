@@ -1,4 +1,4 @@
-"use client"; /*2k*/
+"use client";
 import { ProductWithRelations } from "@/@types/prisma";
 import { useCartStore } from "@/shared/store";
 import React from "react";
@@ -7,17 +7,17 @@ import { ChoosePizzaForm } from "./choose-pizza-form";
 import { ChooseProductForm } from "./choose-product-form";
 
 interface Props {
-  product: ProductWithRelations /*2f*/;
-  onSubmit?: VoidFunction /*2g*/;
+  product: ProductWithRelations;
+  onSubmit?: VoidFunction;
 }
 
 export const ProductForm: React.FC<Props> = ({
-  product, // 2h
-  onSubmit: _onSubmit, // 2i
+  product,
+  onSubmit: _onSubmit,
 }) => {
-  const { addCartItem, loading } = useCartStore(); //2c cut and paste from choose-product-modal.tsx
-  const firstItem = product.items[0]; //2a cut and paste from choose-product-modal.tsx
-  const isPizzaForm = Boolean(firstItem?.pizzaType); //2b cut and paste from choose-product-modal.tsx
+  const { addCartItem, loading } = useCartStore();
+  const firstItem = product.items[0];
+  const isPizzaForm = Boolean(firstItem?.pizzaType);
 
   const onSubmit = async (productItemId?: number, ingredients?: number[]) => {
     try {
@@ -29,13 +29,12 @@ export const ProductForm: React.FC<Props> = ({
       });
 
       toast.success(product.name + " добавлена в корзину");
-      //   router.back(); 2e delete this line
-      _onSubmit?.(); /*2j*/
+      _onSubmit?.();
     } catch (error) {
       toast.error("Не удалось добавить товар в корзину");
       console.log(error);
     }
-  }; //2d cut and paste from choose-product-modal.tsx
+  };
 
   if (isPizzaForm) {
     return (
@@ -46,7 +45,7 @@ export const ProductForm: React.FC<Props> = ({
         items={product.items}
         onSubmit={onSubmit}
         loading={loading}
-      /> /*2k cut and paste from choose-product-modal.tsx*/
+      />
     );
   }
 
@@ -57,8 +56,6 @@ export const ProductForm: React.FC<Props> = ({
       price={firstItem?.price}
       onSubmit={() => onSubmit?.()}
       loading={loading}
-    /> /*2l cut and paste from choose-product-modal.tsx*/
+    />
   );
 };
-
-// 2m(end). Go to index.ts of shared folder of components
