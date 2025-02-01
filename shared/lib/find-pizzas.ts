@@ -8,24 +8,24 @@ export interface GetSearchParams {
   ingredients?: string;
   priceFrom?: string;
   priceTo?: string;
-} /*2a*/
+}
 
-const DEFAULT_MIN_PRICE = 0; /*2b*/
-const DEFAULT_MAX_PRICE = 1000; /*2b*/
+const DEFAULT_MIN_PRICE = 0;
+const DEFAULT_MAX_PRICE = 1000;
 
 export const findPizzas = async (params: GetSearchParams) => {
-  const sizes = params.sizes?.split(",").map(Number); /*2c*/
-  const pizzaTypes = params.pizzaTypes?.split(",").map(Number); /*2c*/
-  const ingredientsIsAr = params.ingredients?.split(",").map(Number); /*2c*/
-  const minPrice = Number(params.priceFrom) || DEFAULT_MIN_PRICE; /*2c*/
-  const maxPrice = Number(params.priceTo) || DEFAULT_MAX_PRICE; /*2c*/
+  const sizes = params.sizes?.split(",").map(Number);
+  const pizzaTypes = params.pizzaTypes?.split(",").map(Number);
+  const ingredientsIsAr = params.ingredients?.split(",").map(Number);
+  const minPrice = Number(params.priceFrom) || DEFAULT_MIN_PRICE;
+  const maxPrice = Number(params.priceTo) || DEFAULT_MAX_PRICE;
 
   const categories = await prisma.category.findMany({
     include: {
       products: {
         orderBy: {
           id: "desc",
-        } /*2d*/,
+        },
         where: {
           ingredients: ingredientsIsAr
             ? {
@@ -49,8 +49,8 @@ export const findPizzas = async (params: GetSearchParams) => {
                 lte: maxPrice,
               },
             },
-          } /*3a*/,
-        } /*2e*/,
+          },
+        },
         include: {
           ingredients: true,
           items: {
@@ -64,13 +64,10 @@ export const findPizzas = async (params: GetSearchParams) => {
               price: "asc",
             },
           },
-        } /*3b*/,
+        },
       },
     },
-  }); /*2d*/
+  });
 
-  return categories; /*2e*/
+  return categories;
 };
-
-// 2f(end). Go to page.tsx of (root) folder of app
-// 3c. To fix the bug with closing modal window go to use-query-filters.ts in hooks folder

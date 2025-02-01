@@ -10,7 +10,7 @@ import { ProductWithRelations } from "@/@types/prisma";
 
 interface Props {
   title: string;
-  items: ProductWithRelations[] /*4a*/;
+  items: ProductWithRelations[];
   className?: string;
   listClassName?: string;
   categoryId: number;
@@ -47,12 +47,10 @@ export const ProductsGroupList: React.FC<Props> = ({
             name={product.name}
             imageUrl={product.imageUrl}
             price={product.items[0]?.price}
-            ingredients={product.ingredients} /*4b*/
+            ingredients={product.ingredients}
           />
         ))}
       </div>
     </div>
   );
 };
-
-// 4c. Go to product-card.tsx

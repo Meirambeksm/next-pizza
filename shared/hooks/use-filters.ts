@@ -79,7 +79,5 @@ export const useFilters = (): ReturnProps => {
       setSelectedIngredients: toggleIngredients,
     }),
     [sizes, pizzaTypes, selectedIngredients, prices]
-  ) /*3f wrap up with useMemo*/;
+  );
 };
-
-// 3g(end). Go to products-group-list.tsx

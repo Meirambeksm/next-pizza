@@ -1,17 +1,14 @@
 import { Container, Filters, Title, TopBar } from "@/shared/components/shared";
-import { prisma } from "@/prisma/prisma-client";
 import { ProductsGroupList } from "@/shared/components/shared/products-group-list";
 import { Suspense } from "react";
 import { findPizzas, GetSearchParams } from "@/shared/lib/find-pizzas";
 
 export default async function Home({
-  searchParams /*3a*/,
+  searchParams,
 }: {
-  searchParams: GetSearchParams /*3b*/;
+  searchParams: GetSearchParams;
 }) {
-  const categories = await findPizzas(
-    searchParams
-  ); /*3c replace old code with this hook*/
+  const categories = await findPizzas(searchParams);
 
   return (
     <>
@@ -56,9 +53,8 @@ export default async function Home({
   );
 }
 
-// 0. Start here 14:00:00
-// 1. Create and go to find-pizzas.ts in lib folder of shared
-// 3c(end). Go to find-pizzas.ts in lib folder
+// 0. Start here 14:36:00
+// 1. Create and go to product-form.tsx in shared folder of components
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s
