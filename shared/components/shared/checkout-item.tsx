@@ -1,4 +1,4 @@
-"use client"; /*2c*/
+"use client";
 import React from "react";
 import { CartItemProps } from "./cart-item-details/cart-item-details.types";
 import { cn } from "@/shared/lib/utils";
@@ -9,7 +9,7 @@ interface Props extends CartItemProps {
   onClickCountButton?: (type: "plus" | "minus") => void;
   onClickRemove?: () => void;
   className?: string;
-} /*2a*/
+}
 
 export const CheckoutItem: React.FC<Props> = ({
   name,
@@ -18,11 +18,18 @@ export const CheckoutItem: React.FC<Props> = ({
   quantity,
   details,
   className,
+  disabled /*6b*/,
   onClickCountButton,
   onClickRemove,
 }) => {
   return (
-    <div className={cn("flex items-center justify-between", className)}>
+    <div
+      className={cn(
+        "flex items-center justify-between",
+        { "opacity-50 pointer-events-none": disabled /*6a*/ },
+        className
+      )}
+    >
       <div className="flex items-center gap-5 flex-1">
         <CartItemDetails.Image src={imageUrl} />
         <CartItemDetails.Info name={name} details={details} className="" />
@@ -44,6 +51,6 @@ export const CheckoutItem: React.FC<Props> = ({
       </div>
     </div>
   );
-}; /*2b*/
+};
 
-// 2d(end). Go to index.ts of shared folder of components
+// 6c(end). Go to page.tsx of checkout folder of (checkout) of app

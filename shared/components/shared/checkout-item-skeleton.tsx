@@ -16,6 +16,4 @@ export const CheckoutItemSkeleton: React.FC<Props> = ({ className }) => {
       <div className="h-8 w-[133px] bg-gray-200 rounded animate-pulse" />
     </div>
   );
-}; /*5a*/
-
-// 5b. Go to index.ts in shared folder of components
+};

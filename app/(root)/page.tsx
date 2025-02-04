@@ -53,8 +53,8 @@ export default async function Home({
   );
 }
 
-// 0. Start here 16:00:30
-// 1. Create and go to checkout-item.tsx in shared folder of components
+// 0. Start here 16:12:30
+// 1. Create and go to use-cart.ts in hooks folder of shared
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s
