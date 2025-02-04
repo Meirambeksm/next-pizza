@@ -53,8 +53,11 @@ export default async function Home({
   );
 }
 
-// 0. Start here 14:55:00
-// 1. Go to get-cart-details.ts in lib folder of shared
+// 0. Start here 16:00:30
+// 1. Create (checkout) folder in app folder
+// 2. Create and go to layout.tsx in (checkout) folder of app
+
+// YOU ARE ON page.tsx of checkout folder
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

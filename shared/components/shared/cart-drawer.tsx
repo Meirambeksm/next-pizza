@@ -53,14 +53,14 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
       <SheetContent className="flex flex-col justify-between pb-0 bg-[#f4f1ee]">
-        <div /*8e*/
+        <div
           className={cn(
             "flex flex-col h-full",
             !totalAmount && "justify-center"
           )}
         >
           {totalAmount > 0 && (
-            /*8a*/ <>
+            <>
               <SheetHeader>
                 <SheetTitle>
                   В корзине{" "}
@@ -84,7 +84,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
                               )
                             : ""
                         }
-                        disabled={item.disabled /*6a*/}
+                        disabled={item.disabled}
                         name={item.name}
                         price={item.price}
                         quantity={item.quantity}
@@ -120,7 +120,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
             </>
           )}
           {!totalAmount && (
-            /*8d*/ <div className="flex flex-col items-center justify-center w-72 mx-auto">
+            <div className="flex flex-col items-center justify-center w-72 mx-auto">
               <Image
                 src="/assets/images/empty-box.png"
                 alt="Empty cart"
@@ -148,8 +148,3 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
     </Sheet>
   );
 };
-
-// 6b(end). Go to route.ts of cart folder of api of app
-// 8b. Create assets folder in public folder and images folder in assets folder
-// 8c. Copy and paste from final project empty-box.png
-// 8f. Finish

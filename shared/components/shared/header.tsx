@@ -9,12 +9,18 @@ import { SearchInput } from "./search-input";
 import { CartButton } from "./cart-button";
 
 interface Props {
+  hasSearch?: boolean /*6a*/;
+  hasCart?: boolean /*6d*/;
   className?: string;
 }
 
-export const Header: React.FC<Props> = ({ className }) => {
+export const Header: React.FC<Props> = ({
+  hasSearch = true /*6b*/,
+  hasCart = true /*6e*/,
+  className,
+}) => {
   return (
-    <header className={cn("border border-b", className)}>
+    <header className={cn(" border-b", className /*6g delete border class*/)}>
       <Container className="flex items-center justify-between py-8">
         <Link href="/">
           <div className="flex items-center gap-4">
@@ -28,9 +34,11 @@ export const Header: React.FC<Props> = ({ className }) => {
           </div>
         </Link>
 
-        <div className="mx-10 flex-1">
-          <SearchInput />
-        </div>
+        {hasSearch /*6c*/ && (
+          <div className="mx-10 flex-1">
+            <SearchInput />
+          </div>
+        )}
 
         <div className="flex items-center gap-3">
           <Button variant="outline" className="flex items-center gap-1">
@@ -38,9 +46,11 @@ export const Header: React.FC<Props> = ({ className }) => {
             Войти
           </Button>
 
-          <CartButton />
+          {hasCart /*6f*/ && <CartButton />}
         </div>
       </Container>
     </header>
   );
 };
+
+// 6h(end). Go to layout.tsx of (checkout) folder

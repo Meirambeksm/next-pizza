@@ -17,7 +17,7 @@ export const CartDrawerItem: React.FC<Props> = ({
   price,
   quantity,
   details,
-  disabled /*5a*/,
+  disabled,
   onClickCountButton,
   onClickRemove,
   className,
@@ -26,7 +26,7 @@ export const CartDrawerItem: React.FC<Props> = ({
     <div
       className={cn(
         "flex bg-white p-5 gap-6",
-        { "opacity-50 pointer-events-none": disabled /*5b*/ },
+        { "opacity-50 pointer-events-none": disabled },
         className
       )}
     >
@@ -53,5 +53,3 @@ export const CartDrawerItem: React.FC<Props> = ({
     </div>
   );
 };
-
-// 5c(end). Go to cart-drawer.tsx of shared of components

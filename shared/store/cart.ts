@@ -59,7 +59,7 @@ export const useCartStore = create<CartState>((set, get) => ({
         items: state.items.map((item) =>
           item.id === id ? { ...item, disabled: true } : item
         ),
-      })) /*3a*/;
+      }));
       const data = await Api.cart.removeCartItem(id);
       set(getCartDetails(data));
     } catch (error) {
@@ -69,7 +69,7 @@ export const useCartStore = create<CartState>((set, get) => ({
       set((state) => ({
         loading: false,
         items: state.items.map((item) => ({ ...item, disabled: false })),
-      })) /*3b*/;
+      }));
     }
   },
 
@@ -86,5 +86,3 @@ export const useCartStore = create<CartState>((set, get) => ({
     }
   },
 }));
-
-// 3c(end). Go to cart-item-details.typests in cart-item-details folder of shared of components
