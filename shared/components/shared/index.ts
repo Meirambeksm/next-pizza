@@ -16,9 +16,11 @@ export { IngredientItem } from "./ingredient-item";
 export { CartButton } from "./cart-button";
 export { CartDrawer } from "./cart-drawer";
 export { ProductForm } from "./product-form";
-export { WhiteBlock } from "./white-block"; /*10a*/
-export { CheckoutItemDetails } from "./checkout-item-details"; /*13a*/
+export { WhiteBlock } from "./white-block";
+export { CheckoutItemDetails } from "./checkout-item-details";
+export { CheckoutItem } from "./checkout-item"; /*3a*/
+export { CheckoutItemSkeleton } from "./checkout-item-skeleton"; /*5c*/
 export * from "./modals";
 
-// 10b(end). Go to page.tsx of checkout folder
-// 13b(end). Go to page.tsx of checkout folder
+// 3b(end). Go to page.tsx of checkout folder of (checkout) of app
+// 5d(end). Finish

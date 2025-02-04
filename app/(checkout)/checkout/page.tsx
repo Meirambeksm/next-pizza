@@ -1,4 +1,5 @@
 import {
+  CheckoutItem,
   CheckoutItemDetails,
   Container,
   Title,
@@ -8,18 +9,37 @@ import { Button, Input, Textarea } from "@/shared/components/ui";
 import { ArrowRight, Package, Percent, Truck } from "lucide-react";
 
 export default function CheckoutPage() {
-  //   return <div /*4a*/>Checkout</div>;
   return (
-    <Container /*8a*/>
+    <Container>
       <Title
         text="Оформление заказа"
         className="font-extrabold mb-10 text-[36px]"
       />
 
-      <div className="flex gap-10" /*11a*/>
+      <div className="flex gap-10">
         {/* Left Side */}
         <div className="flex flex-col gap-10 flex-1 mb-20">
-          <WhiteBlock title="1. Корзина">123 456</WhiteBlock>
+          <WhiteBlock title="1. Корзина">
+            <div className="flex flex-col gap-5" /*4h*/>
+              <CheckoutItem
+                id={1}
+                imageUrl="https://media.dodostatic.net/image/r:292x292/11ee7d5fbd0756a6aaa0bbeba01b343a.avif"
+                details="Большая Конфета Россия Классическая с присыпкой в шоколаде, 200 г"
+                name="Чоризо фреш"
+                price={216}
+                quantity={3} /*4a*/
+              />
+
+              <CheckoutItem
+                id={2}
+                imageUrl="https://media.dodostatic.net/image/r:292x292/11ee7d5fbd0756a6aaa0bbeba01b343a.avif"
+                details="Большая Конфета Россия Классическая с присыпкой в шоколаде, 200 г"
+                name="Чоризо фреш"
+                price={216}
+                quantity={3} /*4g*/
+              />
+            </div>
+          </WhiteBlock>
 
           <WhiteBlock title="2. Персональные данные">
             <div className="grid grid-cols-2 gap-5">
@@ -41,7 +61,7 @@ export default function CheckoutPage() {
                 className="text-base"
                 placeholder="Введите адрес..."
               />
-              <Textarea /*11f*/
+              <Textarea
                 className="text-base"
                 placeholder="Комментарий к заказу"
                 rows={5}
@@ -50,14 +70,14 @@ export default function CheckoutPage() {
           </WhiteBlock>
         </div>
         {/* Right Side */}
-        <div className="w-[450px]" /*11g*/>
+        <div className="w-[450px]">
           <WhiteBlock className="p-6 sticky top-4">
             <div className="flex flex-col gap-1">
               <span className="text-xl">Итого:</span>
               <span className="text-[34px] font-extrabold">3506 KZT</span>
             </div>
 
-            <CheckoutItemDetails /*14a*/
+            <CheckoutItemDetails
               title={
                 <div className="flex items-center">
                   <Package size={18} className="mr-2 text-gray-400" />
@@ -67,7 +87,7 @@ export default function CheckoutPage() {
               value="3000 KZT"
             />
             <CheckoutItemDetails
-              /*14b*/ title={
+              title={
                 <div className="flex items-center">
                   <Percent size={18} className="mr-2 text-gray-400" />
                   Налоги:
@@ -76,7 +96,7 @@ export default function CheckoutPage() {
               value="500 KZT"
             />
             <CheckoutItemDetails
-              /*14c*/ title={
+              title={
                 <div className="flex items-center">
                   <Truck size={18} className="mr-2 text-gray-400" />
                   Доставка:
@@ -88,7 +108,6 @@ export default function CheckoutPage() {
             <Button
               type="submit"
               className="w-full h-14 rounded-2xl mt-6 text-base font-bold"
-              /*14d*/
             >
               Перейти к оплате
               <ArrowRight className="w-5 ml-2" />
@@ -100,9 +119,5 @@ export default function CheckoutPage() {
   );
 }
 
-// 4b(end). Go to layout.tsx of (checkout)
-// 8b(end). Create and go to white-block.tsx in shared folder of components
-// 11b. Run in terminal: npx shadcn@latest add textarea
-// 11c. Go to index.ts of ui folder of components
-// 11h(end). Create and go to checkout-item-details.tsx in shared folder of components
-// 14e. Finish
+// 4b. Go to cart-item-info.tsx
+// 4i(end). Create and go to checkout-item-skeleton.tsx in shared folder of components

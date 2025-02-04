@@ -14,18 +14,9 @@ export default function CheckoutLayout({
   return (
     <main className="min-h-screen bg-[#f4f1ee]">
       <Container>
-        <Header
-          hasSearch={false /*7a*/}
-          hasCart={false /*7b*/}
-          className="border-gray-200" /*5a*/
-        />
+        <Header hasSearch={false} hasCart={false} className="border-gray-200" />
         {children}
       </Container>
     </main>
   );
-} /*3a*/
-
-// 3b. Create checkout folder in (checkout)
-// 3c(end). Create and go to page.tsx in checkout folder of (checkout) folder
-// 5b(end). Go to header.tsx component
-// 7c(end). Go to page.tsx of checkout folder
+}

@@ -21,6 +21,4 @@ export const CheckoutItemDetails: React.FC<Props> = ({
       <span className="font-bold text-lg">{value}</span>
     </div>
   );
-}; /*12a*/
-
-// 12b(end). Go to index.ts of shared folder of components
+};

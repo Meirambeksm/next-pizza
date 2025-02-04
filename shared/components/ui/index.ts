@@ -7,6 +7,4 @@ export { Popover } from "./popover";
 export { Select } from "./select";
 export { Skeleton } from "./skeleton";
 export { Slider } from "./slider";
-export { Textarea } from "./textarea"; /*11d*/
-
-// 11e. Go to page.tsx of checkout folder
+export { Textarea } from "./textarea";

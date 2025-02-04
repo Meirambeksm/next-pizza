@@ -28,6 +28,4 @@ export const WhiteBlock: React.FC<React.PropsWithChildren<Props>> = ({
       <div className={cn("px-5 py-4", contentClassName)}>{children}</div>
     </div>
   );
-}; /*9a*/
-
-// 9b(end). Go to index.ts of shared folder of components
+};
