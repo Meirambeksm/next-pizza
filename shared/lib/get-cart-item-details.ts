@@ -3,8 +3,8 @@ import { CartStateItem } from "./get-cart-details";
 
 export const getCartItemDetails = (
   ingredients: CartStateItem["ingredients"],
-  pizzaType?: PizzaType /*5e adjust*/,
-  pizzaSize?: PizzaSize /*5f adjust*/
+  pizzaType?: PizzaType,
+  pizzaSize?: PizzaSize
 ) => {
   const details = [];
 
@@ -19,5 +19,3 @@ export const getCartItemDetails = (
 
   return details.join(", ");
 };
-
-// 5g. Go to cart-drawer.tsx in shared folder of components

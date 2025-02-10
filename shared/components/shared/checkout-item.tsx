@@ -18,7 +18,7 @@ export const CheckoutItem: React.FC<Props> = ({
   quantity,
   details,
   className,
-  disabled /*6b*/,
+  disabled,
   onClickCountButton,
   onClickRemove,
 }) => {
@@ -26,7 +26,7 @@ export const CheckoutItem: React.FC<Props> = ({
     <div
       className={cn(
         "flex items-center justify-between",
-        { "opacity-50 pointer-events-none": disabled /*6a*/ },
+        { "opacity-50 pointer-events-none": disabled },
         className
       )}
     >
@@ -52,5 +52,3 @@ export const CheckoutItem: React.FC<Props> = ({
     </div>
   );
 };
-
-// 6c(end). Go to page.tsx of checkout folder of (checkout) of app

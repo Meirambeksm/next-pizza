@@ -11,7 +11,7 @@ type ReturnProps = {
   updateItemQuantity: (id: number, quantity: number) => void;
   removeCartItem: (id: number) => void;
   addCartItem: (values: CreateCartItemValues) => void;
-}; /*2a*/
+};
 
 export const useCart = (): ReturnProps => {
   const {
@@ -22,11 +22,11 @@ export const useCart = (): ReturnProps => {
     updateItemQuantity,
     removeCartItem,
     addCartItem,
-  } = useCartStore(); /*2b cut and paste from cart-drawer.tsx*/
+  } = useCartStore();
 
   useEffect(() => {
     fetchCartItems();
-  }, []); /*2c cut and paste from cart-drawer.tsx*/
+  }, []);
 
   return {
     items,
@@ -35,7 +35,5 @@ export const useCart = (): ReturnProps => {
     updateItemQuantity,
     removeCartItem,
     addCartItem,
-  }; /*2d*/
+  };
 };
-
-// 2e(end). Go to index.ts of hooks folder of shared
