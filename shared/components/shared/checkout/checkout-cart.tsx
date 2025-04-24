@@ -13,7 +13,7 @@ interface Props {
   ) => void;
   removeCartItem: (id: number) => void;
   className?: string;
-} /*13a*/
+}
 
 export const CheckoutCart: React.FC<Props> = ({
   items,
@@ -46,7 +46,5 @@ export const CheckoutCart: React.FC<Props> = ({
         ))}
       </div>
     </WhiteBlock>
-  ); /*13b cut and paste from page.tsx of checkout folder of (checkout) of app*/
+  );
 };
-
-// 13c. Create and go to index.ts in checkout folder fo shared of components

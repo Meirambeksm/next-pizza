@@ -53,8 +53,8 @@ export default async function Home({
   );
 }
 
-// 0. Start here 16:28:00
-// 1. Create and go to checkout-sidebar.tsx in shared folder of components
+// 0. Start here 17:07:53
+// 1. Go to checkout-personal-form.tsx in shared folder of components
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

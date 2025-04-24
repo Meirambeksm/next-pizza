@@ -4,20 +4,20 @@ import { WhiteBlock } from "./white-block";
 import { Button } from "../ui";
 import { cn } from "@/shared/lib/utils";
 
-const VAT = 15; /*2a*/
-const DELIVERY_PRICE = 250; /*2b*/
+const VAT = 15;
+const DELIVERY_PRICE = 250;
 
 interface Props {
   totalAmount: number;
   className?: string;
-} /*2c*/
+}
 
 export const CheckoutSidebar: React.FC<Props> = ({
   totalAmount,
   className,
 }) => {
-  const vatPrice = (totalAmount * VAT) / 100; /*2d*/
-  const totalPrice = totalAmount + DELIVERY_PRICE + vatPrice; /*2e*/
+  const vatPrice = (totalAmount * VAT) / 100;
+  const totalPrice = totalAmount + DELIVERY_PRICE + vatPrice;
 
   return (
     <WhiteBlock className={cn("p-6 sticky top-4", className)}>
@@ -62,7 +62,5 @@ export const CheckoutSidebar: React.FC<Props> = ({
         <ArrowRight className="w-5 ml-2" />
       </Button>
     </WhiteBlock>
-  ); // 2f. Cut and paste from page.tsx of checkout folder of (checkout) of app
+  );
 };
-
-// 2g(end). Go to index.ts of shared folder of components

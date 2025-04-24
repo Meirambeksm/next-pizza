@@ -4,7 +4,7 @@ import { X } from "lucide-react";
 interface Props {
   className?: string;
   onClick?: VoidFunction;
-} /*9a*/
+}
 
 export const ClearButton: React.FC<Props> = ({ className, onClick }) => {
   return (
@@ -18,6 +18,4 @@ export const ClearButton: React.FC<Props> = ({ className, onClick }) => {
       <X className="h-5 w-5" />
     </button>
   );
-}; /*9b*/
-
-// 9c(end). Go to index.ts of shared folder of components
+};

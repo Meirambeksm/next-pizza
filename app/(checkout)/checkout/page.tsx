@@ -1,30 +1,35 @@
 "use client";
-import { useForm, SubmitHandler } from "react-hook-form"; /*12c*/
-import { zodResolver } from "@hookform/resolvers/zod"; /*12d*/
-import {
-  CheckoutSidebar,
-  Container,
-  Title,
-  WhiteBlock,
-} from "@/shared/components/shared";
-import { FormInput } from "@/shared/components/shared";
-import { Input, Textarea } from "@/shared/components/ui";
+import { useForm, FormProvider } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { CheckoutSidebar, Container, Title } from "@/shared/components/shared";
 import { useCart } from "@/shared/hooks";
-import { CheckoutCart } from "@/shared/components/shared/checkout";
+import {
+  CheckoutAddressForm,
+  CheckoutCart,
+} from "@/shared/components/shared/checkout";
+import { CheckoutPersonalForm } from "@/shared/components/shared/checkout/checkout-personal-form";
+import {
+  CheckoutFormSchema,
+  CheckoutFormValues,
+} from "@/shared/components/shared/checkout/checkout-form-schema";
 
 export default function CheckoutPage() {
   const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart();
-  const form = useForm({
-    resolver: zodResolver(),
+  const form = useForm<CheckoutFormValues>({
+    resolver: zodResolver(CheckoutFormSchema),
     defaultValues: {
-      email: "",
       firstName: "",
       lastName: "",
+      email: "",
       phone: "",
       address: "",
       comment: "",
     },
-  }); /*12xxx*/
+  }); /*8a*/
+
+  const onSubmit = (data: CheckoutFormValues) => {
+    console.log(data);
+  }; /*8c*/
 
   const onClickCountButton = (
     id: number,
@@ -42,61 +47,32 @@ export default function CheckoutPage() {
         className="font-extrabold mb-10 text-[36px]"
       />
 
-      <div className="flex gap-10">
-        {/* Left Side */}
-        <div className="flex flex-col gap-10 flex-1 mb-20">
-          <CheckoutCart
-            onClickCountButton={onClickCountButton}
-            removeCartItem={removeCartItem}
-            items={items}
-            /*14a*/
-          />
+      <FormProvider {...form} /*8b*/>
+        <form onSubmit={form.handleSubmit(onSubmit)} /*8d*/>
+          <div className="flex gap-10">
+            {/* Left Side */}
+            <div className="flex flex-col gap-10 flex-1 mb-20">
+              <CheckoutCart
+                onClickCountButton={onClickCountButton}
+                removeCartItem={removeCartItem}
+                items={items}
+              />
 
-          <WhiteBlock title="2. Персональные данные">
-            <div className="grid grid-cols-2 gap-5">
-              <Input name="firstName" className="text-base" placeholder="Имя" />
-              <Input
-                name="lastName"
-                className="text-base"
-                placeholder="Фамилия"
-              />
-              <Input name="email" className="text-base" placeholder="E-Mail" />
-              <FormInput
-                name="phone"
-                className="text-base"
-                placeholder="Телефон" /*8a*/
-              />
-            </div>
-          </WhiteBlock>
+              <CheckoutPersonalForm /*4a*/ />
 
-          <WhiteBlock title="3. Адрес доставки">
-            <div className="flex flex-col gap-5">
-              <Input
-                name="firstName"
-                className="text-base"
-                placeholder="Введите адрес..."
-              />
-              <Textarea
-                className="text-base"
-                placeholder="Комментарий к заказу"
-                rows={5}
-              />
+              <CheckoutAddressForm /*6a*/ />
             </div>
-          </WhiteBlock>
-        </div>
-        {/* Right Side */}
-        <div className="w-[450px]">
-          <CheckoutSidebar totalAmount={totalAmount} /*4a*/ />
-        </div>
-      </div>
+            {/* Right Side */}
+            <div className="w-[450px]">
+              <CheckoutSidebar totalAmount={totalAmount} />
+            </div>
+          </div>
+        </form>
+      </FormProvider>
     </Container>
   );
 }
 
-// 4b(end). Create and go to required-symbol.tsx in shared folder of components
-// 8b(end). Create and go to clear-button.tsx in shared folder of components
-// 12a. Run in terminal: npm install react-hook-form (source: react-hook-form.com)
-// 12b. Run in terminal: npm install zod @hookform/resolvers
-// 12e. Create checkout folder in shared folder of components
-// 12f(end). Create and go to checkout-cart.tsx in checkout folder of shared of components
-// 14b(end). Create and go to checkout-personal-form.tsx in checkout folder of shared components
+// 4b. Create and go ot checkout-address-form.tsx in checkout folder of shared of components
+// 6b(end). Create and go to check-form-schema.ts in checkout folder of shared of components
+// 8e(end). Go to form-input.tsx of form-component folder of shared of components

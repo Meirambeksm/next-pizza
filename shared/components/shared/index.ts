@@ -20,12 +20,9 @@ export { WhiteBlock } from "./white-block";
 export { CheckoutItemDetails } from "./checkout-item-details";
 export { CheckoutItem } from "./checkout-item";
 export { CheckoutItemSkeleton } from "./checkout-item-skeleton";
-export { CheckoutSidebar } from "./checkout-sidebar"; /*3a*/
-export { ErrorText } from "./error-text"; /*10a*/
-export { RequiredSymbol } from "./required-symbol"; /*10b*/
-export { ClearButton } from "./clear-button"; /*10c*/
-export * from "./form-components"; /*10d*/
+export { CheckoutSidebar } from "./checkout-sidebar";
+export { ErrorText } from "./error-text";
+export { RequiredSymbol } from "./required-symbol";
+export { ClearButton } from "./clear-button";
+export * from "./form-components";
 export * from "./modals";
-
-// 3b(end). Go to page.tsx of checkout folder of (checkout) of app
-// 10e(end). Go to
