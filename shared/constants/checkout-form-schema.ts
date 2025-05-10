@@ -11,8 +11,6 @@ export const CheckoutFormSchema = z.object({
   phone: z.string().min(10, { message: "Введите корректный номер телефона" }),
   address: z.string().min(5, { message: "Введите корректный адрес" }),
   comment: z.string().optional(),
-}); /*7a*/
+});
 
-export type CheckoutFormValues = z.infer<typeof CheckoutFormSchema>; /*7b*/
-
-// 7c(end). Go to page.tsx of checkout folder of (checkout) of app
+export type CheckoutFormValues = z.infer<typeof CheckoutFormSchema>;

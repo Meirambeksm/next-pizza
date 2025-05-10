@@ -54,7 +54,7 @@ export default async function Home({
 }
 
 // 0. Start here 17:07:53
-// 1. Go to checkout-personal-form.tsx in shared folder of components
+// 1. Create and go to index.ts in components folder in shared
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

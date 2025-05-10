@@ -1,20 +1,29 @@
 "use client";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckoutSidebar, Container, Title } from "@/shared/components/shared";
+// import { CheckoutSidebar, Container, Title } from "@/shared/components"; /*2i move*/
 import { useCart } from "@/shared/hooks";
 import {
+  CheckoutSidebar /*2i move*/,
+  Container /*2i move*/,
+  Title /*2i move*/,
   CheckoutAddressForm,
   CheckoutCart,
-} from "@/shared/components/shared/checkout";
-import { CheckoutPersonalForm } from "@/shared/components/shared/checkout/checkout-personal-form";
+  CheckoutPersonalForm,
+} from "@/shared/components";
 import {
   CheckoutFormSchema,
   CheckoutFormValues,
-} from "@/shared/components/shared/checkout/checkout-form-schema";
+} from "@/shared/constants"; /*2h*/
 
 export default function CheckoutPage() {
-  const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart();
+  const {
+    totalAmount,
+    updateItemQuantity,
+    items,
+    removeCartItem,
+    loading /*5a*/,
+  } = useCart();
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(CheckoutFormSchema),
     defaultValues: {
@@ -25,11 +34,11 @@ export default function CheckoutPage() {
       address: "",
       comment: "",
     },
-  }); /*8a*/
+  });
 
   const onSubmit = (data: CheckoutFormValues) => {
     console.log(data);
-  }; /*8c*/
+  };
 
   const onClickCountButton = (
     id: number,
@@ -47,8 +56,8 @@ export default function CheckoutPage() {
         className="font-extrabold mb-10 text-[36px]"
       />
 
-      <FormProvider {...form} /*8b*/>
-        <form onSubmit={form.handleSubmit(onSubmit)} /*8d*/>
+      <FormProvider {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="flex gap-10">
             {/* Left Side */}
             <div className="flex flex-col gap-10 flex-1 mb-20">
@@ -56,15 +65,27 @@ export default function CheckoutPage() {
                 onClickCountButton={onClickCountButton}
                 removeCartItem={removeCartItem}
                 items={items}
+                loading={loading /*5x*/}
               />
 
-              <CheckoutPersonalForm /*4a*/ />
+              <CheckoutPersonalForm
+                className={
+                  loading ? "opacity-40 pointer-events-none" : "" /*5q*/
+                }
+              />
 
-              <CheckoutAddressForm /*6a*/ />
+              <CheckoutAddressForm
+                className={
+                  loading ? "opacity-40 pointer-events-none" : "" /*5r*/
+                }
+              />
             </div>
             {/* Right Side */}
             <div className="w-[450px]">
-              <CheckoutSidebar totalAmount={totalAmount} />
+              <CheckoutSidebar
+                totalAmount={totalAmount}
+                loading={loading /*5b*/}
+              />
             </div>
           </div>
         </form>
@@ -73,6 +94,7 @@ export default function CheckoutPage() {
   );
 }
 
-// 4b. Create and go ot checkout-address-form.tsx in checkout folder of shared of components
-// 6b(end). Create and go to check-form-schema.ts in checkout folder of shared of components
-// 8e(end). Go to form-input.tsx of form-component folder of shared of components
+// 2j(end). Create and go to form-textarea.tsx in form-components folder of shared of components
+// 5c. Go to checkout-sidebar.tsx of shared of components
+// 5s. Go to checkout-cart.tsx in checkout folder of shared of components
+// 5y. Go to checkout-item.tsx in shared of components

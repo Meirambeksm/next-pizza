@@ -1,8 +1,9 @@
 import { cn } from "@/shared/lib/utils";
+import React from "react";
 
 interface Props {
   title?: React.ReactNode;
-  value?: string;
+  value?: React.ReactNode /*5g change*/;
   className?: string;
 }
 
@@ -22,3 +23,5 @@ export const CheckoutItemDetails: React.FC<Props> = ({
     </div>
   );
 };
+
+// 5h. Go to checkout-sidebar.tsx of shared of components

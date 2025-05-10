@@ -21,6 +21,7 @@ export const CountIconButton: React.FC<IconButtonProps> = ({
       variant="outline"
       disabled={disabled}
       onClick={onClick}
+      type="button" /*6b*/
       className={cn(
         "p-0 hover:bg-primary hover:text-white disabled:bg-white disabled:border-gray-400 disabled:text-gray-400",
         size === "sm"
@@ -36,3 +37,5 @@ export const CountIconButton: React.FC<IconButtonProps> = ({
     </Button>
   );
 };
+
+// 6c. Go to checkout-cart.tsx in checkout folder of shared of components

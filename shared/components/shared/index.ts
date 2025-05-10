@@ -24,5 +24,9 @@ export { CheckoutSidebar } from "./checkout-sidebar";
 export { ErrorText } from "./error-text";
 export { RequiredSymbol } from "./required-symbol";
 export { ClearButton } from "./clear-button";
+export * from "./checkout"; /*2c*/
 export * from "./form-components";
 export * from "./modals";
+
+// 2d. Move checkout-form-schema.ts in checkout folder of shared to constants folder of shared of app
+// 2e. Create and go to index.ts in checkout folder of shared to constants folder of shared of app

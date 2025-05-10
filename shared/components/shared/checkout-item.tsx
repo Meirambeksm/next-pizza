@@ -42,7 +42,7 @@ export const CheckoutItem: React.FC<Props> = ({
           onClick={onClickCountButton}
           value={quantity}
         />
-        <button onClick={onClickRemove}>
+        <button type="button" /*5z(end)*/ onClick={onClickRemove}>
           <X
             className="text-gray-400 cursor-pointer hover:text-gray-600"
             size={20}
@@ -52,3 +52,5 @@ export const CheckoutItem: React.FC<Props> = ({
     </div>
   );
 };
+
+// 6a. Go to count-icon-button.tsx in shared of components
