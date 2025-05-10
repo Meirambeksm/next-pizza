@@ -53,8 +53,8 @@ export default async function Home({
   );
 }
 
-// 0. Start here 17:41:00
-// 1a. Create and go to actions.ts in app folder
+// 0. Start here 18:05:00
+// 1a. Go to actions.ts in app folder
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

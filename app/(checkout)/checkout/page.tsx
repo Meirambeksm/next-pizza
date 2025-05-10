@@ -16,7 +16,7 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 
 export default function CheckoutPage() {
-  const [submitting, setSubmitting] = useState(false); /*1j*/
+  const [submitting, setSubmitting] = useState(false);
   const { totalAmount, updateItemQuantity, items, removeCartItem, loading } =
     useCart();
   const form = useForm<CheckoutFormValues>({
@@ -31,14 +31,9 @@ export default function CheckoutPage() {
     },
   });
 
-  // const onSubmit = (data: CheckoutFormValues) => {
-  //   console.log(data);
-  //   createOrder(data) /*1d*/;
-  // };
-
   const onSubmit = async (data: CheckoutFormValues) => {
     try {
-      setSubmitting(true) /*1l*/;
+      setSubmitting(true);
       const url = await createOrder(data);
 
       toast.error("Заказ успешно оформлен! 📝 Переход на оплату...", {
@@ -50,12 +45,11 @@ export default function CheckoutPage() {
       }
     } catch (err) {
       console.log(err);
-      setSubmitting(false) /*1m*/;
+      setSubmitting(false);
       toast.error("Не удалось создать заказ", {
         icon: "❌",
       });
     }
-    /*1f*/
   };
 
   const onClickCountButton = (
@@ -98,7 +92,7 @@ export default function CheckoutPage() {
             <div className="w-[450px]">
               <CheckoutSidebar
                 totalAmount={totalAmount}
-                loading={loading || submitting /*1k*/}
+                loading={loading || submitting}
               />
             </div>
           </div>
@@ -107,6 +101,3 @@ export default function CheckoutPage() {
     </Container>
   );
 }
-
-// 1e. Check in browser => Network => Fetch/XHR => checkout => Payload (and later Preview) => should be in the form of array
-// 1g. Go to checkout-sidebar.tsx of shared of components

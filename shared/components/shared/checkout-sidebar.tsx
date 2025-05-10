@@ -81,7 +81,7 @@ export const CheckoutSidebar: React.FC<Props> = ({
       />
 
       <Button
-        loading={loading} /*1h*/
+        loading={loading}
         type="submit"
         className="w-full h-14 rounded-2xl mt-6 text-base font-bold"
       >
@@ -91,5 +91,3 @@ export const CheckoutSidebar: React.FC<Props> = ({
     </WhiteBlock>
   );
 };
-
-// 1i. Go to page.tsx of checkout folder of (checkout) of app
