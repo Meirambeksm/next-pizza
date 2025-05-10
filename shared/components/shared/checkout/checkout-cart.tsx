@@ -13,7 +13,7 @@ interface Props {
     type: "plus" | "minus"
   ) => void;
   removeCartItem: (id: number) => void;
-  loading?: boolean /*5t*/;
+  loading?: boolean;
   className?: string;
 }
 
@@ -21,7 +21,7 @@ export const CheckoutCart: React.FC<Props> = ({
   items,
   onClickCountButton,
   removeCartItem,
-  loading /*5u*/,
+  loading,
   className,
 }) => {
   return (
@@ -30,8 +30,8 @@ export const CheckoutCart: React.FC<Props> = ({
         {loading
           ? [...Array(4)].map((_, index) => (
               <CheckoutItemSkeleton key={index} />
-            )) /*5v*/
-          : /*6d*/ items.map((item) => (
+            ))
+          : items.map((item) => (
               <CheckoutItem
                 key={item.id}
                 id={item.id}
@@ -55,6 +55,3 @@ export const CheckoutCart: React.FC<Props> = ({
     </WhiteBlock>
   );
 };
-
-// 5w. Go to page.tsx of checkout folder of (checkout) of app
-// 6e(end). FINISH!

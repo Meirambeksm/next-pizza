@@ -3,7 +3,7 @@ import React from "react";
 
 interface Props {
   title?: React.ReactNode;
-  value?: React.ReactNode /*5g change*/;
+  value?: React.ReactNode;
   className?: string;
 }
 
@@ -23,5 +23,3 @@ export const CheckoutItemDetails: React.FC<Props> = ({
     </div>
   );
 };
-
-// 5h. Go to checkout-sidebar.tsx of shared of components

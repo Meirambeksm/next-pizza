@@ -8,23 +8,27 @@ interface Props extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   name: string;
   label?: string;
   required: boolean;
-} /*3a*/
+}
 
-export const FormTextarea: React.FC<Props> = (
-  { className, name, label, required, ...props } /*3b*/
-) => {
+export const FormTextarea: React.FC<Props> = ({
+  className,
+  name,
+  label,
+  required,
+  ...props
+}) => {
   const {
     register,
     formState: { errors },
     watch,
     setValue,
-  } = useFormContext(); /*3c*/
+  } = useFormContext();
 
-  const errorText = errors?.[name]?.message as string; /*3d*/
-  const value = watch(name); /*3e*/
+  const errorText = errors?.[name]?.message as string;
+  const value = watch(name);
   const onClickClear = () => {
     setValue(name, "");
-  }; /*3f*/
+  };
 
   return (
     <div className={className}>
@@ -36,13 +40,7 @@ export const FormTextarea: React.FC<Props> = (
         {value && <ClearButton onClick={onClickClear} />}
       </div>
 
-      {
-        errorText && (
-          <p className="text-red-500 text-sm mt-2">{errorText}</p>
-        ) /*3g*/
-      }
-    </div> /*3g*/
+      {errorText && <p className="text-red-500 text-sm mt-2">{errorText}</p>}
+    </div>
   );
 };
-
-// 3h. Go to index.ts of form-components folder of shared of components

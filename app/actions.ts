@@ -1,0 +1,28 @@
+"use server";
+import { prisma } from "@/prisma/prisma-client";
+import { CheckoutFormValues } from "@/shared/constants";
+import { OrderStatus } from "@prisma/client";
+
+export async function createOrder(data: CheckoutFormValues) {
+  console.log(data);
+
+  const token = "123";
+
+  await prisma.order.create({
+    data: {
+      token,
+      totalAmount: 1500,
+      status: OrderStatus.PENDING,
+      items: [],
+      fullName: data.firstName + " " + data.lastName,
+      email: data.email,
+      phone: data.phone,
+      address: data.address,
+      comment: data.comment,
+    },
+  });
+
+  return "https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations";
+} /*1b*/
+
+// 1c. Go to page.tsx in checkout folder of (checkout) of app

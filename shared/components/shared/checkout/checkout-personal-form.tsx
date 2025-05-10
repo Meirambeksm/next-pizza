@@ -7,7 +7,7 @@ interface Props {
 
 export const CheckoutPersonalForm: React.FC<Props> = ({ className }) => {
   return (
-    <WhiteBlock title="2. Персональные данные" className={className /*5o*/}>
+    <WhiteBlock title="2. Персональные данные" className={className}>
       <div className="grid grid-cols-2 gap-5">
         <FormInput name="firstName" className="text-base" placeholder="Имя" />
         <FormInput
@@ -21,5 +21,3 @@ export const CheckoutPersonalForm: React.FC<Props> = ({ className }) => {
     </WhiteBlock>
   );
 };
-
-// 5p. Go to page.tsx of checkout folder of (checkout) of app

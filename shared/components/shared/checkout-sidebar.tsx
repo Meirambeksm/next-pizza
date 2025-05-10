@@ -9,13 +9,13 @@ const DELIVERY_PRICE = 250;
 
 interface Props {
   totalAmount: number;
-  loading?: boolean /*5c*/;
+  loading?: boolean;
   className?: string;
 }
 
 export const CheckoutSidebar: React.FC<Props> = ({
   totalAmount,
-  loading /*5d*/,
+  loading,
   className,
 }) => {
   const vatPrice = (totalAmount * VAT) / 100;
@@ -25,16 +25,13 @@ export const CheckoutSidebar: React.FC<Props> = ({
     <WhiteBlock className={cn("p-6 sticky top-4", className)}>
       <div className="flex flex-col gap-1">
         <span className="text-xl">Итого:</span>
-        {
-          loading ? (
-            <Skeleton className="w-48 h-11" />
-          ) : (
-            <span className="h-11 text-[34px] font-extrabold">
-              {totalPrice} KZT
-            </span>
-          )
-          /*5e*/
-        }
+        {loading ? (
+          <Skeleton className="w-48 h-11" />
+        ) : (
+          <span className="h-11 text-[34px] font-extrabold">
+            {totalPrice} KZT
+          </span>
+        )}
       </div>
 
       <CheckoutItemDetails
@@ -49,7 +46,7 @@ export const CheckoutSidebar: React.FC<Props> = ({
             <Skeleton className="h-6 w-16 rounded-[6px]" />
           ) : (
             `${totalAmount} KZT`
-          ) /*5i*/
+          )
         }
       />
       <CheckoutItemDetails
@@ -65,7 +62,6 @@ export const CheckoutSidebar: React.FC<Props> = ({
           ) : (
             `${vatPrice} KZT`
           )
-          /*5j*/
         }
       />
       <CheckoutItemDetails
@@ -81,11 +77,11 @@ export const CheckoutSidebar: React.FC<Props> = ({
           ) : (
             `${DELIVERY_PRICE} KZT`
           )
-          /*5k*/
         }
       />
 
       <Button
+        loading={loading} /*1h*/
         type="submit"
         className="w-full h-14 rounded-2xl mt-6 text-base font-bold"
       >
@@ -96,5 +92,4 @@ export const CheckoutSidebar: React.FC<Props> = ({
   );
 };
 
-// 5f. Go to checkout-item-details.tsx in shared of components
-// 5l. Go to checkout-address-form.tsx in checkout folder of shared of components
+// 1i. Go to page.tsx of checkout folder of (checkout) of app

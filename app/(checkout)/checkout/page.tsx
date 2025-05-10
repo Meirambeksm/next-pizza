@@ -1,29 +1,24 @@
 "use client";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-// import { CheckoutSidebar, Container, Title } from "@/shared/components"; /*2i move*/
 import { useCart } from "@/shared/hooks";
 import {
-  CheckoutSidebar /*2i move*/,
-  Container /*2i move*/,
-  Title /*2i move*/,
+  CheckoutSidebar,
+  Container,
+  Title,
   CheckoutAddressForm,
   CheckoutCart,
   CheckoutPersonalForm,
 } from "@/shared/components";
-import {
-  CheckoutFormSchema,
-  CheckoutFormValues,
-} from "@/shared/constants"; /*2h*/
+import { CheckoutFormSchema, CheckoutFormValues } from "@/shared/constants";
+import { createOrder } from "@/app/actions";
+import toast from "react-hot-toast";
+import { useState } from "react";
 
 export default function CheckoutPage() {
-  const {
-    totalAmount,
-    updateItemQuantity,
-    items,
-    removeCartItem,
-    loading /*5a*/,
-  } = useCart();
+  const [submitting, setSubmitting] = useState(false); /*1j*/
+  const { totalAmount, updateItemQuantity, items, removeCartItem, loading } =
+    useCart();
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(CheckoutFormSchema),
     defaultValues: {
@@ -36,8 +31,31 @@ export default function CheckoutPage() {
     },
   });
 
-  const onSubmit = (data: CheckoutFormValues) => {
-    console.log(data);
+  // const onSubmit = (data: CheckoutFormValues) => {
+  //   console.log(data);
+  //   createOrder(data) /*1d*/;
+  // };
+
+  const onSubmit = async (data: CheckoutFormValues) => {
+    try {
+      setSubmitting(true) /*1l*/;
+      const url = await createOrder(data);
+
+      toast.error("Заказ успешно оформлен! 📝 Переход на оплату...", {
+        icon: "✅",
+      });
+
+      if (url) {
+        location.href = url;
+      }
+    } catch (err) {
+      console.log(err);
+      setSubmitting(false) /*1m*/;
+      toast.error("Не удалось создать заказ", {
+        icon: "❌",
+      });
+    }
+    /*1f*/
   };
 
   const onClickCountButton = (
@@ -65,26 +83,22 @@ export default function CheckoutPage() {
                 onClickCountButton={onClickCountButton}
                 removeCartItem={removeCartItem}
                 items={items}
-                loading={loading /*5x*/}
+                loading={loading}
               />
 
               <CheckoutPersonalForm
-                className={
-                  loading ? "opacity-40 pointer-events-none" : "" /*5q*/
-                }
+                className={loading ? "opacity-40 pointer-events-none" : ""}
               />
 
               <CheckoutAddressForm
-                className={
-                  loading ? "opacity-40 pointer-events-none" : "" /*5r*/
-                }
+                className={loading ? "opacity-40 pointer-events-none" : ""}
               />
             </div>
             {/* Right Side */}
             <div className="w-[450px]">
               <CheckoutSidebar
                 totalAmount={totalAmount}
-                loading={loading /*5b*/}
+                loading={loading || submitting /*1k*/}
               />
             </div>
           </div>
@@ -94,7 +108,5 @@ export default function CheckoutPage() {
   );
 }
 
-// 2j(end). Create and go to form-textarea.tsx in form-components folder of shared of components
-// 5c. Go to checkout-sidebar.tsx of shared of components
-// 5s. Go to checkout-cart.tsx in checkout folder of shared of components
-// 5y. Go to checkout-item.tsx in shared of components
+// 1e. Check in browser => Network => Fetch/XHR => checkout => Payload (and later Preview) => should be in the form of array
+// 1g. Go to checkout-sidebar.tsx of shared of components

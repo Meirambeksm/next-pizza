@@ -53,8 +53,8 @@ export default async function Home({
   );
 }
 
-// 0. Start here 17:07:53
-// 1. Create and go to index.ts in components folder in shared
+// 0. Start here 17:41:00
+// 1a. Create and go to actions.ts in app folder
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s
