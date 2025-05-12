@@ -20,6 +20,4 @@ export const sendEmail = async (
   }
 
   return data;
-}; /*1h*/
-
-// 1i. Go index.ts in lib folder
+};

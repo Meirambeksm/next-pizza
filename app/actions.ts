@@ -2,7 +2,7 @@
 import { prisma } from "@/prisma/prisma-client";
 import { PayOrderTemplate } from "@/shared/components";
 import { CheckoutFormValues } from "@/shared/constants";
-import { sendEmail } from "@/shared/lib";
+import { createPayment, sendEmail } from "@/shared/lib";
 import { OrderStatus } from "@prisma/client";
 import { cookies } from "next/headers";
 
@@ -76,20 +76,41 @@ export async function createOrder(data: CheckoutFormValues) {
       },
     });
 
-    // TO DO: сделать создание ссылки оплаты
+    const paymentData = await createPayment({
+      amount: order.totalAmount,
+      orderId: order.id,
+      description: "Оплата заказа №" + order.id,
+    }); /*2a*/
+
+    if (!paymentData) {
+      throw new Error("Payment data not found");
+    } /*2b*/
+
+    await prisma.order.update({
+      where: {
+        id: order.id,
+      },
+      data: {
+        paymentId: paymentData.id,
+      },
+    }); /*2c*/
+
+    const paymentUrl = paymentData.confirmation.confirmation_url; /*2d*/
+
     await sendEmail(
       data.email,
       "Next Pizza / Оплатите заказ №" + order.id,
       PayOrderTemplate({
         orderId: order.id,
         totalAmount: order.totalAmount,
-        paymentUrl: "https://www.google.com/",
+        paymentUrl /*2e*/,
       })
-    ); /*2a*/
+    );
+
+    return paymentUrl; /*2f*/
   } catch (err) {
-    console.log("[createOrder] Server error", err) /*2b*/;
+    console.log("[createOrder] Server error", err);
   }
 }
 
-// 2c. Go to .env and create the following line: RESEND_API_KEY=re_Ycqm6xJh_3gfaTBerd7Bqrw7HPPBqw8rG and come back
-// 2d(end). FINISH!!!
+// 2g(end). FINISH!

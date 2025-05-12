@@ -4,7 +4,7 @@ interface Props {
   orderId: number;
   totalAmount: number;
   paymentUrl: string;
-} /*1e*/
+}
 
 export const PayOrderTemplate: React.FC<Props> = ({
   orderId,
@@ -18,6 +18,4 @@ export const PayOrderTemplate: React.FC<Props> = ({
       <a href={paymentUrl}> по этой ссылке</a> для оплаты заказа.
     </p>
   </div>
-); /*1f*/
-
-// 1g. Create and go to send-email.ts in lib folder of shared
+);

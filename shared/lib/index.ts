@@ -5,6 +5,7 @@ export { getCartItemDetails } from "./get-cart-item-details";
 export { getCartDetails } from "./get-cart-details";
 export { calcCartItemTotalPrice } from "./calc-cart-item-total-price";
 export { findOrCreateCart } from "./find-or-create-cart";
-export { sendEmail } from "./send-email"; /*1j*/
+export { sendEmail } from "./send-email";
+export { createPayment } from "./create-payment"; /*1k*/
 
-// 1k. Create and go to index.ts in email-templates of shared of components
+// 1l(end). Go to actions.ts in app
