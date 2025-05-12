@@ -53,15 +53,8 @@ export default async function Home({
   );
 }
 
-// 0. Start here 18:39:00
-// 1a. Visit: yookassa.ru and then register and then do the instructions from 18:39:00 to 18:40:10
-// 1b. Go to .env file and paste YOOKASSA_API_KEY=test_r6QhwqGBf2zjUR5KVBYVC9c54kbG2lu99w_ep-QvT74 and YOOKASSA_CALLBACK_URL=http://localhost:3000/?paid and YOOKASSA_STORE_ID=test and come back
-// 1c. Create and go to yookassa.ts in @types folder
-
-// YOU ARE AT: 19:02:07 and on actions.ts
-
-// test_*gPLEOpHkkvzbpYcZvGXsFZbxLv5To4e1PgDo012ywqlo
-// test_r6QhwqGBf2zjUR5KVBYVC9c54kbG2lu99w_ep-QvT74
+// 0. Start here 19:06:00
+// 1a. Go to yookassa.ts in @types folder
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

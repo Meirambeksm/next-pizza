@@ -5,7 +5,7 @@ interface Props {
   description: string;
   orderId: number;
   amount: number;
-} /*1f*/
+}
 
 export async function createPayment(details: Props) {
   const { data } = await axios.post<PaymentData>(
@@ -24,7 +24,7 @@ export async function createPayment(details: Props) {
         type: "redirect",
         return_url: process.env.YOOKASSA_CALLBACK_URL,
       },
-    } /*1g*/,
+    },
     {
       auth: {
         username: process.env.YOOKASSA_STORE_ID as string,
@@ -34,10 +34,8 @@ export async function createPayment(details: Props) {
         "Content-Type": "application/json",
         "Idempotence-Key": Math.random().toString(36).substring(7),
       },
-    } /*1i*/
+    }
   );
 
-  return data /*1h*/;
+  return data;
 }
-
-// 1j. Go to index.ts in lib of shared

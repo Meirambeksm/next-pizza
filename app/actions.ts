@@ -80,11 +80,11 @@ export async function createOrder(data: CheckoutFormValues) {
       amount: order.totalAmount,
       orderId: order.id,
       description: "Оплата заказа №" + order.id,
-    }); /*2a*/
+    });
 
     if (!paymentData) {
       throw new Error("Payment data not found");
-    } /*2b*/
+    }
 
     await prisma.order.update({
       where: {
@@ -93,9 +93,9 @@ export async function createOrder(data: CheckoutFormValues) {
       data: {
         paymentId: paymentData.id,
       },
-    }); /*2c*/
+    });
 
-    const paymentUrl = paymentData.confirmation.confirmation_url; /*2d*/
+    const paymentUrl = paymentData.confirmation.confirmation_url;
 
     await sendEmail(
       data.email,
@@ -103,14 +103,12 @@ export async function createOrder(data: CheckoutFormValues) {
       PayOrderTemplate({
         orderId: order.id,
         totalAmount: order.totalAmount,
-        paymentUrl /*2e*/,
+        paymentUrl,
       })
     );
 
-    return paymentUrl; /*2f*/
+    return paymentUrl;
   } catch (err) {
     console.log("[createOrder] Server error", err);
   }
 }
-
-// 2g(end). FINISH!

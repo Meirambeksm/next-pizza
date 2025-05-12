@@ -31,5 +31,36 @@ export interface Metadata {
   order_id: string;
 }
 
-// 1d. Copy and paste from final project of archakov's github.com
-// 1e. Create and go to create-payment.ts in lib folder
+export type PaymentCallbackData = {
+  type: string;
+  event: string;
+  object: {
+    id: string;
+    status: string;
+    amount: { value: string; currency: "RUB" };
+    income_amount: { value: string; currency: "RUB" };
+    description: string;
+    recipient: { account_id: string; gateway_id: string };
+    payment_method: {
+      type: string;
+      id: string;
+      saved: boolean;
+      title: string;
+    };
+    captured_at: string;
+    created_at: string;
+    test: boolean;
+    refunded_amount: { value: string; currency: "RUB" };
+    paid: boolean;
+    refundable: true;
+    metadata: { order_id: string };
+    authorization_details: {
+      rrn: string;
+      auth_code: string;
+    };
+  };
+}; /*1b*/
+
+// 1c. Create checkout folder in api folder of app
+// 1d. Create callback folder in checkout folder of app
+// 1e(end). Create and go to route.ts in callback folder checkout of api of app
