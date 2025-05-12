@@ -27,3 +27,6 @@ export { ClearButton } from "./clear-button";
 export * from "./checkout";
 export * from "./form-components";
 export * from "./modals";
+export * from "./email-templates"; /*1n*/
+
+// 1o(end). Go to actions.ts in app folder

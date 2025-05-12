@@ -53,8 +53,11 @@ export default async function Home({
   );
 }
 
-// 0. Start here 18:05:00
-// 1a. Go to actions.ts in app folder
+// 0. Start here 18:15:00
+// 1a. Visit: resend.com and register
+// 1b. Create API Key: re_Ycqm6xJh_3gfaTBerd7Bqrw7HPPBqw8rG
+// 1c. Terminal: npm install resend
+// 1d. Create email-templates folder in shared of components and create and go to pay-order.tsx
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s
