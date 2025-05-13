@@ -1,17 +1,15 @@
 "use client";
 import { cn } from "@/shared/lib/utils";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "./container";
 import Image from "next/image";
-import { Button } from "../ui";
-import { User } from "lucide-react";
 import Link from "next/link";
 import { SearchInput } from "./search-input";
 import { CartButton } from "./cart-button";
 import { useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
-import { useSession, signIn /*3b*/ } from "next-auth/react";
 import { ProfileButton } from "./profile-button";
+import { AuthModal } from "./modals";
 
 interface Props {
   hasSearch?: boolean;
@@ -24,7 +22,7 @@ export const Header: React.FC<Props> = ({
   hasCart = true,
   className,
 }) => {
-  // const { data: session } = useSession(); /*3a*/ to be moved to profile-button.tsx in step 4b
+  const [openAuthModal, setOpenAuthModal] = useState(false); /*2a*/
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -57,20 +55,12 @@ export const Header: React.FC<Props> = ({
         )}
 
         <div className="flex items-center gap-3">
-          {/* <Button
-            onClick={
-              () =>
-                signIn("github", {
-                  callbackUrl: "/",
-                  redirect: true,
-                }) /*3c*/}
-          {/* variant="outline" */}
-          {/* className="flex items-center gap-1" */}
-          {/* > */}
-          {/* <User size={16} /> */}
-          {/* Войти */}
-          {/* </Button>  */} {/*to be replaced by step 4i*/}
-          <ProfileButton /*4i (replace the previous button)*/ />
+          <AuthModal
+            open={openAuthModal}
+            onClose={() => setOpenAuthModal(false)}
+            /*2b*/
+          />
+          <ProfileButton onClickSignIn={() => setOpenAuthModal(true) /*2c*/} />
           {hasCart && <CartButton />}
         </div>
       </Container>
@@ -78,5 +68,6 @@ export const Header: React.FC<Props> = ({
   );
 };
 
-// 3d(end). Create and go to profile-button.tsx in shared of components
-// 4j(end). FINISH
+// 2d. Create forms folder in auth-modal folder of omdals of shared of components
+// 2e. Create register-form.tsx and schema.ts
+// 2f(end). Create and go to login-form.tsx

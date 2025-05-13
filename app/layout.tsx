@@ -19,13 +19,11 @@ export default function RootLayout({
         <link data-rh="true" rel="icon" href="/logo.png" />
       </head>
       <body className={nunito.className}>
-        <Providers /*2h*/>{children}</Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
 }
-
-// 2i. Go to global.css in app folder
 
 // 8:33:27 Поржал с этого момента, т.к. сам не допустил эту ошибку,
 // что меня обрадовало, а потом Бог кода меня решил проучить.

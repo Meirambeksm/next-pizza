@@ -6,19 +6,18 @@ import Link from "next/link";
 interface Props {
   onClickSignIn?: () => void;
   className?: string;
-} /*4a*/
+}
 
 export const ProfileButton: React.FC<Props> = ({
   className,
   onClickSignIn,
 }) => {
-  const { data: session } =
-    useSession(); /*4b cut and paste from header.tsx (step 3a)*/
+  const { data: session } = useSession();
 
   return (
-    <div className={className /*4c*/}>
+    <div className={className}>
       {!session ? (
-        <Button /*4d*/
+        <Button
           onClick={onClickSignIn}
           variant="outline"
           className="flex items-center gap-1"
@@ -27,7 +26,7 @@ export const ProfileButton: React.FC<Props> = ({
           Войти
         </Button>
       ) : (
-        <Link href="/profile" /*4e*/>
+        <Link href="/profile">
           <Button variant="secondary" className="flex items-center gap-2">
             <CircleUser size={18} />
             Профиль
@@ -37,5 +36,3 @@ export const ProfileButton: React.FC<Props> = ({
     </div>
   );
 };
-
-// 4f. Go to index.ts in shared folder of components
