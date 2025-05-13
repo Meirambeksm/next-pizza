@@ -22,7 +22,7 @@ export const Header: React.FC<Props> = ({
   hasCart = true,
   className,
 }) => {
-  const [openAuthModal, setOpenAuthModal] = useState(false); /*2a*/
+  const [openAuthModal, setOpenAuthModal] = useState(false);
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -58,16 +58,11 @@ export const Header: React.FC<Props> = ({
           <AuthModal
             open={openAuthModal}
             onClose={() => setOpenAuthModal(false)}
-            /*2b*/
           />
-          <ProfileButton onClickSignIn={() => setOpenAuthModal(true) /*2c*/} />
+          <ProfileButton onClickSignIn={() => setOpenAuthModal(true)} />
           {hasCart && <CartButton />}
         </div>
       </Container>
     </header>
   );
 };
-
-// 2d. Create forms folder in auth-modal folder of omdals of shared of components
-// 2e. Create register-form.tsx and schema.ts
-// 2f(end). Create and go to login-form.tsx

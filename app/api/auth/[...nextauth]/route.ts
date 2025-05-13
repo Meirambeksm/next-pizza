@@ -1,14 +1,24 @@
 import NextAuth from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
-import CredentialsProvider from "next-auth/providers/credentials"; /*6a*/
+import CredentialsProvider from "next-auth/providers/credentials";
 import { prisma } from "@/prisma/prisma-client";
-import { compare } from "bcrypt";
+import { compare, hashSync } from "bcrypt";
+import { UserRole } from "@prisma/client";
 
 export const authOptions = {
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_ID || "",
       clientSecret: process.env.GITHUB_SECRET || "",
+      profile(profile) {
+        return {
+          id: profile.id,
+          name: profile.name || profile.login,
+          email: profile.email,
+          image: profile.avatar_url,
+          role: "USER" as UserRole,
+        };
+      } /*2a*/,
     }),
 
     CredentialsProvider({
@@ -55,15 +65,69 @@ export const authOptions = {
           role: findUser.role,
         };
       },
-    }) /*6b*/,
+    }),
   ],
 
-  secret: process.env.NEXTAUTH_SECRET /*6c*/,
+  secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt",
-  } /*6e*/,
+  },
 
   callbacks: {
+    async signIn({ user, account }) {
+      try {
+        if (account?.provider === "credentials") {
+          return true;
+        } /*2d*/
+
+        if (!user.email) {
+          return false;
+        } /*2e*/
+
+        const findUser = await prisma.user.findFirst({
+          where: {
+            OR: [
+              {
+                provider: account?.provider,
+                providerId: account?.providerAccountId,
+              },
+              { email: user.email },
+            ],
+          },
+        }); /*2f*/
+
+        if (findUser) {
+          await prisma.user.update({
+            where: {
+              id: findUser.id,
+            },
+            data: {
+              provider: account?.provider,
+              providerId: account?.providerAccountId,
+            },
+          });
+
+          return true;
+        } /*2g*/
+
+        await prisma.user.create({
+          data: {
+            email: user.email,
+            fullName: user.name || "User #" + user.id,
+            password: hashSync(user.id.toString(), 10),
+            verified: new Date(),
+            provider: account?.provider,
+            providerId: account?.providerAccountId,
+          },
+        }) /*2h*/;
+
+        return true; /*2i*/
+      } catch (error) {
+        console.error("Error [SIGNIN]", error); /*2b*/
+        return false; /*2c*/
+      }
+    },
+
     async jwt({ token }) {
       const findUser = await prisma.user.findFirst({
         where: {
@@ -79,7 +143,7 @@ export const authOptions = {
       }
 
       return token;
-    } /*6f*/,
+    },
 
     session({ session, token }) {
       if (session?.user) {
@@ -88,12 +152,11 @@ export const authOptions = {
       }
 
       return session;
-    } /*6g*/,
+    },
   },
 };
 
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
 
-// 6d. Go to .env file and place the following: NEXTAUTH_SECRET=test123456 and come back
-// 6h(end). Go to auth-modal.tsx in modals folder of shared of components
+// 2j(end). FINISH

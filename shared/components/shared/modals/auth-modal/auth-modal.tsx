@@ -7,29 +7,27 @@ import { LoginForm } from "./forms/login-form";
 interface Props {
   open: boolean;
   onClose: () => void;
-} /*1i*/
+}
 
 export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
-  const [type, setType] = useState<"login" | "register">("login"); /*7a*/
+  const [type, setType] = useState<"login" | "register">("login");
 
   const onSwitchType = () => {
     setType(type === "login" ? "register" : "login");
-  }; /*7b*/
+  };
 
   const handleClose = () => {
     onClose();
-  }; /*1j*/
+  };
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="w-[450px] bg-white p-10">
-        {
-          type === "login" ? (
-            <LoginForm onClose={handleClose} />
-          ) : (
-            <h1>REGISTER</h1>
-          ) /*7d*/
-        }
+        {type === "login" ? (
+          <LoginForm onClose={handleClose} />
+        ) : (
+          <h1>REGISTER</h1>
+        )}
         <hr />
         <div className="flex gap-2">
           <Button
@@ -73,14 +71,10 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
           onClick={onSwitchType}
           type="button"
           className="h-12"
-          /*7с*/
         >
           {type !== "login" ? "Войти" : "Регистрация"}
         </Button>
       </DialogContent>
-    </Dialog> /*1k*/
+    </Dialog>
   );
 };
-
-// 1l(end). Go to header.tsx in shared of components
-// 7e(end). Finish

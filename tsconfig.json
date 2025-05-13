@@ -21,6 +21,15 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "@types/*.d.ts" /*1e*/
+  ],
   "exclude": ["node_modules"]
 }
+
+
+// 1f(end). Go to route.ts in [...nextauth] of auth of api of app

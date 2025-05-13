@@ -53,9 +53,8 @@ export default async function Home({
   );
 }
 
-// 0. Start here 20:17:00
-// 1a. Create auth-modal folder in modals folder in shared of components and create auth-modal.tsx and index.ts files in auth-modal
-// 1b. Go to index.ts in auth-modal folder of modals of shared of components
+// 0. Start here 20:58:25
+// 1a. Go to route.ts in [...nextauth] of auth of api of app
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s
