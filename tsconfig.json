@@ -26,10 +26,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "@types/*.d.ts" /*1e*/
+    "@types/*.d.ts"
   ],
   "exclude": ["node_modules"]
 }
-
-
-// 1f(end). Go to route.ts in [...nextauth] of auth of api of app

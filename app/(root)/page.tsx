@@ -53,8 +53,8 @@ export default async function Home({
   );
 }
 
-// 0. Start here 20:58:25
-// 1a. Go to route.ts in [...nextauth] of auth of api of app
+// 0. Start here 21:11:40
+// 1a. Create and go to auth-options.ts in constants folder of shared
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

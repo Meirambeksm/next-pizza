@@ -25,7 +25,12 @@ export { ErrorText } from "./error-text";
 export { RequiredSymbol } from "./required-symbol";
 export { ClearButton } from "./clear-button";
 export { ProfileButton } from "./profile-button";
+export { InfoBlock } from "./info-block"; /*3e*/
+export { ProfileForm } from "./profile-form"; /*4g*/
 export * from "./checkout";
 export * from "./form-components";
 export * from "./modals";
 export * from "./email-templates";
+
+// 3f. Create not-auth folder in (root) folder and create and go to page.tsx inside
+// 4h. Go to page.tsx of profile folder of (foot) of app

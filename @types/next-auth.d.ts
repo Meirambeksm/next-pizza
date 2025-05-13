@@ -18,13 +18,11 @@ declare module "next-auth" {
     id: number;
     role: UserRole;
   }
-} /*1b*/
+}
 
 declare module "next-auth/jwt" {
   interface JWT extends DefaultJWT {
     id: string;
     role: UserRole;
   }
-} /*1c*/
-
-// 1d. Go to tsconfig.json file
+}
