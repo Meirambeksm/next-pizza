@@ -80,3 +80,13 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+#nprogress .bar {
+  @apply shadow-md shadow-primary !important;
+} /*2j*/
+
+#nprogress .spinner-icon {
+  @apply border-t-primary border-l-primary !important;
+} /*2k*/
+
+/* 2l(end). Go to header.tsx in shared folder of components */

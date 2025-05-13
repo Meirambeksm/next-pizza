@@ -23,6 +23,4 @@ export const OrderSuccessTemplate: React.FC<Props> = ({ orderId, items }) => (
       ))}
     </ul>
   </div>
-); /*2i*/
-
-// 2j. Go to route.ts of callback folder of checkout of api of app
+);

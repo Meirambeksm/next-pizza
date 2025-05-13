@@ -24,7 +24,10 @@ export { CheckoutSidebar } from "./checkout-sidebar";
 export { ErrorText } from "./error-text";
 export { RequiredSymbol } from "./required-symbol";
 export { ClearButton } from "./clear-button";
+export { ProfileButton } from "./profile-button"; /*4g*/
 export * from "./checkout";
 export * from "./form-components";
 export * from "./modals";
 export * from "./email-templates";
+
+// 4h. Go to header.tsx in shared of components

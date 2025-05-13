@@ -53,8 +53,11 @@ export default async function Home({
   );
 }
 
-// 0. Start here 19:06:00
-// 1a. Go to yookassa.ts in @types folder
+// 0. Start here 19:45:00
+// 1a. Terminal: npm install next-auth
+// 1b. Create auth folder in api folder of app and create [...nextauth] in auth folder and create and go to route.ts in [...nextauth] of auth of api of app
+
+// YOU ARE AT layout.tsx in app folder and TIME: 20-02-00
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

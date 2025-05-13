@@ -4,11 +4,11 @@ import qs from "qs";
 import { useRouter } from "next/navigation";
 
 export const useQueryFilters = (filters: Filters) => {
-  const isMounted = useRef(false); /*3c*/
+  const isMounted = useRef(false);
   const router = useRouter();
 
   useEffect(() => {
-    if (isMounted /*3e*/) {
+    if (isMounted) {
       const params = {
         ...filters.prices,
         pizzaTypes: Array.from(filters.pizzaTypes),
@@ -21,8 +21,6 @@ export const useQueryFilters = (filters: Filters) => {
       router.push(`?${query}`, { scroll: false });
     }
 
-    isMounted.current = true; /*3d*/
+    isMounted.current = true;
   }, [filters]);
 };
-
-// 3f(end). Go to header.tsx in shared of components

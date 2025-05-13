@@ -10,6 +10,8 @@ import { SearchInput } from "./search-input";
 import { CartButton } from "./cart-button";
 import { useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
+import { useSession, signIn /*3b*/ } from "next-auth/react";
+import { ProfileButton } from "./profile-button";
 
 interface Props {
   hasSearch?: boolean;
@@ -22,7 +24,8 @@ export const Header: React.FC<Props> = ({
   hasCart = true,
   className,
 }) => {
-  const searchParams = useSearchParams(); /*4a*/
+  // const { data: session } = useSession(); /*3a*/ to be moved to profile-button.tsx in step 4b
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     if (searchParams.has("paid")) {
@@ -30,7 +33,7 @@ export const Header: React.FC<Props> = ({
         toast.success("Заказ успешно оплачен! Информация отправлена на почту.");
       }, 500);
     }
-  }, []) /*4b*/;
+  }, []);
 
   return (
     <header className={cn(" border-b", className)}>
@@ -54,11 +57,20 @@ export const Header: React.FC<Props> = ({
         )}
 
         <div className="flex items-center gap-3">
-          <Button variant="outline" className="flex items-center gap-1">
-            <User size={16} />
-            Войти
-          </Button>
-
+          {/* <Button
+            onClick={
+              () =>
+                signIn("github", {
+                  callbackUrl: "/",
+                  redirect: true,
+                }) /*3c*/}
+          {/* variant="outline" */}
+          {/* className="flex items-center gap-1" */}
+          {/* > */}
+          {/* <User size={16} /> */}
+          {/* Войти */}
+          {/* </Button>  */} {/*to be replaced by step 4i*/}
+          <ProfileButton /*4i (replace the previous button)*/ />
           {hasCart && <CartButton />}
         </div>
       </Container>
@@ -66,4 +78,5 @@ export const Header: React.FC<Props> = ({
   );
 };
 
-// 4c(end). FINISH!
+// 3d(end). Create and go to profile-button.tsx in shared of components
+// 4j(end). FINISH

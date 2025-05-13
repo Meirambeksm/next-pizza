@@ -1,6 +1,6 @@
 import { Nunito } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "react-hot-toast";
+import { Providers } from "@/shared/components/shared/providers";
 
 const nunito = Nunito({
   subsets: ["cyrillic"],
@@ -19,12 +19,13 @@ export default function RootLayout({
         <link data-rh="true" rel="icon" href="/logo.png" />
       </head>
       <body className={nunito.className}>
-        {children}
-        <Toaster />
+        <Providers /*2h*/>{children}</Providers>
       </body>
     </html>
   );
 }
+
+// 2i. Go to global.css in app folder
 
 // 8:33:27 Поржал с этого момента, т.к. сам не допустил эту ошибку,
 // что меня обрадовало, а потом Бог кода меня решил проучить.

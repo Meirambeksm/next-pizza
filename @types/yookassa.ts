@@ -59,8 +59,4 @@ export type PaymentCallbackData = {
       auth_code: string;
     };
   };
-}; /*1b*/
-
-// 1c. Create checkout folder in api folder of app
-// 1d. Create callback folder in checkout folder of app
-// 1e(end). Create and go to route.ts in callback folder checkout of api of app
+};
