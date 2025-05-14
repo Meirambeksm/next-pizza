@@ -64,7 +64,7 @@ export default async function Home({
 // 0. Start here 22:35:00
 // 1a. Go to checkout-address-form.tsx in shared/components/shared/checkout
 // 2a. Push to Github
-// 2b. Visit: vercel.com
+// 2b. Visit: vercel.com => Add new project => Select your Github repo => Import =>
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s
