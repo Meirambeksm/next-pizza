@@ -21,7 +21,7 @@ export default function CheckoutPage() {
   const [submitting, setSubmitting] = useState(false);
   const { totalAmount, updateItemQuantity, items, removeCartItem, loading } =
     useCart();
-  const { data: session } = useSession(); /*6a*/
+  const { data: session } = useSession();
 
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(CheckoutFormSchema),
@@ -37,7 +37,7 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     async function fetchUserInfo() {
-      const data = await Api.auth.getMe(); /*6i check if mistake is gone*/
+      const data = await Api.auth.getMe();
       const [firstName, lastName] = data.fullName.split(" ");
 
       form.setValue("firstName", firstName);
@@ -48,7 +48,7 @@ export default function CheckoutPage() {
     if (session) {
       fetchUserInfo();
     }
-  }, [session]) /*6b*/;
+  }, [session]);
 
   const onSubmit = async (data: CheckoutFormValues) => {
     try {
@@ -120,6 +120,3 @@ export default function CheckoutPage() {
     </Container>
   );
 }
-
-// 6c. Create and go to auth.ts in services folder of shared
-// 6j(end). FINISH

@@ -16,6 +16,4 @@ export const VerificationUserTemplate: React.FC<Props> = ({ code }) => (
       </a>
     </p>
   </div>
-); /*2i*/
-
-// 2j. Go to actions.ts in app
+);

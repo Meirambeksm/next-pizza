@@ -153,7 +153,7 @@ export async function registerUser(body: Prisma.UserCreateInput) {
       where: {
         email: body.email,
       },
-    }); /*2b*/
+    });
 
     if (user) {
       if (!user.verified) {
@@ -161,7 +161,7 @@ export async function registerUser(body: Prisma.UserCreateInput) {
       }
 
       throw new Error("Пользователь уже существует");
-    } /*2c*/
+    }
 
     const createdUser = await prisma.user.create({
       data: {
@@ -169,16 +169,16 @@ export async function registerUser(body: Prisma.UserCreateInput) {
         email: body.email,
         password: hashSync(body.password, 10),
       },
-    }); /*2d*/
+    });
 
-    const code = Math.floor(100000 + Math.random() * 900000).toString(); /*2f*/
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
 
     await prisma.verificationCode.create({
       data: {
         code,
         userId: createdUser.id,
       },
-    }); /*2g*/
+    });
 
     await sendEmail(
       createdUser.email,
@@ -186,14 +186,9 @@ export async function registerUser(body: Prisma.UserCreateInput) {
       VerificationUserTemplate({
         code,
       })
-    ) /*2k*/;
+    );
   } catch (err) {
-    /*2a*/
     console.log("Error [CREATE_USER]", err);
     throw err;
   }
 }
-
-// 2e. Go to schema.prisma in prisma folder and update lines 16-18-149 and after that TERMINAL: npm run prisma:push
-// 2h. Create and go to verification-user.tsx in email-templates folder in shared of components
-// 2l Go to register-form.tsx

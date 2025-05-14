@@ -22,20 +22,20 @@ export const Header: React.FC<Props> = ({
   hasCart = true,
   className,
 }) => {
-  const router = useRouter(); /*4d*/
+  const router = useRouter();
   const [openAuthModal, setOpenAuthModal] = useState(false);
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    let toastMessage = ""; /*4a*/
+    let toastMessage = "";
 
     if (searchParams.has("paid")) {
       toastMessage = "Заказ успешно оплачен! Информация отправлена на почту.";
-    } /*4b*/
+    }
 
     if (searchParams.has("verified")) {
       toastMessage = "Почта успешно подтверждена!.";
-    } /*4с*/
+    }
 
     if (toastMessage) {
       setTimeout(() => {
@@ -44,7 +44,7 @@ export const Header: React.FC<Props> = ({
           duration: 3000,
         });
       }, 500);
-    } /*4e*/
+    }
   }, []);
 
   return (
@@ -80,5 +80,3 @@ export const Header: React.FC<Props> = ({
     </header>
   );
 };
-
-// 4f(end). Create me folder in auth of api of app and then create and go to route.ts in me folder

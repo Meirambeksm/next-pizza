@@ -27,7 +27,7 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
         {type === "login" ? (
           <LoginForm onClose={handleClose} />
         ) : (
-          <RegisterForm onClose={handleClose} /*1f*/ />
+          <RegisterForm onClose={handleClose} />
         )}
         <hr />
         <div className="flex gap-2">
@@ -79,5 +79,3 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
     </Dialog>
   );
 };
-
-// 1g(end). Go to actions.ts in app

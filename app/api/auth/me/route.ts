@@ -4,14 +4,14 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const user = await getUserSession(); /*5b*/
+    const user = await getUserSession();
 
     if (!user) {
       return NextResponse.json(
         { message: "Вы не авторизованы" },
         { status: 401 }
       );
-    } /*5c*/
+    }
 
     const data = await prisma.user.findUnique({
       where: {
@@ -22,16 +22,14 @@ export async function GET() {
         email: true,
         password: false,
       },
-    }); /*5d*/
+    });
 
-    return NextResponse.json(data); /*5e*/
+    return NextResponse.json(data);
   } catch (err) {
     console.log(err);
     return NextResponse.json(
       { message: "[USER_GET Server error" },
       { status: 500 }
     );
-  } /*5a*/
+  }
 }
-
-// 5f(end). Go to page.tsx in checkout folder of (checkout) of app

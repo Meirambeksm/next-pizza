@@ -4,6 +4,4 @@ import { axiosInstance } from "./instance";
 export const getMe = async () => {
   const { data } = await axiosInstance.get<User>("/auth/me");
   return data;
-}; /*6d*/
-
-// 6e. Go to api-clients.ts in services folder of shared
+};

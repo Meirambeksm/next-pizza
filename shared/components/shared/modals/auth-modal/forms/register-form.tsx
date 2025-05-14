@@ -6,12 +6,12 @@ import toast from "react-hot-toast";
 import { Button } from "@/shared/components/ui";
 import { FormInput } from "../../../form-components";
 import { formRegisterSchema, TFormRegisterValues } from "./schema";
-import { registerUser } from "@/app/actions"; /*2m import this line*/
+import { registerUser } from "@/app/actions";
 
 interface Props {
   onClose?: VoidFunction;
   onClickLogin?: VoidFunction;
-} /*1b*/
+}
 
 export const RegisterForm: React.FC<Props> = ({ onClose, onClickLogin }) => {
   const form = useForm<TFormRegisterValues>({
@@ -22,7 +22,7 @@ export const RegisterForm: React.FC<Props> = ({ onClose, onClickLogin }) => {
       password: "",
       confirmPassword: "",
     },
-  }); /*1c*/
+  });
 
   const onSubmit = async (data: TFormRegisterValues) => {
     try {
@@ -69,8 +69,5 @@ export const RegisterForm: React.FC<Props> = ({ onClose, onClickLogin }) => {
         </Button>
       </form>
     </FormProvider>
-  ); /*1d*/
+  );
 };
-
-// 1e. Go to auth-modals.tsx in auth-modal of modals of shared of components
-// 2n.(end) Create verify folder in auth folder of api of app and create and go to route.ts
