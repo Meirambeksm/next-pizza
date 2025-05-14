@@ -3,6 +3,7 @@ import { Button, Dialog, DialogContent } from "@/shared/components/ui";
 import { signIn } from "next-auth/react";
 import React, { useState } from "react";
 import { LoginForm } from "./forms/login-form";
+import { RegisterForm } from "./forms/register-form";
 
 interface Props {
   open: boolean;
@@ -26,7 +27,7 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
         {type === "login" ? (
           <LoginForm onClose={handleClose} />
         ) : (
-          <h1>REGISTER</h1>
+          <RegisterForm onClose={handleClose} /*1f*/ />
         )}
         <hr />
         <div className="flex gap-2">
@@ -78,3 +79,5 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
     </Dialog>
   );
 };
+
+// 1g(end). Go to actions.ts in app

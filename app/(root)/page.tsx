@@ -53,8 +53,10 @@ export default async function Home({
   );
 }
 
-// 0. Start here 21:11:40
-// 1a. Create and go to auth-options.ts in constants folder of shared
+// 0. Start here 21:41:50
+// 1a. Go to register-form.tsx in forms folder of auth-modal of modals of shared of components
+
+// YOU ARE AT register-form.tsx and TIME: 21:57:00
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

@@ -10,6 +10,4 @@ export default function UnauthorizedPage() {
       />
     </div>
   );
-} /*3g*/
-
-// 3h(end). Create and go to profile-form.tsx in shared of components
+}

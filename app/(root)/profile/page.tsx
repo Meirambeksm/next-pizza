@@ -14,15 +14,11 @@ export default async function ProfilePage() {
     where: {
       id: Number(session?.id),
     },
-  }); /*4i*/
+  });
 
   if (!user) {
     return redirect("/not-auth");
-  } /*4j*/
+  }
 
-  //   return <div>THIS IS YOUR PROFILE</div>; it was with step 3a. To be replaced with step 4k
-  return <ProfileForm data={user} /*4k*/ />;
-} /*3a*/
-
-// 3b. Create and go to info-block.tsx in shared folder of components
-// 4l(end). Go to actions.ts in app folder
+  return <ProfileForm data={user} />;
+}

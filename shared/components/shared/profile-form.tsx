@@ -12,11 +12,11 @@ import { Container } from "./container";
 import { Title } from "./title";
 import { Button } from "../ui";
 import { FormInput } from "./form-components";
-import { updateUserInfo } from "@/app/actions"; /*5d*/
+import { updateUserInfo } from "@/app/actions";
 
 interface Props {
   data: User;
-} /*4a*/
+}
 
 export const ProfileForm: React.FC<Props> = ({ data }) => {
   const form = useForm({
@@ -27,7 +27,7 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
       password: "",
       confirmPassword: "",
     },
-  }); /*4b*/
+  });
 
   const onSubmit = async (data: TFormRegisterValues) => {
     try {
@@ -45,16 +45,16 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
         icon: "❌",
       });
     }
-  }; /*4c*/
+  };
 
   const onClickSignOut = () => {
     signOut({
       callbackUrl: "/",
     });
-  }; /*4e*/
+  };
 
   return (
-    <Container className="my-10" /*4e*/>
+    <Container className="my-10">
       <Title
         text={`Личные данные | #${data.id}`}
         size="md"
@@ -104,6 +104,3 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
     </Container>
   );
 };
-
-// 4f. Go to index.ts in shared folder of components
-// 5e(end). FINISH (нужно еще делать чтобы пароли были как опционально. Время видео примерно 21-40-00)

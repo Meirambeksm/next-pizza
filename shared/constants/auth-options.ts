@@ -5,7 +5,7 @@ import { prisma } from "@/prisma/prisma-client";
 import { compare, hashSync } from "bcrypt";
 import { UserRole } from "@prisma/client";
 
-export const authOptions: AuthOptions /*1c*/ = {
+export const authOptions: AuthOptions = {
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_ID || "",
@@ -59,7 +59,7 @@ export const authOptions: AuthOptions /*1c*/ = {
         }
 
         return {
-          id: findUser.id /*1e remove String type*/,
+          id: findUser.id,
           email: findUser.email,
           name: findUser.fullName,
           role: findUser.role,
@@ -131,7 +131,7 @@ export const authOptions: AuthOptions /*1c*/ = {
     async jwt({ token }) {
       if (!token.email) {
         return token;
-      } /*1d*/
+      }
 
       const findUser = await prisma.user.findFirst({
         where: {
@@ -158,6 +158,4 @@ export const authOptions: AuthOptions /*1c*/ = {
       return session;
     },
   },
-}; /*1b. Move from route.ts of [...nextauth]*/
-
-// 1f. Go to route.ts in [...nextauth] of auth of api of app
+};

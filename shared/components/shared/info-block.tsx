@@ -52,6 +52,4 @@ export const InfoBlock: React.FC<Props> = ({
       <img src={imageUrl} alt={title} width={300} />
     </div>
   );
-}; /*3c*/
-
-// 3d. Go to index.ts in shared folder of components
+};

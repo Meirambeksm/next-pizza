@@ -1,6 +1,7 @@
 "use server";
 import { prisma } from "@/prisma/prisma-client";
 import { PayOrderTemplate } from "@/shared/components";
+import { VerificationUserTemplate } from "@/shared/components/shared/email-templates/verification-user";
 import { CheckoutFormValues } from "@/shared/constants";
 import { createPayment, sendEmail } from "@/shared/lib";
 import { getUserSession } from "@/shared/lib/get-user-session";
@@ -140,10 +141,59 @@ export async function updateUserInfo(body: Prisma.UserUpdateInput) {
           ? hashSync(body.password as string, 10)
           : findUser?.password,
       },
-    }); /*5b*/
+    });
   } catch (error) {
-    console.log("Error [UPDATE_USER", error) /*5a*/;
+    console.log("Error [UPDATE_USER", error);
   }
 }
 
-// 5c. Go to profile-form.tsx in shared folder of components
+export async function registerUser(body: Prisma.UserCreateInput) {
+  try {
+    const user = await prisma.user.findFirst({
+      where: {
+        email: body.email,
+      },
+    }); /*2b*/
+
+    if (user) {
+      if (!user.verified) {
+        throw new Error("Почта не подтверждена");
+      }
+
+      throw new Error("Пользователь уже существует");
+    } /*2c*/
+
+    const createdUser = await prisma.user.create({
+      data: {
+        fullName: body.fullName,
+        email: body.email,
+        password: hashSync(body.password, 10),
+      },
+    }); /*2d*/
+
+    const code = Math.floor(100000 + Math.random() * 900000).toString(); /*2f*/
+
+    await prisma.verificationCode.create({
+      data: {
+        code,
+        userId: createdUser.id,
+      },
+    }); /*2g*/
+
+    await sendEmail(
+      createdUser.email,
+      "Next Pizza / 📝 Подтверждение регистрации",
+      VerificationUserTemplate({
+        code,
+      })
+    ) /*2k*/;
+  } catch (err) {
+    /*2a*/
+    console.log("Error [CREATE_USER]", err);
+    throw err;
+  }
+}
+
+// 2e. Go to schema.prisma in prisma folder and update lines 16-18-149 and after that TERMINAL: npm run prisma:push
+// 2h. Create and go to verification-user.tsx in email-templates folder in shared of components
+// 2l Go to register-form.tsx

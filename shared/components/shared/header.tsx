@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SearchInput } from "./search-input";
 import { CartButton } from "./cart-button";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
 import { ProfileButton } from "./profile-button";
 import { AuthModal } from "./modals";
@@ -22,15 +22,29 @@ export const Header: React.FC<Props> = ({
   hasCart = true,
   className,
 }) => {
+  const router = useRouter(); /*4d*/
   const [openAuthModal, setOpenAuthModal] = useState(false);
   const searchParams = useSearchParams();
 
   useEffect(() => {
+    let toastMessage = ""; /*4a*/
+
     if (searchParams.has("paid")) {
+      toastMessage = "Заказ успешно оплачен! Информация отправлена на почту.";
+    } /*4b*/
+
+    if (searchParams.has("verified")) {
+      toastMessage = "Почта успешно подтверждена!.";
+    } /*4с*/
+
+    if (toastMessage) {
       setTimeout(() => {
-        toast.success("Заказ успешно оплачен! Информация отправлена на почту.");
+        router.replace("/");
+        toast.success(toastMessage, {
+          duration: 3000,
+        });
       }, 500);
-    }
+    } /*4e*/
   }, []);
 
   return (
@@ -66,3 +80,5 @@ export const Header: React.FC<Props> = ({
     </header>
   );
 };
+
+// 4f(end). Create me folder in auth of api of app and then create and go to route.ts in me folder
