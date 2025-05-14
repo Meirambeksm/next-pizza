@@ -27,7 +27,10 @@ export { ClearButton } from "./clear-button";
 export { ProfileButton } from "./profile-button";
 export { InfoBlock } from "./info-block";
 export { ProfileForm } from "./profile-form";
+export { Stories } from "./stories"; /*3g*/
 export * from "./checkout";
 export * from "./form-components";
 export * from "./modals";
 export * from "./email-templates";
+
+// 3h. Go to page.tsx in (root) folder of app
