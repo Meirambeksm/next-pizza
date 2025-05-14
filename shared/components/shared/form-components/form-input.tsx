@@ -1,3 +1,4 @@
+"use client"; /*1d*/
 import { useFormContext } from "react-hook-form";
 import { Input } from "../../ui";
 import { ClearButton } from "../clear-button";
@@ -48,3 +49,5 @@ export const FormInput: React.FC<Props> = ({
     </div>
   );
 };
+
+// 1e. Go to form-textarea.tsx in shared/components/shared/form-components

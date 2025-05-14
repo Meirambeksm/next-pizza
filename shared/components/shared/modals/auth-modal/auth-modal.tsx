@@ -45,6 +45,7 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
             <img
               className="w-6 h-6"
               src="https://github.githubassets.com/favicons/favicon.svg"
+              alt="GitHub"
             />
             GitHub
           </Button>
@@ -63,6 +64,7 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
             <img
               className="w-6 h-6"
               src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg"
+              alt="Google"
             />
             Google
           </Button>

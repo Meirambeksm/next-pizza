@@ -1,3 +1,4 @@
+"use client"; /*1b*/
 import { Controller, useFormContext } from "react-hook-form";
 import { AddressInput } from "../address-input";
 import { FormTextarea } from "../form-components";
@@ -38,3 +39,5 @@ export const CheckoutAddressForm: React.FC<Props> = ({ className }) => {
     </WhiteBlock>
   );
 };
+
+// 1c. Go to form-input.tsx in shared/components/shared/form-components

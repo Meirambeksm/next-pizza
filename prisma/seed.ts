@@ -234,7 +234,7 @@ async function up() {
           "https://cdn.inappstory.ru/story/lza/rsp/2gc/xrar8zdspl4saq4uajmso38/custom_cover/logo-350x440.webp?k=IgAAAAAAAAAE&v=4207486284",
       },
     ],
-  }) /*4a*/;
+  });
 
   await prisma.storyItem.createMany({
     data: [
@@ -264,7 +264,7 @@ async function up() {
           "https://cdn.inappstory.ru/file/sy/vl/c7/uyqzmdojadcbw7o0a35ojxlcul.webp?k=IgAAAAAAAAAE",
       },
     ],
-  }) /*4b*/;
+  });
 }
 
 async function down() {
@@ -295,7 +295,3 @@ main()
     await prisma.$disconnect();
     process.exit(1);
   });
-
-// 4c. Terminal: npm run prisma:seed
-// 4d. Create stories folder in api/app
-// 4e. Create and go to route.ts in stories folder in api/app

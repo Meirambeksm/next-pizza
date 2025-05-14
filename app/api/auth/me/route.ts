@@ -2,6 +2,9 @@ import { prisma } from "@/prisma/prisma-client";
 import { getUserSession } from "@/shared/lib/get-user-session";
 import { NextResponse } from "next/server";
 
+export const dynamic =
+  "force-dynamic"; /*1j and for more info see time: 22-44-00*/
+
 export async function GET() {
   try {
     const user = await getUserSession();
@@ -33,3 +36,7 @@ export async function GET() {
     );
   }
 }
+
+// 1k. Go to package.json and add postinstall": "prisma generate" in scripts and come back
+// 1l. Create .env.local and copy .env in it
+// 1m(end). Go to page.tsx in (root) of app

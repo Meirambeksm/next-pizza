@@ -1,5 +1,6 @@
 import { Header } from "@/shared/components/shared/header";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Next Pizza | Главная",
@@ -14,9 +15,13 @@ export default function HomeLayout({
 }>) {
   return (
     <main className="min-h-screen">
-      <Header />
+      <Suspense /*1h*/>
+        <Header />
+      </Suspense>
       {children}
       {modal}
     </main>
   );
 }
+
+// 1i. Go to route.ts in me folder of auth of api of app

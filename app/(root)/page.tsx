@@ -61,9 +61,10 @@ export default async function Home({
   );
 }
 
-// 0. Start here 22:21:00
-// 1b. Create and go to stories.tsx in shared folder of components
-// 3j(end). Go to seed.ts in prisma folder
+// 0. Start here 22:35:00
+// 1a. Go to checkout-address-form.tsx in shared/components/shared/checkout
+// 2a. Push to Github
+// 2b. Visit: vercel.com
 
 // Usefull links:
 // https://www.youtube.com/watch?v=GUwizGbY4cc&t=23767s

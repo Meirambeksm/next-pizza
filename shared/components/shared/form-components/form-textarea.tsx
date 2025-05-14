@@ -1,3 +1,4 @@
+"use client"; /*1f*/
 import React from "react";
 import { useFormContext } from "react-hook-form";
 import { Textarea } from "../../ui/textarea";
@@ -44,3 +45,5 @@ export const FormTextarea: React.FC<Props> = ({
     </div>
   );
 };
+
+// 1g. Go to layout.tsx in (root) folder in app folder
