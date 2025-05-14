@@ -48,7 +48,7 @@ export default function CheckoutPage() {
     if (session) {
       fetchUserInfo();
     }
-  }, [session]);
+  }, [session, form /*1*/]);
 
   const onSubmit = async (data: CheckoutFormValues) => {
     try {
